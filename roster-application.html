@@ -149,6 +149,8 @@
     .game-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--primary); transform: scaleX(0); transition: transform 0.3s; }
     .game-card:hover { border-color: var(--border-primary); }
     .game-card:hover::before { transform: scaleX(1); }
+    .game-img { display: flex; justify-content: center; align-items: center; margin-bottom: 12px; height: 56px; }
+    .game-img img { width: 48px; height: 48px; object-fit: contain; border-radius: 8px; }
     .game-emoji { width: 32px; height: 32px; margin-bottom: 12px; object-fit: contain; }
     .game-name { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 2px; color: #fff; margin-bottom: 6px; }
     .game-status { display: inline-block; font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; padding: 4px 10px; border-radius: 2px; }
@@ -302,26 +304,31 @@
       <h2 class="section-title">Open Slots</h2>
       <div class="games-grid">
         <div class="game-card">
+          <div class="game-img"><img src="bgmi.jpg" alt="BGMI"></div>
           <img class="game-emoji" src="bgmi.jpg" alt="BGMI">
           <div class="game-name">BGMI</div>
           <span class="game-status open">Open</span>
         </div>
         <div class="game-card">
+          <div class="game-img"><img src="freefire.jpg" alt="Free Fire"></div>
           <img class="game-emoji" src="freefire.jpg" alt="Free Fire">
           <div class="game-name">Free Fire</div>
           <span class="game-status open">Open</span>
         </div>
         <div class="game-card">
+          <div class="game-img"><img src="valorant.jpg" alt="Valorant"></div>
           <img class="game-emoji" src="valorant.jpg" alt="Valorant">
           <div class="game-name">Valorant</div>
           <span class="game-status limited">Limited</span>
         </div>
         <div class="game-card">
+          <div class="game-img"><img src="codm.jpg" alt="COD Mobile"></div>
           <img class="game-emoji" src="codm.jpg" alt="COD Mobile">
           <div class="game-name">COD Mobile</div>
           <span class="game-status open">Open</span>
         </div>
         <div class="game-card">
+          <div class="game-img"><img src="chess.jpg" alt="Chess"></div>
           <img class="game-emoji" src="chess.jpg" alt="Chess">
           <div class="game-name">Chess</div>
           <span class="game-status limited">Limited</span>
@@ -410,6 +417,7 @@
 
         <!-- Success state -->
         <div id="form-success">
+          <div style="display:flex;justify-content:center;margin-bottom:16px;"><img src="asuraverse logo.jpg" alt="AsuraVerse Esports" style="width:64px;height:64px;object-fit:contain;border-radius:12px;"></div>
           <div style="margin-bottom:16px;"><img src="asuraverse logo.jpg" alt="AsuraVerse Logo" style="width:48px;height:48px;object-fit:cover;border-radius:50%;"></div>
           <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:2px;color:#fff;margin-bottom:8px;">APPLICATION SUBMITTED!</div>
           <div style="font-size:15px;color:var(--muted2);line-height:1.7;">Your application is in! Our coaching staff will review it and reach out to shortlisted players within <span style="color:var(--primary);">7–10 days</span>. Keep grinding!</div>
@@ -422,7 +430,7 @@
   <!-- ── FOOTER ── -->
   <footer>
     <div class="footer-copy">© 2025 Team AsuraVerse Esports Pvt Ltd. All Rights Reserved.</div>
-    <a href="/" class="footer-back">← Back to Home</a>
+    <a href="/" class="footer-back"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:6px;" aria-hidden="true" focusable="false"><polyline points="15 18 9 12 15 6"></polyline></svg>Back to Home</a>
   </footer>
 
   <script>

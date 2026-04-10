@@ -155,7 +155,7 @@
     }
     .benefit-card:hover { border-color: var(--border-primary); }
     .benefit-card:hover::before { transform: scaleX(1); }
-    .benefit-icon { font-size: 32px; margin-bottom: 16px; }
+    .benefit-icon { display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; background: rgba(255,123,0,0.1); border: 1px solid rgba(255,123,0,0.25); border-radius: 8px; margin-bottom: 16px; color: var(--primary); }
     .benefit-title { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 2px; color: #fff; margin-bottom: 10px; }
     .benefit-desc { font-size: 14px; color: var(--muted2); line-height: 1.7; }
 
@@ -297,22 +297,22 @@
       <h2 class="section-title">What We Offer</h2>
       <div class="benefits-grid">
         <div class="benefit-card">
-          <div class="benefit-icon">📣</div>
+          <div class="benefit-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M22 2L11 13"/><path d="M22 2L15 22 11 13 2 9l20-7z"/></svg></div>
           <div class="benefit-title">Brand Visibility</div>
           <div class="benefit-desc">Logo placement on jerseys, streams, social media posts, and tournament broadcasts reaching thousands of esports fans across India.</div>
         </div>
         <div class="benefit-card">
-          <div class="benefit-icon">🎮</div>
+          <div class="benefit-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="6"/><path d="M8 14l-2 7h12l-2-7"/><path d="M9 11v3m6-3v3"/></svg></div>
           <div class="benefit-title">Tournament Exposure</div>
           <div class="benefit-desc">Get your brand featured in BGMI, Free Fire, Valorant and COD Mobile tournaments with active player communities.</div>
         </div>
         <div class="benefit-card">
-          <div class="benefit-icon">📱</div>
+          <div class="benefit-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
           <div class="benefit-title">Social Media Reach</div>
           <div class="benefit-desc">Access our growing social media presence on Instagram, YouTube, and Discord to promote your products or services authentically.</div>
         </div>
         <div class="benefit-card">
-          <div class="benefit-icon">🤝</div>
+          <div class="benefit-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
           <div class="benefit-title">Co-branded Content</div>
           <div class="benefit-desc">Collaborate on exclusive content, giveaways, and events that resonate with the 18–30 gaming demographic.</div>
         </div>
@@ -375,7 +375,7 @@
 
         <!-- Success state -->
         <div id="form-success">
-          <div style="font-size:48px;margin-bottom:16px;">🤝</div>
+          <div style="display:flex;justify-content:center;margin-bottom:16px;"><svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><circle cx="28" cy="28" r="27" stroke="#FF7B00" stroke-width="2" fill="rgba(255,123,0,0.1)"/><polyline points="16,28 24,36 40,20" stroke="#FF7B00" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
           <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:2px;color:#fff;margin-bottom:8px;">INQUIRY RECEIVED!</div>
           <div style="font-size:15px;color:var(--muted2);line-height:1.7;">Thanks for reaching out! Our partnerships team will review your proposal and get back to you within <span style="color:var(--primary);">2–3 business days</span>.</div>
           <button style="margin-top:24px;background:none;border:1px solid var(--border-primary);color:var(--primary);padding:12px 32px;font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;" onclick="resetForm()">Submit Another</button>
@@ -387,7 +387,7 @@
   <!-- ── FOOTER ── -->
   <footer>
     <div class="footer-copy">© 2025 Team AsuraVerse Esports Pvt Ltd. All Rights Reserved.</div>
-    <a href="/" class="footer-back">← Back to Home</a>
+    <a href="/" class="footer-back"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:6px;" aria-hidden="true" focusable="false"><polyline points="15 18 9 12 15 6"></polyline></svg>Back to Home</a>
   </footer>
 
   <script>
