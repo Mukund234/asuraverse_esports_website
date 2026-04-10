@@ -1597,8 +1597,9 @@
       <li><a href="#achievements">Achievements</a></li>
       <li><a href="#news">News</a></li>
       <li><a href="#contact">Contact</a></li>
+      <li><a href="/partner-with-us">Partners</a></li>
     </ul>
-    <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'});">Join Us</button>
+    <a href="/roster-application" class="nav-cta" style="text-decoration:none;">Apply Now</a>
     <button class="hamburger" id="hamburger-btn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-nav" aria-haspopup="true">
       <span></span>
       <span></span>
@@ -1615,7 +1616,8 @@
       <li><a href="#achievements">Achievements</a></li>
       <li><a href="#news">News</a></li>
       <li><a href="#contact">Contact</a></li>
-      <li><a href="#contact" class="mobile-nav-cta">Join Us →</a></li>
+      <li><a href="/partner-with-us">Partners</a></li>
+      <li><a href="/roster-application" class="mobile-nav-cta">Apply Now →</a></li>
     </ul>
   </nav>
 
@@ -1640,7 +1642,7 @@
         recruiting top-tier competitive rosters across India's biggest titles.
       </p>
       <div class="hero-btns">
-        <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView();">Apply as a
+        <button class="btn-primary" onclick="window.location.href='/roster-application';">Apply as a
           Roster</button>
         <button class="btn-ghost" onclick="document.getElementById('about').scrollIntoView();">Our Story</button>
       </div>
@@ -1941,7 +1943,7 @@
         </div>
       </div>
 
-      <button class="btn-primary" style="padding: 18px 56px; font-size: 15px; letter-spacing: 3px;" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'});">
+      <button class="btn-primary" style="padding: 18px 56px; font-size: 15px; letter-spacing: 3px;" onclick="window.location.href='/partner-with-us';">
         Partner With Us →
       </button>
 
@@ -1990,9 +1992,9 @@
       <p class="join-sub">We are actively searching for dedicated Rosters! Whether you're a full squad or a solo
         prodigy, it's time to step up.</p>
       <div class="join-btns">
-        <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView();">Submit Roster
+        <button class="btn-primary" onclick="window.location.href='/roster-application';">Submit Roster
           Application</button>
-        <button class="btn-ghost" onclick="document.getElementById('partners').scrollIntoView({behavior:'smooth'});">Partner With Us</button>
+        <button class="btn-ghost" onclick="window.location.href='/partner-with-us';">Partner With Us</button>
       </div>
     </div>
   </section>
@@ -2006,13 +2008,7 @@
     <h2 class="section-title">Contact Us</h2>
     <div class="contact-grid" style="margin-top:48px;">
       <div class="contact-form-wrap">
-        <form id="contact-form" action="https://formsubmit.co/teamasuraverse@gmail.com" method="POST" onsubmit="handleFormSubmit(event)">
-
-          <!-- FormSubmit config -->
-          <input type="hidden" name="_subject" value="New Message via AsuraVerse Website">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_template" value="table">
-          <input type="hidden" name="_next" value="">
+        <form id="contact-form" novalidate onsubmit="handleFormSubmit(event)">
 
           <div class="form-row">
             <label>Your Name</label>
@@ -2241,26 +2237,35 @@
   function handleFormSubmit(e) {
     e.preventDefault();
     const form = e.target;
-    const action = form.getAttribute('action');
-    if (!action) {
-      alert('Contact form is not configured. Please email teamasuraverse@gmail.com directly.');
-      return;
-    }
     const btn = document.getElementById('cf-submit');
     btn.disabled = true;
     btn.textContent = 'Sending…';
 
-    fetch(form.action, {
+    const data = {
+      name: document.getElementById('cf-name').value,
+      email: document.getElementById('cf-email').value,
+      enquiry_type: document.getElementById('cf-type').value,
+      message: document.getElementById('cf-message').value
+    };
+
+    fetch('/api/contact', {
       method: 'POST',
-      body: new FormData(form),
-      headers: { 'Accept': 'application/json' }
-    }).then(() => {
-      form.style.display = 'none';
-      document.getElementById('form-success').style.display = 'block';
-    }).catch(() => {
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    })
+    .then(res => res.json())
+    .then(json => {
+      if (json.success) {
+        form.style.display = 'none';
+        document.getElementById('form-success').style.display = 'block';
+      } else {
+        throw new Error(json.error || 'Submission failed');
+      }
+    })
+    .catch(err => {
       btn.disabled = false;
       btn.textContent = 'Send Message';
-      alert('Failed to send. Please email us directly at teamasuraverse@gmail.com');
+      alert(err.message || 'Failed to send. Please email us directly at teamasuraverse@gmail.com');
     });
   }
 
