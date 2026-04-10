@@ -149,7 +149,8 @@
     .game-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--primary); transform: scaleX(0); transition: transform 0.3s; }
     .game-card:hover { border-color: var(--border-primary); }
     .game-card:hover::before { transform: scaleX(1); }
-    .game-emoji { font-size: 32px; margin-bottom: 12px; }
+    .game-img { display: flex; justify-content: center; align-items: center; margin-bottom: 12px; height: 56px; }
+    .game-img img { width: 48px; height: 48px; object-fit: contain; border-radius: 8px; }
     .game-name { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 2px; color: #fff; margin-bottom: 6px; }
     .game-status { display: inline-block; font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; padding: 4px 10px; border-radius: 2px; }
     .game-status.open { background: rgba(34,197,94,0.1); color: #4ade80; border: 1px solid rgba(34,197,94,0.3); }
@@ -302,27 +303,27 @@
       <h2 class="section-title">Open Slots</h2>
       <div class="games-grid">
         <div class="game-card">
-          <div class="game-emoji">🎯</div>
+          <div class="game-img"><img src="bgmi.jpg" alt="BGMI"></div>
           <div class="game-name">BGMI</div>
           <span class="game-status open">Open</span>
         </div>
         <div class="game-card">
-          <div class="game-emoji">🔥</div>
+          <div class="game-img"><img src="freefire.jpg" alt="Free Fire"></div>
           <div class="game-name">Free Fire</div>
           <span class="game-status open">Open</span>
         </div>
         <div class="game-card">
-          <div class="game-emoji">⚡</div>
+          <div class="game-img"><img src="valorant.jpg" alt="Valorant"></div>
           <div class="game-name">Valorant</div>
           <span class="game-status limited">Limited</span>
         </div>
         <div class="game-card">
-          <div class="game-emoji">💥</div>
+          <div class="game-img"><img src="codm.jpg" alt="COD Mobile"></div>
           <div class="game-name">COD Mobile</div>
           <span class="game-status open">Open</span>
         </div>
         <div class="game-card">
-          <div class="game-emoji">♟️</div>
+          <div class="game-img"><img src="chess.jpg" alt="Chess"></div>
           <div class="game-name">Chess</div>
           <span class="game-status limited">Limited</span>
         </div>
@@ -410,7 +411,7 @@
 
         <!-- Success state -->
         <div id="form-success">
-          <div style="font-size:48px;margin-bottom:16px;">🎮</div>
+          <div style="display:flex;justify-content:center;margin-bottom:16px;"><img src="asuraverse logo.jpg" alt="AsuraVerse Esports" style="width:64px;height:64px;object-fit:contain;border-radius:12px;"></div>
           <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:2px;color:#fff;margin-bottom:8px;">APPLICATION SUBMITTED!</div>
           <div style="font-size:15px;color:var(--muted2);line-height:1.7;">Your application is in! Our coaching staff will review it and reach out to shortlisted players within <span style="color:var(--primary);">7–10 days</span>. Keep grinding!</div>
           <button style="margin-top:24px;background:none;border:1px solid var(--border-primary);color:var(--primary);padding:12px 32px;font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;" onclick="resetForm()">Submit Another</button>
@@ -422,7 +423,7 @@
   <!-- ── FOOTER ── -->
   <footer>
     <div class="footer-copy">© 2025 Team AsuraVerse Esports Pvt Ltd. All Rights Reserved.</div>
-    <a href="/" class="footer-back">← Back to Home</a>
+    <a href="/" class="footer-back"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:6px;"><polyline points="15 18 9 12 15 6"></polyline></svg>Back to Home</a>
   </footer>
 
   <script>
