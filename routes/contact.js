@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { createTransporter, adminEmail } = require('../utils/mailer');
+const { escapeHtml, sanitizeSubject } = require('../utils/escapeHtml');
 
 router.post('/', async (req, res) => {
   const { name, email, enquiry_type, message } = req.body;
@@ -17,7 +18,7 @@ router.post('/', async (req, res) => {
       from: `"AsuraVerse Website" <${process.env.EMAIL_USER}>`,
       to: adminEmail,
       replyTo: email,
-      subject: `[Contact Us] ${enquiry_type || 'General Enquiry'} — ${name}`,
+      subject: sanitizeSubject(`[Contact Us] ${enquiry_type || 'General Enquiry'} — ${name}`),
       html: `
         <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;background:#090B10;color:#f0f0f0;padding:32px;border-radius:8px;">
           <h2 style="color:#FF7B00;margin-bottom:24px;">New Contact Message</h2>
@@ -54,14 +55,5 @@ router.post('/', async (req, res) => {
     res.status(500).json({ success: false, error: 'Failed to send email. Please try again later.' });
   }
 });
-
-function escapeHtml(str) {
-  return String(str)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#039;');
-}
 
 module.exports = router;
