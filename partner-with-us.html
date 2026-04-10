@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Partner With Us — Team AsuraVerse Esports</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #FF7B00;
+      --primary-dark: #CC6200;
+      --primary-glow: rgba(255, 123, 0, 0.18);
+      --bg: #090B10;
+      --bg2: #0D1017;
+      --bg3: #12161F;
+      --border: rgba(255, 255, 255, 0.07);
+      --border-primary: rgba(255, 123, 0, 0.3);
+      --text: #f0f0f0;
+      --muted: #888;
+      --muted2: #aaa;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: 'Rajdhani', sans-serif; overflow-x: hidden; }
+
+    :focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; }
+    :focus:not(:focus-visible) { outline: none; }
+
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--primary); }
+
+    /* ── NAV ── */
+    nav.main-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      height: 68px; display: flex; align-items: center; justify-content: space-between;
+      padding: 0 48px;
+      background: rgba(9, 11, 16, 0.92); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+    .logo-hex { width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; }
+    .logo-text { font-family: 'Bebas Neue', sans-serif; }
+    .logo-text .org { font-size: 20px; letter-spacing: 3px; color: #fff; }
+    .logo-text .org span { color: var(--primary); }
+    .logo-text .sub { font-size: 9px; letter-spacing: 4px; color: var(--muted); font-family: 'Space Mono', monospace; }
+    .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
+    .nav-links a {
+      font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--muted2); text-decoration: none; transition: color 0.2s; position: relative;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
+      height: 1px; background: var(--primary); transform: scaleX(0); transition: transform 0.2s;
+    }
+    .nav-links a:hover { color: #fff; }
+    .nav-links a:hover::after, .nav-links a.active::after { transform: scaleX(1); }
+    .nav-links a.active { color: #fff; }
+    .nav-cta {
+      background: var(--primary); color: #fff; border: none; padding: 10px 24px;
+      font-family: 'Rajdhani', sans-serif; font-size: 12px; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase; cursor: pointer; text-decoration: none;
+      clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+      transition: background 0.2s; display: inline-block;
+    }
+    .nav-cta:hover { background: var(--primary-dark); }
+
+    /* hamburger */
+    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; }
+    .hamburger span { width: 22px; height: 2px; background: var(--text); display: block; transition: all 0.3s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    nav.mobile-nav {
+      position: fixed; top: 68px; left: 0; right: 0; z-index: 999;
+      background: rgba(9, 11, 16, 0.97); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      max-height: 0; overflow: hidden; transition: max-height 0.35s ease;
+    }
+    nav.mobile-nav.open { max-height: 400px; }
+    nav.mobile-nav ul { list-style: none; padding: 16px 24px 24px; }
+    nav.mobile-nav ul li { border-bottom: 1px solid var(--border); }
+    nav.mobile-nav ul li a {
+      display: block; padding: 14px 0; font-size: 14px; font-weight: 600;
+      letter-spacing: 2px; text-transform: uppercase; color: var(--muted2); text-decoration: none; transition: color 0.2s;
+    }
+    nav.mobile-nav ul li a:hover { color: #fff; }
+    .mobile-nav-cta { color: var(--primary) !important; }
+
+    @media (max-width: 768px) {
+      nav.main-nav { padding: 0 24px; }
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      min-height: 50vh; display: flex; align-items: center; justify-content: center;
+      text-align: center; position: relative; overflow: hidden;
+      padding: 120px 48px 80px;
+    }
+    .page-hero-bg-grid {
+      position: absolute; inset: 0;
+      background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 79px, rgba(255,123,0,0.04) 80px),
+        repeating-linear-gradient(90deg, transparent, transparent 79px, rgba(255,123,0,0.04) 80px);
+      pointer-events: none;
+    }
+    .page-hero-bg-radial {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(255,123,0,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .page-hero-content { position: relative; z-index: 2; max-width: 800px; }
+    .page-eyebrow {
+      display: inline-flex; align-items: center; gap: 10px; margin-bottom: 24px;
+    }
+    .page-eyebrow-line { width: 32px; height: 2px; background: var(--primary); }
+    .page-eyebrow span {
+      font-family: 'Space Mono', monospace; font-size: 11px;
+      letter-spacing: 3px; color: var(--primary); text-transform: uppercase;
+    }
+    .page-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(40px, 8vw, 88px);
+      line-height: 0.95; letter-spacing: 2px; color: #fff; margin-bottom: 24px;
+    }
+    .page-title span { color: var(--primary); }
+    .page-subtitle { font-size: 17px; color: var(--muted2); line-height: 1.7; max-width: 560px; margin: 0 auto; }
+
+    /* ── SECTION LABEL ── */
+    .section-label { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; }
+    .section-label-line { flex: 1; height: 1px; background: var(--border); }
+    .section-label-tag { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 3px; color: var(--primary); text-transform: uppercase; }
+    .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(28px, 5vw, 48px); letter-spacing: 2px; color: #fff; margin-bottom: 8px; }
+
+    /* ── BENEFITS ── */
+    #benefits {
+      padding: 80px 48px;
+      background: var(--bg2);
+    }
+    .benefits-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; margin-top: 48px;
+    }
+    .benefit-card {
+      background: var(--bg3); border: 1px solid var(--border); padding: 32px 28px;
+      position: relative; transition: border-color 0.2s;
+    }
+    .benefit-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--primary);
+      transform: scaleX(0); transition: transform 0.3s;
+    }
+    .benefit-card:hover { border-color: var(--border-primary); }
+    .benefit-card:hover::before { transform: scaleX(1); }
+    .benefit-icon { font-size: 32px; margin-bottom: 16px; }
+    .benefit-title { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 2px; color: #fff; margin-bottom: 10px; }
+    .benefit-desc { font-size: 14px; color: var(--muted2); line-height: 1.7; }
+
+    /* ── FORM SECTION ── */
+    #partnership-form-section {
+      padding: 80px 48px;
+      background: var(--bg);
+    }
+    .form-container {
+      max-width: 720px; margin: 48px auto 0;
+      background: var(--bg2); border: 1px solid var(--border); padding: 48px;
+      position: relative;
+    }
+    .form-container::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--primary);
+    }
+    .form-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .form-row { margin-bottom: 20px; }
+    .form-row label {
+      display: block; font-family: 'Space Mono', monospace; font-size: 10px;
+      letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 8px;
+    }
+    .form-row input,
+    .form-row select,
+    .form-row textarea {
+      width: 100%; background: var(--bg3); border: 1px solid var(--border);
+      color: var(--text); padding: 12px 16px; font-family: 'Rajdhani', sans-serif;
+      font-size: 15px; transition: border-color 0.2s; outline: none; border-radius: 0;
+      -webkit-appearance: none; appearance: none;
+    }
+    .form-row input:focus,
+    .form-row select:focus,
+    .form-row textarea:focus { border-color: var(--primary); }
+    .form-row textarea { min-height: 140px; resize: vertical; }
+    .form-row select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; cursor: pointer; }
+    .form-row select option { background: var(--bg3); }
+    .form-submit {
+      width: 100%; background: var(--primary); color: #fff; border: none; padding: 16px;
+      font-family: 'Rajdhani', sans-serif; font-size: 14px; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase; cursor: pointer;
+      clip-path: polygon(12px 0, 100% 0, calc(100% - 12px) 100%, 0 100%);
+      transition: background 0.2s; margin-top: 8px;
+    }
+    .form-submit:hover:not(:disabled) { background: var(--primary-dark); }
+    .form-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    /* ── SUCCESS / ERROR STATES ── */
+    #form-success { display: none; text-align: center; padding: 48px 20px; }
+    #form-error {
+      display: none; background: rgba(220,38,38,0.1); border: 1px solid rgba(220,38,38,0.4);
+      color: #fca5a5; padding: 14px 18px; margin-bottom: 20px;
+      font-size: 14px; line-height: 1.6;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #050505; border-top: 1px solid var(--border); padding: 40px 48px 28px;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
+    }
+    .footer-copy { font-size: 13px; color: var(--muted); }
+    .footer-back { color: var(--primary); text-decoration: none; font-size: 13px; font-weight: 600; letter-spacing: 1px; transition: color 0.2s; }
+    .footer-back:hover { color: #fff; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .page-hero { padding: 100px 24px 60px; }
+      #benefits { padding: 60px 24px; }
+      #partnership-form-section { padding: 60px 24px; }
+      .form-container { padding: 32px 24px; }
+      .form-grid-2 { grid-template-columns: 1fr; }
+      footer { padding: 28px 24px; flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ── NAV ── -->
+  <nav class="main-nav">
+    <a href="/" class="nav-logo">
+      <div class="logo-hex">
+        <img src="asuraverse logo.jpg" alt="AsuraVerse Logo" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+      </div>
+      <div class="logo-text">
+        <div class="org">ASURA<span>VERSE</span></div>
+        <div class="sub">Esports Pvt Ltd</div>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/#about">About</a></li>
+      <li><a href="/#games">Games</a></li>
+      <li><a href="/#roster">Roster</a></li>
+      <li><a href="/#achievements">Achievements</a></li>
+      <li><a href="/#news">News</a></li>
+      <li><a href="/#contact">Contact</a></li>
+      <li><a href="/partner-with-us" class="active">Partners</a></li>
+    </ul>
+    <a href="/roster-application" class="nav-cta">Apply Now</a>
+    <button class="hamburger" id="hamburger-btn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-nav">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile Nav -->
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+    <ul>
+      <li><a href="/#about">About</a></li>
+      <li><a href="/#games">Games</a></li>
+      <li><a href="/#roster">Roster</a></li>
+      <li><a href="/#achievements">Achievements</a></li>
+      <li><a href="/#news">News</a></li>
+      <li><a href="/#contact">Contact</a></li>
+      <li><a href="/partner-with-us">Partners</a></li>
+      <li><a href="/roster-application" class="mobile-nav-cta">Apply Now →</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── PAGE HERO ── -->
+  <section class="page-hero">
+    <div class="page-hero-bg-grid"></div>
+    <div class="page-hero-bg-radial"></div>
+    <div class="page-hero-content">
+      <div class="page-eyebrow">
+        <div class="page-eyebrow-line"></div>
+        <span>Partnerships &amp; Sponsorships</span>
+      </div>
+      <h1 class="page-title">Partner<br><span>With Us</span></h1>
+      <p class="page-subtitle">Join forces with one of India's fastest-growing esports organisations. Together we can elevate competitive gaming and reach millions of fans.</p>
+    </div>
+  </section>
+
+  <!-- ── PARTNERSHIP BENEFITS ── -->
+  <section id="benefits">
+    <div style="max-width:1200px;margin:0 auto;">
+      <div class="section-label">
+        <div class="section-label-line"></div>
+        <div class="section-label-tag">Why Partner With Us</div>
+      </div>
+      <h2 class="section-title">What We Offer</h2>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon">📣</div>
+          <div class="benefit-title">Brand Visibility</div>
+          <div class="benefit-desc">Logo placement on jerseys, streams, social media posts, and tournament broadcasts reaching thousands of esports fans across India.</div>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">🎮</div>
+          <div class="benefit-title">Tournament Exposure</div>
+          <div class="benefit-desc">Get your brand featured in BGMI, Free Fire, Valorant and COD Mobile tournaments with active player communities.</div>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">📱</div>
+          <div class="benefit-title">Social Media Reach</div>
+          <div class="benefit-desc">Access our growing social media presence on Instagram, YouTube, and Discord to promote your products or services authentically.</div>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">🤝</div>
+          <div class="benefit-title">Co-branded Content</div>
+          <div class="benefit-desc">Collaborate on exclusive content, giveaways, and events that resonate with the 18–30 gaming demographic.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PARTNERSHIP INQUIRY FORM ── -->
+  <section id="partnership-form-section">
+    <div style="max-width:1200px;margin:0 auto;">
+      <div class="section-label">
+        <div class="section-label-line"></div>
+        <div class="section-label-tag">Get In Touch</div>
+      </div>
+      <h2 class="section-title">Partnership Inquiry</h2>
+      <p style="color:var(--muted2);margin-top:8px;">Fill in the form below and our partnerships team will get back to you within 2–3 business days.</p>
+
+      <div class="form-container">
+        <div id="form-error" role="alert"></div>
+
+        <form id="partnership-form" novalidate>
+          <div class="form-grid-2">
+            <div class="form-row">
+              <label for="org_name">Organisation / Brand Name *</label>
+              <input id="org_name" name="org_name" type="text" placeholder="Your organisation name" required>
+            </div>
+            <div class="form-row">
+              <label for="contact_name">Contact Person *</label>
+              <input id="contact_name" name="contact_name" type="text" placeholder="Your full name" required>
+            </div>
+          </div>
+          <div class="form-grid-2">
+            <div class="form-row">
+              <label for="email">Email Address *</label>
+              <input id="email" name="email" type="email" placeholder="business@example.com" required>
+            </div>
+            <div class="form-row">
+              <label for="phone">Phone Number</label>
+              <input id="phone" name="phone" type="tel" placeholder="+91 XXXXX XXXXX">
+            </div>
+          </div>
+          <div class="form-row">
+            <label for="partnership_type">Partnership Type *</label>
+            <select id="partnership_type" name="partnership_type" required>
+              <option value="" disabled selected>Select a type…</option>
+              <option>Title Sponsorship</option>
+              <option>Jersey Sponsorship</option>
+              <option>Event Sponsorship</option>
+              <option>Content Collaboration</option>
+              <option>Product Endorsement</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="details">Tell Us About Your Proposal *</label>
+            <textarea id="details" name="details" placeholder="Describe your partnership idea, budget range, timeline, and any other relevant details…" required></textarea>
+          </div>
+          <button class="form-submit" id="p-submit" type="submit">Submit Inquiry</button>
+        </form>
+
+        <!-- Success state -->
+        <div id="form-success">
+          <div style="font-size:48px;margin-bottom:16px;">🤝</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:2px;color:#fff;margin-bottom:8px;">INQUIRY RECEIVED!</div>
+          <div style="font-size:15px;color:var(--muted2);line-height:1.7;">Thanks for reaching out! Our partnerships team will review your proposal and get back to you within <span style="color:var(--primary);">2–3 business days</span>.</div>
+          <button style="margin-top:24px;background:none;border:1px solid var(--border-primary);color:var(--primary);padding:12px 32px;font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;" onclick="resetForm()">Submit Another</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="footer-copy">© 2025 Team AsuraVerse Esports Pvt Ltd. All Rights Reserved.</div>
+    <a href="/" class="footer-back">← Back to Home</a>
+  </footer>
+
+  <script>
+    // Hamburger menu
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const mobileNav = document.getElementById('mobile-nav');
+    hamburgerBtn.addEventListener('click', () => {
+      const isOpen = mobileNav.classList.toggle('open');
+      hamburgerBtn.classList.toggle('open', isOpen);
+      hamburgerBtn.setAttribute('aria-expanded', String(isOpen));
+    });
+    mobileNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileNav.classList.remove('open');
+        hamburgerBtn.classList.remove('open');
+        hamburgerBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && mobileNav.classList.contains('open')) {
+        mobileNav.classList.remove('open');
+        hamburgerBtn.classList.remove('open');
+        hamburgerBtn.setAttribute('aria-expanded', 'false');
+        hamburgerBtn.focus();
+      }
+    });
+    document.addEventListener('click', e => {
+      if (mobileNav.classList.contains('open') && !hamburgerBtn.contains(e.target) && !mobileNav.contains(e.target)) {
+        mobileNav.classList.remove('open');
+        hamburgerBtn.classList.remove('open');
+        hamburgerBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Form submission
+    document.getElementById('partnership-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const errorEl = document.getElementById('form-error');
+      errorEl.style.display = 'none';
+
+      const fields = ['org_name', 'contact_name', 'email', 'partnership_type', 'details'];
+      for (const f of fields) {
+        if (!this[f].value.trim()) {
+          errorEl.textContent = 'Please fill in all required fields.';
+          errorEl.style.display = 'block';
+          this[f].focus();
+          return;
+        }
+      }
+
+      const submitBtn = document.getElementById('p-submit');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Submitting…';
+
+      const data = Object.fromEntries(new FormData(this));
+      try {
+        const res = await fetch('/api/partnership', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        const json = await res.json();
+        if (json.success) {
+          this.style.display = 'none';
+          document.getElementById('form-success').style.display = 'block';
+        } else {
+          throw new Error(json.error || 'Submission failed');
+        }
+      } catch (err) {
+        errorEl.textContent = err.message || 'Something went wrong. Please try again.';
+        errorEl.style.display = 'block';
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Submit Inquiry';
+      }
+    });
+
+    function resetForm() {
+      const form = document.getElementById('partnership-form');
+      form.reset();
+      form.style.display = 'block';
+      document.getElementById('form-success').style.display = 'none';
+      document.getElementById('form-error').style.display = 'none';
+      const btn = document.getElementById('p-submit');
+      btn.disabled = false;
+      btn.textContent = 'Submit Inquiry';
+    }
+  </script>
+
+</body>
+</html>
