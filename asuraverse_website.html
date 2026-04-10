@@ -20,8 +20,8 @@
       --border: rgba(255, 255, 255, 0.07);
       --border-primary: rgba(255, 123, 0, 0.3);
       --text: #f0f0f0;
-      --muted: #555;
-      --muted2: #888;
+      --muted: #888;
+      --muted2: #aaa;
     }
 
     *,
@@ -41,6 +41,16 @@
       color: var(--text);
       font-family: 'Rajdhani', sans-serif;
       overflow-x: hidden;
+    }
+
+    /* ─── FOCUS STYLES (KEYBOARD ACCESSIBILITY) ─── */
+    :focus-visible {
+      outline: 2px solid var(--primary);
+      outline-offset: 3px;
+    }
+
+    :focus:not(:focus-visible) {
+      outline: none;
     }
 
     /* ─── SCROLLBAR ─── */
@@ -235,7 +245,7 @@
 
     .hero-title {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(64px, 9vw, 110px);
+      font-size: clamp(44px, 10vw, 110px);
       line-height: 0.92;
       letter-spacing: 2px;
       text-transform: uppercase;
@@ -262,6 +272,7 @@
 
     .hero-btns {
       display: flex;
+      flex-wrap: wrap;
       gap: 14px;
       margin-bottom: 60px;
     }
@@ -308,6 +319,7 @@
 
     .hero-stat-row {
       display: flex;
+      flex-wrap: wrap;
       gap: 0;
       border-top: 1px solid var(--border);
       padding-top: 32px;
@@ -407,6 +419,7 @@
     /* ─── SECTION BASE ─── */
     section {
       padding: 100px 48px;
+      scroll-margin-top: 68px;
     }
 
     .section-label {
@@ -1054,6 +1067,7 @@
 
     .join-btns {
       display: flex;
+      flex-wrap: wrap;
       gap: 16px;
       justify-content: center;
     }
@@ -1283,6 +1297,92 @@
       color: var(--primary);
     }
 
+    /* ─── HAMBURGER / MOBILE NAV ─── */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 40px;
+      height: 40px;
+      background: none;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      padding: 9px 8px;
+      transition: border-color 0.2s;
+      flex-shrink: 0;
+    }
+
+    .hamburger:hover,
+    .hamburger:focus-visible {
+      border-color: var(--primary);
+    }
+
+    .hamburger span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: var(--text);
+      transition: transform 0.25s, opacity 0.25s;
+    }
+
+    .hamburger.open span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .hamburger.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.open span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 68px;
+      left: 0;
+      right: 0;
+      background: rgba(9, 11, 16, 0.98);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      z-index: 999;
+      padding: 8px 0 16px;
+    }
+
+    .mobile-nav ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .mobile-nav ul li a {
+      display: block;
+      padding: 13px 24px;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted2);
+      text-decoration: none;
+      transition: color 0.2s, background 0.2s;
+    }
+
+    .mobile-nav ul li a:hover {
+      color: #fff;
+      background: rgba(255, 123, 0, 0.07);
+    }
+
+    .mobile-nav ul li a.mobile-nav-cta {
+      color: var(--primary);
+      font-weight: 700;
+      border-top: 1px solid var(--border);
+      margin-top: 8px;
+      padding-top: 16px;
+    }
+
     /* ─── ANIMATIONS ─── */
     @keyframes fadeUp {
       from {
@@ -1321,40 +1421,156 @@
       animation-delay: 0.65s;
     }
 
-    /* ─── RESPONSIVE BASE ─── */
-    @media (max-width: 900px) {
+    /* ─── TABLET (≤1024px) ─── */
+    @media (max-width: 1024px) {
       nav {
-        padding: 0 20px;
+        padding: 0 24px;
       }
 
       .nav-links {
         display: none;
       }
 
+      .hamburger {
+        display: flex;
+      }
+
+      .mobile-nav.open {
+        display: block;
+      }
+
       section {
-        padding: 64px 20px;
+        padding: 80px 24px;
       }
 
       #hero {
-        padding: 68px 20px 0;
+        padding: 68px 24px 0;
+      }
+
+      .games-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .roster-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-top {
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+      }
+
+      .news-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ─── MOBILE (≤639px) ─── */
+    @media (max-width: 639px) {
+      nav {
+        padding: 0 16px;
+      }
+
+      .nav-cta {
+        display: none;
+      }
+
+      section {
+        padding: 64px 16px;
+      }
+
+      #hero {
+        padding: 68px 16px 0;
       }
 
       .hero-visual {
         display: none;
       }
 
-      .about-inner,
-      .contact-grid,
-      .footer-top {
-        grid-template-columns: 1fr;
-        gap: 32px;
+      .hero-btns {
+        flex-direction: column;
+        gap: 10px;
       }
 
-      .roster-grid,
-      .achieve-row,
-      .news-grid,
+      .btn-primary,
+      .btn-ghost {
+        width: 100%;
+        text-align: center;
+      }
+
+      .hero-stat-row {
+        gap: 16px 0;
+      }
+
+      .hero-stat {
+        padding-right: 24px;
+        margin-right: 24px;
+      }
+
+      .about-inner,
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
       .games-grid {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .roster-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .achieve-row {
+        grid-template-columns: 1fr;
+      }
+
+      .news-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-top {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+      }
+
+      #join {
+        padding: 64px 16px;
+      }
+
+      .join-btns .btn-primary,
+      .join-btns .btn-ghost {
+        width: 100%;
+      }
+    }
+
+    /* ─── REDUCED MOTION ─── */
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .ticker-inner {
+        animation: none;
+      }
+
+      .hero-content>* {
+        opacity: 1;
+        animation: none;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
       }
     }
   </style>
@@ -1383,6 +1599,24 @@
       <li><a href="#contact">Contact</a></li>
     </ul>
     <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'});">Join Us</button>
+    <button class="hamburger" id="hamburger-btn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-nav" aria-haspopup="true">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile Navigation Menu -->
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#games">Games</a></li>
+      <li><a href="#roster">Roster</a></li>
+      <li><a href="#achievements">Achievements</a></li>
+      <li><a href="#news">News</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#contact" class="mobile-nav-cta">Join Us →</a></li>
+    </ul>
   </nav>
 
   <!-- ─── HERO ─── -->
@@ -1920,61 +2154,124 @@
 ">✓ Message sent! We'll get back to you soon.</div>
 
 <script>
-  // ─── SMOOTH SCROLL for all anchor links ───
+  // ─── SMOOTH SCROLL for all anchor links (with fixed-nav offset) ───
   document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener('click', e => {
-      const target = document.querySelector(link.getAttribute('href'));
+      const href = link.getAttribute('href');
+      if (href === '#') { e.preventDefault(); return; }
+      const target = document.querySelector(href);
       if (target) {
         e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth' });
+        const navH = document.querySelector('nav').offsetHeight;
+        const top = target.getBoundingClientRect().top + window.pageYOffset - navH;
+        window.scrollTo({ behavior: 'smooth', top });
       }
     });
   });
 
+  // ─── HAMBURGER MENU ───
+  const hamburgerBtn = document.getElementById('hamburger-btn');
+  const mobileNav = document.getElementById('mobile-nav');
+
+  hamburgerBtn.addEventListener('click', () => {
+    const isOpen = mobileNav.classList.toggle('open');
+    hamburgerBtn.classList.toggle('open', isOpen);
+    hamburgerBtn.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  // Close mobile nav when a link is clicked
+  mobileNav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileNav.classList.remove('open');
+      hamburgerBtn.classList.remove('open');
+      hamburgerBtn.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // Close mobile nav on Escape key
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && mobileNav.classList.contains('open')) {
+      mobileNav.classList.remove('open');
+      hamburgerBtn.classList.remove('open');
+      hamburgerBtn.setAttribute('aria-expanded', 'false');
+      hamburgerBtn.focus();
+    }
+  });
+
+  // Close mobile nav when clicking outside
+  document.addEventListener('click', e => {
+    if (mobileNav.classList.contains('open') &&
+        !hamburgerBtn.contains(e.target) && !mobileNav.contains(e.target)) {
+      mobileNav.classList.remove('open');
+      hamburgerBtn.classList.remove('open');
+      hamburgerBtn.setAttribute('aria-expanded', 'false');
+    }
+  });
+
   // ─── ROSTER TABS ───
-  document.querySelectorAll('.rtab').forEach(tab => {
-    tab.addEventListener('click', () => {
-      document.querySelectorAll('.rtab').forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
+  const tabList = document.querySelector('.roster-tabs');
+  if (tabList) tabList.setAttribute('role', 'tablist');
+
+  document.querySelectorAll('.rtab').forEach((tab) => {
+    // Make tabs keyboard accessible
+    tab.setAttribute('tabindex', tab.classList.contains('active') ? '0' : '-1');
+    tab.setAttribute('role', 'tab');
+    tab.setAttribute('aria-selected', tab.classList.contains('active') ? 'true' : 'false');
+
+    const activate = (targetTab) => {
+      document.querySelectorAll('.rtab').forEach(t => {
+        t.classList.remove('active');
+        t.setAttribute('aria-selected', 'false');
+        t.setAttribute('tabindex', '-1');
+      });
+      targetTab.classList.add('active');
+      targetTab.setAttribute('aria-selected', 'true');
+      targetTab.setAttribute('tabindex', '0');
+    };
+    tab.addEventListener('click', () => activate(tab));
+    tab.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        activate(tab);
+      }
     });
   });
 
   // ─── CONTACT FORM ───
-  function submitContactForm(e) {
+  function handleFormSubmit(e) {
     e.preventDefault();
-    const name    = document.getElementById('cf-name').value.trim();
-    const email   = document.getElementById('cf-email').value.trim();
-    const type    = document.getElementById('cf-type').value;
-    const message = document.getElementById('cf-message').value.trim();
-
-    if (!name || !email || !message) {
-      alert('Please fill in all required fields.');
+    const form = e.target;
+    const action = form.getAttribute('action');
+    if (!action) {
+      alert('Contact form is not configured. Please email teamasuraverse@gmail.com directly.');
       return;
     }
+    const btn = document.getElementById('cf-submit');
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
 
-    const subject = encodeURIComponent('[AsuraVerse] ' + type + ' - ' + name);
-    const body    = encodeURIComponent(
-      'Name: ' + name + '\n' +
-      'Email: ' + email + '\n' +
-      'Enquiry: ' + type + '\n\n' +
-      'Message:\n' + message
-    );
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(() => {
+      form.style.display = 'none';
+      document.getElementById('form-success').style.display = 'block';
+    }).catch(() => {
+      btn.disabled = false;
+      btn.textContent = 'Send Message';
+      alert('Failed to send. Please email us directly at teamasuraverse@gmail.com');
+    });
+  }
 
-    window.location.href = 'mailto:teamasuraverse@gmail.com?subject=' + subject + '&body=' + body;
-
-    // Show success toast
-    const toast = document.getElementById('toast');
-    toast.style.transform = 'translateY(0)';
-    toast.style.opacity = '1';
-    setTimeout(() => {
-      toast.style.transform = 'translateY(80px)';
-      toast.style.opacity = '0';
-    }, 4000);
-
-    // Reset form
-    document.getElementById('cf-name').value = '';
-    document.getElementById('cf-email').value = '';
-    document.getElementById('cf-message').value = '';
+  function resetForm() {
+    const form = document.getElementById('contact-form');
+    form.reset();
+    form.style.display = 'block';
+    const btn = document.getElementById('cf-submit');
+    btn.disabled = false;
+    btn.textContent = 'Send Message';
+    document.getElementById('form-success').style.display = 'none';
   }
 
   // ─── ACTIVE NAV highlight on scroll ───
