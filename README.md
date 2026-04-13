@@ -122,6 +122,20 @@ The site will be available at **http://localhost:3000**.
 
 ---
 
+## Security
+
+- **Never commit `.env`** — it contains credentials and is excluded via `.gitignore`.
+- **Never share App Passwords** in code, comments, chat, or public issues.
+- If a credential is accidentally exposed, **revoke it immediately** at [Google App Passwords](https://myaccount.google.com/apppasswords) and generate a new one.
+- To audit whether `.env` was ever committed by mistake, run:
+  ```bash
+  git log --all --full-history -- .env
+  ```
+  If any commits appear, remove the file from history using `git filter-repo` or [BFG Repo-Cleaner](https://rtyley.github.io/bfg-repo-cleaner/).
+- Contributors should use their **own** Gmail account and App Password for local development — never share or reuse production credentials.
+
+---
+
 ## License
 
 MIT — © 2025 Team AsuraVerse Esports Pvt Ltd
