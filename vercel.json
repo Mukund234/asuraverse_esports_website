@@ -1,0 +1,25 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "api/**/*.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "*.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "*.jpg",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    { "src": "/api/contact", "dest": "/api/contact.js" },
+    { "src": "/api/partnership", "dest": "/api/partnership.js" },
+    { "src": "/api/roster", "dest": "/api/roster.js" },
+    { "src": "/partner-with-us", "dest": "/partner-with-us.html" },
+    { "src": "/roster-application", "dest": "/roster-application.html" },
+    { "src": "/", "dest": "/asuraverse_website.html" }
+  ]
+}
