@@ -1,0 +1,75 @@
+config:
+  target: "https://asuraverseesports.vercel.app"
+  phases:
+    # Ramp up to 400 virtual users over 40 seconds
+    - duration: 40
+      arrivalRate: 10
+      name: "Ramp up"
+  defaults:
+    headers:
+      Content-Type: "application/json"
+
+scenarios:
+  # --- Static Page Load Tests ---
+  - name: "Homepage load"
+    weight: 40
+    flow:
+      - get:
+          url: "/"
+          expect:
+            - statusCode: 200
+
+  - name: "Partner With Us page"
+    weight: 20
+    flow:
+      - get:
+          url: "/partner-with-us"
+          expect:
+            - statusCode: 200
+
+  - name: "Roster Application page"
+    weight: 20
+    flow:
+      - get:
+          url: "/roster-application"
+          expect:
+            - statusCode: 200
+
+  # --- API Validation Tests (Invalid inputs — no emails sent) ---
+  - name: "Contact API - missing fields (400 expected)"
+    weight: 10
+    flow:
+      - post:
+          url: "/api/contact"
+          json:
+            name: ""
+            email: ""
+            message: ""
+          expect:
+            - statusCode: 400
+
+  - name: "Partnership API - missing fields (400 expected)"
+    weight: 5
+    flow:
+      - post:
+          url: "/api/partnership"
+          json:
+            org_name: ""
+            contact_name: ""
+            email: ""
+            details: ""
+          expect:
+            - statusCode: 400
+
+  - name: "Roster API - missing fields (400 expected)"
+    weight: 5
+    flow:
+      - post:
+          url: "/api/roster"
+          json:
+            player_name: ""
+            ign: ""
+            email: ""
+            game: ""
+          expect:
+            - statusCode: 400
