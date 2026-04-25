@@ -6,11 +6,7 @@
       "use": "@vercel/node"
     },
     {
-      "src": "public/*.html",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "public/*.{jpg,jpeg,png,svg,gif}",
+      "src": "public/**/*",
       "use": "@vercel/static"
     }
   ],
@@ -21,6 +17,7 @@
     { "src": "/players", "dest": "/public/players.html" },
     { "src": "/partner-with-us", "dest": "/public/partner-with-us.html" },
     { "src": "/roster-application", "dest": "/public/roster-application.html" },
-    { "src": "/", "dest": "/public/asuraverse_website.html" }
+    { "src": "/", "dest": "/public/asuraverse_website.html" },
+    { "src": "/(.*)", "dest": "/public/$1" }
   ]
 }
