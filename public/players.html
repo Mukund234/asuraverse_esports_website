@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AsuraVerse - BGMI Roster</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #FF7B00;
+      --primary-dark: #CC6200;
+      --primary-glow: rgba(255, 123, 0, 0.18);
+      --bg: #090B10;
+      --bg2: #0D1017;
+      --bg3: #12161F;
+      --border: rgba(255, 255, 255, 0.07);
+      --border-primary: rgba(255, 123, 0, 0.3);
+      --text: #f0f0f0;
+      --muted: #888;
+      --muted2: #aaa;
+    }
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Rajdhani', sans-serif;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      background: rgba(9, 11, 16, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+    }
+
+    .logo-hex {
+      width: 42px;
+      height: 42px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-hex img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    .logo-text {
+      font-family: 'Bebas Neue', sans-serif;
+    }
+
+    .logo-text .org {
+      font-size: 20px;
+      letter-spacing: 3px;
+      color: #fff;
+    }
+
+    .logo-text .org span {
+      color: var(--primary);
+    }
+
+    .logo-text .sub {
+      font-size: 9px;
+      letter-spacing: 4px;
+      color: var(--muted);
+      font-family: 'Space Mono', monospace;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted2);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #fff;
+    }
+
+    /* ─── PAGE HEADER ─── */
+    .page-header {
+      margin-top: 68px;
+      padding: 80px 48px 40px;
+      text-align: center;
+      background: linear-gradient(180deg, var(--bg2) 0%, var(--bg) 100%);
+      border-bottom: 1px solid var(--border);
+      position: relative;
+    }
+
+    .page-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 70% at 50% 0%, rgba(255, 123, 0, 0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .page-tag {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 4px;
+      color: var(--primary);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .page-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(40px, 8vw, 72px);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .page-desc {
+      font-size: 16px;
+      color: var(--muted2);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* ─── PLAYERS GRID ─── */
+    .players-section {
+      padding: 60px 48px;
+      flex-grow: 1;
+    }
+
+    .players-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 32px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .player-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      transition: transform 0.3s, border-color 0.3s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .player-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--border-primary);
+    }
+
+    .player-image {
+      height: 350px;
+      position: relative;
+      background: linear-gradient(135deg, #1a0000 0%, #0d0d0d 100%);
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    .player-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(9,11,16,1) 0%, rgba(9,11,16,0) 40%);
+    }
+
+    .player-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      transition: transform 0.5s ease;
+    }
+
+    .player-card:hover .player-image img {
+      transform: scale(1.05);
+    }
+
+    .player-role-badge {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: rgba(0, 0, 0, 0.8);
+      border: 1px solid var(--border-primary);
+      color: var(--primary);
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 6px 12px;
+      z-index: 2;
+    }
+
+    .player-details {
+      padding: 32px;
+      background: var(--bg3);
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .player-ign {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 36px;
+      letter-spacing: 3px;
+      color: #fff;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .player-real-name {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+
+    .achievements-list {
+      list-style: none;
+      margin-bottom: 24px;
+      flex-grow: 1;
+    }
+
+    .achievements-list li {
+      position: relative;
+      padding-left: 16px;
+      font-size: 13px;
+      color: var(--muted2);
+      line-height: 1.6;
+      margin-bottom: 8px;
+    }
+
+    .achievements-list li::before {
+      content: '▹';
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-size: 16px;
+      line-height: 1.3;
+    }
+
+    .player-social {
+      margin-top: auto;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      text-decoration: none;
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .social-link:hover {
+      color: var(--primary);
+    }
+
+    .social-link svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #050505;
+      border-top: 1px solid var(--border);
+      padding: 40px 48px;
+      text-align: center;
+      margin-top: auto;
+    }
+    
+    .footer-copy {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 1px;
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      .page-header { padding: 60px 24px 30px; }
+      .players-section { padding: 40px 24px; }
+      .players-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="asuraverse_website.html" class="nav-logo">
+      <div class="logo-hex">
+        <img src="asuraverse logo.jpg" alt="AsuraVerse Logo">
+      </div>
+      <div class="logo-text">
+        <div class="org">ASURA<span>VERSE</span></div>
+        <div class="sub">Esports Pvt Ltd</div>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="asuraverse_website.html#about">About</a></li>
+      <li><a href="asuraverse_website.html#games">Games</a></li>
+      <li><a href="players.html">Roster</a></li>
+      <li><a href="asuraverse_website.html#achievements">Achievements</a></li>
+      <li><a href="asuraverse_website.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HEADER -->
+  <header class="page-header">
+    <div class="page-tag">// Elite Athletes</div>
+    <h1 class="page-title">BGMI <span style="color: var(--primary);">Roster</span></h1>
+    <p class="page-desc">Meet the unstoppable forces driving Team AsuraVerse to victory. Champions forged through dedication, strategy, and raw mechanical skill.</p>
+  </header>
+
+  <!-- PLAYERS -->
+  <section class="players-section">
+    <div class="players-grid">
+
+      <!-- PLAYER 1: BLAZE -->
+      <div class="player-card">
+        <div class="player-image">
+          <img src="Blaze.jpeg" alt="Blaze">
+        </div>
+        <div class="player-details">
+          <div class="player-ign">BLAZE</div>
+          <div class="player-real-name">Niket Verma</div>
+          <ul class="achievements-list">
+            <li>BGIS 2023 Quarterfinals</li>
+            <li>BMPS 2023</li>
+            <li>BGIS 2024 Round 3</li>
+            <li>BMPS 2024 Round 1</li>
+            <li>JIO Blast LAN #5</li>
+            <li>BGIS 2026 Round 4</li>
+          </ul>
+          <div class="player-social">
+            <a href="https://www.instagram.com/blaze.__.13?igsh=MXRwa3hmeDhqaWhxMg==" target="_blank" class="social-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+              Instagram
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PLAYER 2: FROZEN -->
+      <div class="player-card">
+        <div class="player-image">
+          <img src="Frozen.jpeg" alt="FROZEN">
+        </div>
+        <div class="player-details">
+          <div class="player-ign">FROZEN</div>
+          <div class="player-real-name">Aryan Singh</div>
+          <ul class="achievements-list">
+            <li>BGIS 2023 Quarterfinals</li>
+            <li>BMPS 2023</li>
+            <li>BGIS 2024 Round 3</li>
+            <li>JIO Blast LAN #5</li>
+            <li>BGIS 2026 Round 4</li>
+          </ul>
+          <div class="player-social">
+            <a href="https://www.instagram.com/frozen77k?igsh=MXZpYzlqZWhucGN1bQ==" target="_blank" class="social-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+              Instagram
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PLAYER 3: THUG -->
+      <div class="player-card">
+        <div class="player-image">
+          <img src="Thug.jpeg" alt="Thug">
+        </div>
+        <div class="player-details">
+          <div class="player-ign">THUG</div>
+          <div class="player-real-name">Abhay Kumar</div>
+          <ul class="achievements-list">
+            <li>BGIS 2023 Quarterfinals</li>
+            <li>BMPS 2023</li>
+            <li>BGIS 2024 Quarterfinals</li>
+            <li>OnePlus Dominate #8</li>
+            <li>JIO Blast LAN #5</li>
+            <li>BGIS 2026 Round 4</li>
+            <li>UE Semifinalist</li>
+          </ul>
+          <div class="player-social">
+            <a href="https://www.instagram.com/elf_thug69?igsh=MTFkaDRueHBsYXhzOA==" target="_blank" class="social-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+              Instagram
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PLAYER 4: VIKKI -->
+      <div class="player-card">
+        <div class="player-image">
+          <img src="vikki.jpeg" alt="Vikki">
+        </div>
+        <div class="player-details">
+          <div class="player-ign">VIKKI</div>
+          <div class="player-real-name">Sunder Singh</div>
+          <ul class="achievements-list">
+            <li>BGIS 2024 Round 3</li>
+            <li>BGIS 2026 Round 4</li>
+          </ul>
+          <div class="player-social">
+            <a href="https://www.instagram.com/ig_vikki10?igsh=MTUxbXM2NTZ4ZGJ1bQ%3D%3D&utm_source=qr" target="_blank" class="social-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+              Instagram
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PLAYER 5: VIPER -->
+      <div class="player-card">
+        <div class="player-image">
+          <img src="viper.jpeg" alt="Viper">
+        </div>
+        <div class="player-details">
+          <div class="player-ign">VIPER</div>
+          <div class="player-real-name">Chirag Shaikh</div>
+          <ul class="achievements-list">
+            <li>BGIS 2024 Round 3</li>
+            <li>BGIS 2025 Round 3</li>
+            <li>JIO Blast LAN #5</li>
+          </ul>
+          <div class="player-social">
+            <a href="https://www.instagram.com/viper18__?igsh=eTNkeXV0cTRqZDFx&utm_source=qr" target="_blank" class="social-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+              Instagram
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-copy">© 2025 Team AsuraVerse Esports Pvt Ltd. All Rights Reserved.</div>
+  </footer>
+
+</body>
+</html>

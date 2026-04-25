@@ -6,11 +6,11 @@
       "use": "@vercel/node"
     },
     {
-      "src": "*.html",
+      "src": "public/*.html",
       "use": "@vercel/static"
     },
     {
-      "src": "*.jpg",
+      "src": "public/*.{jpg,jpeg,png,svg,gif}",
       "use": "@vercel/static"
     }
   ],
@@ -18,8 +18,9 @@
     { "src": "/api/contact", "dest": "/api/contact.js" },
     { "src": "/api/partnership", "dest": "/api/partnership.js" },
     { "src": "/api/roster", "dest": "/api/roster.js" },
-    { "src": "/partner-with-us", "dest": "/partner-with-us.html" },
-    { "src": "/roster-application", "dest": "/roster-application.html" },
-    { "src": "/", "dest": "/asuraverse_website.html" }
+    { "src": "/players", "dest": "/public/players.html" },
+    { "src": "/partner-with-us", "dest": "/public/partner-with-us.html" },
+    { "src": "/roster-application", "dest": "/public/roster-application.html" },
+    { "src": "/", "dest": "/public/asuraverse_website.html" }
   ]
 }

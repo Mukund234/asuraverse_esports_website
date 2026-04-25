@@ -27,18 +27,10 @@ const apiLimiter = rateLimit({
 });
 
 // ── Static files ─────────────────────────────────────────────────────────────
-// Serve specific file types only (HTML, images, CSS, JS) from the project root
-app.use(express.static(path.join(__dirname), {
+// Serve specific file types only (HTML, images, CSS, JS) from the public folder
+app.use(express.static(path.join(__dirname, 'public'), {
   index: false,
-  extensions: ['html'],
-  setHeaders: (res, filePath) => {
-    // Prevent .env and other config files from being served
-    const base = path.basename(filePath);
-    if (base === '.env' || base === '.env.example' || base === 'package.json' ||
-        base === 'package-lock.json' || base === 'server.js') {
-      res.status(403).end();
-    }
-  }
+  extensions: ['html']
 }));
 
 // ── API Routes ────────────────────────────────────────────────────────────────
@@ -48,20 +40,24 @@ app.use('/api/roster', apiLimiter, rosterRoute);
 
 // ── Page Routes ───────────────────────────────────────────────────────────────
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'asuraverse_website.html'));
+  res.sendFile(path.join(__dirname, 'public', 'asuraverse_website.html'));
 });
 
 app.get('/partner-with-us', (req, res) => {
-  res.sendFile(path.join(__dirname, 'partner-with-us.html'));
+  res.sendFile(path.join(__dirname, 'public', 'partner-with-us.html'));
 });
 
 app.get('/roster-application', (req, res) => {
-  res.sendFile(path.join(__dirname, 'roster-application.html'));
+  res.sendFile(path.join(__dirname, 'public', 'roster-application.html'));
+});
+
+app.get('/players', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'players.html'));
 });
 
 // ── 404 handler ───────────────────────────────────────────────────────────────
 app.use((req, res) => {
-  res.status(404).sendFile(path.join(__dirname, 'asuraverse_website.html'));
+  res.status(404).sendFile(path.join(__dirname, 'public', 'asuraverse_website.html'));
 });
 
 // ── Start server ──────────────────────────────────────────────────────────────
