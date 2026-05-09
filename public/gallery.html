@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery — Team AsuraVerse Esports Pvt Ltd</title>
+  <meta name="description" content="A visual journey through Team AsuraVerse Esports — tournaments, team moments, and the stories behind the rise.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #FF7B00;
+      --primary-dark: #CC6200;
+      --primary-glow: rgba(255, 123, 0, 0.18);
+      --bg: #090B10;
+      --bg2: #0D1017;
+      --bg3: #12161F;
+      --border: rgba(255, 255, 255, 0.07);
+      --border-primary: rgba(255, 123, 0, 0.3);
+      --text: #f0f0f0;
+      --muted: #888;
+      --muted2: #aaa;
+    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Rajdhani', sans-serif;
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--primary); }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      height: 68px; display: flex; align-items: center;
+      justify-content: space-between; padding: 0 48px;
+      background: rgba(9, 11, 16, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+    .logo-hex { width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; }
+    .logo-hex img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+    .logo-text { font-family: 'Bebas Neue', sans-serif; }
+    .logo-text .org { font-size: 20px; letter-spacing: 3px; color: #fff; }
+    .logo-text .org span { color: var(--primary); }
+    .logo-text .sub { font-size: 9px; letter-spacing: 4px; color: var(--muted); font-family: 'Space Mono', monospace; }
+    .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
+    .nav-links a {
+      font-size: 13px; font-weight: 600; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--muted2);
+      text-decoration: none; transition: color 0.2s; position: relative;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
+      height: 1px; background: var(--primary);
+      transform: scaleX(0); transition: transform 0.2s;
+    }
+    .nav-links a:hover { color: #fff; }
+    .nav-links a:hover::after { transform: scaleX(1); }
+    .nav-links a.active { color: var(--primary); }
+    .nav-cta {
+      background: var(--primary); color: #fff; border: none;
+      padding: 10px 24px; font-family: 'Rajdhani', sans-serif;
+      font-size: 12px; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; cursor: pointer; text-decoration: none;
+      clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--primary-dark); }
+
+    /* PAGE HERO */
+    .page-hero {
+      margin-top: 68px;
+      padding: 100px 48px 60px;
+      background: var(--bg2);
+      position: relative; overflow: hidden; text-align: center;
+    }
+    .page-hero::before {
+      content: 'GALLERY';
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 220px; letter-spacing: 20px;
+      color: rgba(255,255,255,0.018);
+      white-space: nowrap; pointer-events: none; user-select: none;
+    }
+    .page-hero-grid {
+      position: absolute; inset: 0;
+      background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 79px, rgba(255,123,0,0.03) 80px),
+        repeating-linear-gradient(90deg, transparent, transparent 79px, rgba(255,123,0,0.03) 80px);
+      pointer-events: none;
+    }
+    .page-hero-radial {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 80% at 50% 0%, rgba(255,123,0,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .page-hero-inner { position: relative; z-index: 2; }
+    .page-tag {
+      font-family: 'Space Mono', monospace; font-size: 11px;
+      letter-spacing: 4px; color: var(--primary); text-transform: uppercase;
+      margin-bottom: 20px;
+      display: flex; align-items: center; justify-content: center; gap: 12px;
+    }
+    .page-tag::before, .page-tag::after {
+      content: ''; display: block; width: 40px; height: 1px; background: var(--primary);
+    }
+    .page-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(48px, 9vw, 90px);
+      letter-spacing: 4px; text-transform: uppercase; line-height: 1; margin-bottom: 20px;
+    }
+    .page-title span { color: var(--primary); }
+    .page-desc {
+      font-size: 16px; color: var(--muted2); max-width: 600px;
+      margin: 0 auto; line-height: 1.7;
+    }
+
+    /* GALLERY MAIN */
+    .gallery-section { padding: 60px 48px; flex: 1; }
+
+    /* FILTER TABS */
+    .filter-bar {
+      display: flex; align-items: center; gap: 0;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 48px; overflow-x: auto;
+    }
+    .filter-tab {
+      padding: 14px 28px; cursor: pointer;
+      font-family: 'Space Mono', monospace;
+      font-size: 11px; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--muted);
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px; transition: color 0.2s, border-color 0.2s;
+      white-space: nowrap; background: none; border-top: none;
+      border-left: none; border-right: none;
+    }
+    .filter-tab:hover { color: var(--muted2); }
+    .filter-tab.active { color: var(--primary); border-bottom-color: var(--primary); }
+
+    /* GALLERY STATS */
+    .gallery-stats {
+      display: flex; gap: 32px; margin-bottom: 36px; align-items: center;
+    }
+    .gallery-count {
+      font-family: 'Space Mono', monospace; font-size: 11px;
+      letter-spacing: 2px; color: var(--muted); text-transform: uppercase;
+    }
+    .gallery-count span { color: var(--primary); }
+
+    /* MASONRY GRID */
+    .gallery-grid {
+      columns: 3 320px;
+      column-gap: 16px;
+    }
+    .gallery-item {
+      break-inside: avoid;
+      margin-bottom: 16px;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      transition: border-color 0.25s, transform 0.25s;
+    }
+    .gallery-item:hover {
+      border-color: var(--border-primary);
+      transform: translateY(-2px);
+    }
+    .gallery-item img {
+      width: 100%; display: block;
+      transition: transform 0.4s ease;
+    }
+    .gallery-item:hover img { transform: scale(1.04); }
+    .gallery-item-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(0deg, rgba(9,11,16,0.88) 0%, rgba(9,11,16,0) 50%);
+      opacity: 0; transition: opacity 0.25s;
+      display: flex; flex-direction: column;
+      justify-content: flex-end; padding: 20px;
+    }
+    .gallery-item:hover .gallery-item-overlay { opacity: 1; }
+    .gallery-item-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18px; letter-spacing: 2px; color: #fff; margin-bottom: 4px;
+    }
+    .gallery-item-tag {
+      font-family: 'Space Mono', monospace; font-size: 10px;
+      letter-spacing: 1.5px; color: var(--primary); text-transform: uppercase;
+    }
+    .gallery-item-zoom {
+      position: absolute; top: 12px; right: 12px;
+      width: 32px; height: 32px;
+      background: rgba(0,0,0,0.7);
+      border: 1px solid var(--border-primary);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; transition: opacity 0.25s;
+      color: var(--primary); font-size: 14px;
+    }
+    .gallery-item:hover .gallery-item-zoom { opacity: 1; }
+
+    /* PLACEHOLDER CARDS */
+    .gallery-placeholder {
+      break-inside: avoid;
+      margin-bottom: 16px;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; padding: 40px 24px;
+      transition: border-color 0.25s;
+    }
+    .gallery-placeholder:hover { border-color: var(--border-primary); }
+    .placeholder-icon {
+      font-size: 40px; margin-bottom: 16px; opacity: 0.3;
+    }
+    .placeholder-label {
+      font-family: 'Space Mono', monospace; font-size: 10px;
+      letter-spacing: 2px; color: var(--muted); text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .placeholder-tag {
+      display: inline-block;
+      font-family: 'Space Mono', monospace; font-size: 9px;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      padding: 4px 12px;
+      border: 1px solid var(--border); color: var(--muted);
+    }
+
+    /* COMING SOON BANNER */
+    .coming-soon-banner {
+      background: rgba(255,123,0,0.05);
+      border: 1px solid var(--border-primary);
+      padding: 24px 32px;
+      display: flex; align-items: center; gap: 20px;
+      margin-bottom: 48px;
+    }
+    .coming-soon-icon { font-size: 28px; flex-shrink: 0; }
+    .coming-soon-text { font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 2px; color: var(--muted2); text-transform: uppercase; line-height: 1.7; }
+    .coming-soon-text strong { color: var(--primary); display: block; margin-bottom: 4px; font-size: 12px; }
+
+    /* LIGHTBOX */
+    .lightbox {
+      position: fixed; inset: 0; z-index: 9999;
+      background: rgba(0,0,0,0.96);
+      display: none; align-items: center; justify-content: center;
+      padding: 24px;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox-inner { position: relative; max-width: 1100px; width: 100%; }
+    .lightbox-img {
+      width: 100%; max-height: 80vh;
+      object-fit: contain; display: block;
+    }
+    .lightbox-close {
+      position: fixed; top: 24px; right: 32px;
+      font-family: 'Space Mono', monospace; font-size: 13px;
+      letter-spacing: 2px; color: var(--muted2);
+      background: none; border: 1px solid var(--border);
+      padding: 8px 16px; cursor: pointer; transition: color 0.2s, border-color 0.2s;
+      text-transform: uppercase;
+    }
+    .lightbox-close:hover { color: var(--primary); border-color: var(--primary); }
+    .lightbox-caption {
+      margin-top: 16px; text-align: center;
+      font-family: 'Space Mono', monospace; font-size: 11px;
+      letter-spacing: 2px; color: var(--muted); text-transform: uppercase;
+    }
+    .lightbox-nav {
+      position: fixed; top: 50%; transform: translateY(-50%);
+      background: rgba(0,0,0,0.6); border: 1px solid var(--border);
+      color: var(--muted2); font-size: 20px;
+      padding: 16px 20px; cursor: pointer;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .lightbox-nav:hover { color: var(--primary); border-color: var(--primary); }
+    .lightbox-prev { left: 16px; }
+    .lightbox-next { right: 16px; }
+
+    /* FOOTER */
+    footer {
+      background: #050505; border-top: 1px solid var(--border);
+      padding: 40px 48px; text-align: center; margin-top: auto;
+    }
+    .footer-copy {
+      font-family: 'Space Mono', monospace; font-size: 11px;
+      color: var(--muted); letter-spacing: 1px;
+    }
+
+    @media (max-width: 1024px) {
+      nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      .gallery-section { padding: 40px 24px; }
+      .gallery-grid { columns: 2 240px; }
+    }
+    @media (max-width: 639px) {
+      nav { padding: 0 16px; }
+      .page-hero { padding: 80px 16px 48px; }
+      .gallery-section { padding: 32px 16px; }
+      .gallery-grid { columns: 1; }
+      .filter-tab { padding: 12px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="asuraverse_website.html" class="nav-logo">
+      <div class="logo-hex">
+        <img src="asuraverse logo.jpg" alt="AsuraVerse Logo">
+      </div>
+      <div class="logo-text">
+        <div class="org">ASURA<span>VERSE</span></div>
+        <div class="sub">Esports Pvt Ltd</div>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="asuraverse_website.html#about">About</a></li>
+      <li><a href="asuraverse_website.html#games">Games</a></li>
+      <li><a href="players.html">Roster</a></li>
+      <li><a href="asuraverse_website.html#achievements">Achievements</a></li>
+      <li><a href="founder.html">Founders</a></li>
+      <li><a href="gallery.html" class="active">Gallery</a></li>
+      <li><a href="asuraverse_website.html#contact">Contact</a></li>
+    </ul>
+    <a href="/roster-application" class="nav-cta">Apply Now</a>
+  </nav>
+
+  <!-- HERO -->
+  <header class="page-hero">
+    <div class="page-hero-grid"></div>
+    <div class="page-hero-radial"></div>
+    <div class="page-hero-inner">
+      <div class="page-tag">Visual Chronicles</div>
+      <h1 class="page-title">The <span>Gallery</span></h1>
+      <p class="page-desc">Every frame tells a story. Tournament battles, team moments, behind-the-scenes — this is AsuraVerse in motion.</p>
+    </div>
+  </header>
+
+  <!-- GALLERY -->
+  <section class="gallery-section">
+
+    <!-- COMING SOON NOTICE -->
+    <div class="coming-soon-banner">
+      <div class="coming-soon-icon">📸</div>
+      <div class="coming-soon-text">
+        <strong>Gallery Loading Up</strong>
+        Photos and tournament media are being curated. Check back soon — the best moments are on their way.
+      </div>
+    </div>
+
+    <!-- FILTER TABS -->
+    <div class="filter-bar" role="tablist">
+      <button class="filter-tab active" data-filter="all" role="tab" aria-selected="true">All</button>
+      <button class="filter-tab" data-filter="tournament" role="tab" aria-selected="false">Tournaments</button>
+      <button class="filter-tab" data-filter="team" role="tab" aria-selected="false">Team</button>
+      <button class="filter-tab" data-filter="events" role="tab" aria-selected="false">Events</button>
+      <button class="filter-tab" data-filter="bts" role="tab" aria-selected="false">Behind the Scenes</button>
+    </div>
+
+    <!-- GALLERY STATS -->
+    <div class="gallery-stats">
+      <div class="gallery-count">Showing <span id="visible-count">0</span> moments</div>
+    </div>
+
+    <!-- GALLERY GRID -->
+    <div class="gallery-grid" id="gallery-grid">
+
+      <!-- PLACEHOLDER SLOTS — replace with real images when available -->
+      <div class="gallery-placeholder" data-category="tournament" style="height:260px;">
+        <div class="placeholder-icon">🏆</div>
+        <div class="placeholder-label">Tournament Moment</div>
+        <span class="placeholder-tag">Coming Soon</span>
+      </div>
+
+      <div class="gallery-placeholder" data-category="team" style="height:340px;">
+        <div class="placeholder-icon">🎮</div>
+        <div class="placeholder-label">Team Photo</div>
+        <span class="placeholder-tag">Coming Soon</span>
+      </div>
+
+      <div class="gallery-placeholder" data-category="events" style="height:220px;">
+        <div class="placeholder-icon">⚡</div>
+        <div class="placeholder-label">Event Coverage</div>
+        <span class="placeholder-tag">Coming Soon</span>
+      </div>
+
+      <div class="gallery-placeholder" data-category="bts" style="height:300px;">
+        <div class="placeholder-icon">🎯</div>
+        <div class="placeholder-label">Behind the Scenes</div>
+        <span class="placeholder-tag">Coming Soon</span>
+      </div>
+
+      <div class="gallery-placeholder" data-category="tournament" style="height:280px;">
+        <div class="placeholder-icon">🥇</div>
+        <div class="placeholder-label">Tournament Action</div>
+        <span class="placeholder-tag">Coming Soon</span>
+      </div>
+
+      <div class="gallery-placeholder" data-category="team" style="height:240px;">
+        <div class="placeholder-icon">🔥</div>
+        <div class="placeholder-label">Squad Moment</div>
+        <span class="placeholder-tag">Coming Soon</span>
+      </div>
+
+      <div class="gallery-placeholder" data-category="events" style="height:320px;">
+        <div class="placeholder-icon">🎪</div>
+        <div class="placeholder-label">Event Highlights</div>
+        <span class="placeholder-tag">Coming Soon</span>
+      </div>
+
+      <div class="gallery-placeholder" data-category="bts" style="height:260px;">
+        <div class="placeholder-icon">💻</div>
+        <div class="placeholder-label">Practice Session</div>
+        <span class="placeholder-tag">Coming Soon</span>
+      </div>
+
+      <div class="gallery-placeholder" data-category="tournament" style="height:300px;">
+        <div class="placeholder-icon">🏅</div>
+        <div class="placeholder-label">Victory Moment</div>
+        <span class="placeholder-tag">Coming Soon</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+    <button class="lightbox-close" id="lightbox-close">✕ Close</button>
+    <button class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Previous image">&#8592;</button>
+    <div class="lightbox-inner">
+      <img class="lightbox-img" id="lightbox-img" src="" alt="">
+      <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
+    <button class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Next image">&#8594;</button>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-copy">© 2025 Team AsuraVerse Esports Pvt Ltd. All Rights Reserved.</div>
+  </footer>
+
+  <script>
+    // ── FILTER TABS ──
+    const tabs = document.querySelectorAll('.filter-tab');
+    const items = document.querySelectorAll('#gallery-grid [data-category]');
+    const visibleCount = document.getElementById('visible-count');
+
+    function updateCount() {
+      const visible = document.querySelectorAll('#gallery-grid [data-category]:not([style*="display: none"])');
+      visibleCount.textContent = visible.length;
+    }
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
+
+        const filter = tab.dataset.filter;
+        items.forEach(item => {
+          if (filter === 'all' || item.dataset.category === filter) {
+            item.style.display = '';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+        updateCount();
+      });
+    });
+
+    updateCount();
+
+    // ── LIGHTBOX ──
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    const lightboxClose = document.getElementById('lightbox-close');
+    const lightboxPrev = document.getElementById('lightbox-prev');
+    const lightboxNext = document.getElementById('lightbox-next');
+
+    let galleryImages = [];
+    let currentIndex = 0;
+
+    function openLightbox(index) {
+      if (galleryImages.length === 0) return;
+      currentIndex = index;
+      const item = galleryImages[currentIndex];
+      lightboxImg.src = item.src;
+      lightboxImg.alt = item.title;
+      lightboxCaption.textContent = item.title + ' — ' + item.tag;
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightboxPrev.addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+      openLightbox(currentIndex);
+    });
+    lightboxNext.addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % galleryImages.length;
+      openLightbox(currentIndex);
+    });
+
+    lightbox.addEventListener('click', e => {
+      if (e.target === lightbox) closeLightbox();
+    });
+
+    document.addEventListener('keydown', e => {
+      if (!lightbox.classList.contains('open')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') lightboxPrev.click();
+      if (e.key === 'ArrowRight') lightboxNext.click();
+    });
+
+    // Wire up real gallery items (images) — placeholders won't open lightbox
+    document.querySelectorAll('.gallery-item').forEach((item, i) => {
+      item.addEventListener('click', () => openLightbox(i));
+    });
+  </script>
+
+</body>
+</html>

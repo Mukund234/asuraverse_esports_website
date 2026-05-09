@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AsuraVerse Roster Poster</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@700;800;900&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { width:1080px; height:1350px; overflow:hidden; background:#000; }
+
+.poster {
+  width:1080px; height:1350px;
+  position:relative; overflow:hidden;
+  background:#050000;
+}
+
+/* ── DEEP BG ── */
+.bg1 { position:absolute; inset:0;
+  background: radial-gradient(ellipse 100% 80% at 50% 20%, #2a0400 0%, #0d0000 50%, #000 100%); }
+
+.bg2 { position:absolute; inset:0;
+  background:
+    radial-gradient(ellipse 50% 70% at 20% 60%, rgba(180,30,0,0.18) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 70% at 80% 60%, rgba(180,30,0,0.18) 0%, transparent 70%); }
+
+/* ── FIRE CORE ── */
+.fire-core {
+  position:absolute;
+  left:50%; bottom:330px;
+  transform:translateX(-50%);
+  width:600px; height:600px;
+  background: radial-gradient(ellipse 60% 50% at 50% 80%,
+    rgba(255,80,0,0.7) 0%,
+    rgba(255,40,0,0.45) 20%,
+    rgba(200,10,0,0.2) 50%,
+    transparent 75%);
+  filter:blur(8px);
+  pointer-events:none; z-index:1;
+}
+
+.fire-top {
+  position:absolute; top:0; left:50%; transform:translateX(-50%);
+  width:800px; height:400px;
+  background: radial-gradient(ellipse 70% 80% at 50% 0%,
+    rgba(150,20,0,0.3) 0%, transparent 80%);
+  pointer-events:none; z-index:1;
+}
+
+/* sparks */
+.sparks {
+  position:absolute; inset:0; pointer-events:none; z-index:2;
+  background-image:
+    radial-gradient(circle 2px at 25% 30%, rgba(255,140,0,0.9) 0%, transparent 100%),
+    radial-gradient(circle 1px at 75% 20%, rgba(255,180,0,0.8) 0%, transparent 100%),
+    radial-gradient(circle 2px at 60% 45%, rgba(255,100,0,0.7) 0%, transparent 100%),
+    radial-gradient(circle 1px at 15% 55%, rgba(255,120,0,0.6) 0%, transparent 100%),
+    radial-gradient(circle 2px at 85% 35%, rgba(255,150,0,0.8) 0%, transparent 100%),
+    radial-gradient(circle 1px at 40% 15%, rgba(255,200,0,0.6) 0%, transparent 100%),
+    radial-gradient(circle 2px at 70% 60%, rgba(255,80,0,0.7) 0%, transparent 100%),
+    radial-gradient(circle 1px at 50% 70%, rgba(255,160,0,0.5) 0%, transparent 100%),
+    radial-gradient(circle 2px at 30% 80%, rgba(255,100,0,0.4) 0%, transparent 100%),
+    radial-gradient(circle 1px at 90% 65%, rgba(255,130,0,0.6) 0%, transparent 100%);
+}
+
+/* ── SIDE DECO ── */
+.side-bar {
+  position:absolute; top:80px; bottom:310px; width:3px;
+  background: linear-gradient(180deg, transparent 0%, rgba(255,80,0,0.7) 30%, rgba(255,80,0,0.7) 70%, transparent 100%);
+  z-index:20;
+}
+.side-bar.left { left:36px; }
+.side-bar.right { right:36px; }
+.side-bar::before {
+  content:''; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+  width:10px; height:10px; background:#FF5000; border-radius:50%;
+  box-shadow:0 0 15px 4px rgba(255,80,0,0.8);
+}
+
+/* ── HEADER ── */
+.header {
+  position:absolute; top:0; left:0; right:0; height:105px;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:0 64px;
+  background:linear-gradient(180deg, rgba(0,0,0,0.92) 0%, transparent 100%);
+  z-index:30;
+}
+
+.logo-group { display:flex; align-items:center; gap:14px; }
+.logo-img {
+  width:64px; height:64px; border-radius:50%; object-fit:cover;
+  border:2px solid rgba(255,80,0,0.6);
+  box-shadow:0 0 20px rgba(255,60,0,0.5);
+}
+.logo-txt { font-family:'Bebas Neue',sans-serif; }
+.logo-txt .n1 { font-size:30px; letter-spacing:5px; color:#fff; line-height:1; }
+.logo-txt .n1 em { color:#FF5500; font-style:normal; }
+.logo-txt .n2 { font-size:10px; letter-spacing:4px; color:rgba(255,255,255,0.35); font-family:'Rajdhani',sans-serif; font-weight:500; }
+
+.hdr-center {
+  font-family:'Bebas Neue',sans-serif; font-size:20px;
+  letter-spacing:10px; color:rgba(255,255,255,0.6);
+}
+
+.bgmi-box {
+  width:74px; height:74px;
+  border:2px solid rgba(255,80,0,0.5);
+  background:rgba(0,0,0,0.7);
+  border-radius:6px;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+}
+.bgmi-box .b1 { font-family:'Bebas Neue',sans-serif; font-size:28px; color:#FF5500; letter-spacing:2px; line-height:1; }
+.bgmi-box .b2 { font-size:9px; color:rgba(255,255,255,0.4); letter-spacing:2px; font-family:'Rajdhani',sans-serif; }
+
+/* ── PLAYERS ── */
+.players {
+  position:absolute;
+  top:90px; left:0; right:0; bottom:305px;
+  z-index:5;
+}
+
+/* every player is absolute, photo blends via mask-image */
+.pl {
+  position:absolute;
+  bottom:0;
+  display:flex; flex-direction:column; align-items:center;
+}
+
+.ph {
+  position:relative; overflow:hidden;
+}
+.ph img { width:100%; height:100%; object-fit:cover; object-position:top center; display:block; }
+
+/* IGN tag */
+.ign {
+  position:absolute; bottom:14px; left:0; right:0;
+  text-align:center; z-index:10;
+  font-family:'Bebas Neue',sans-serif;
+  letter-spacing:4px;
+  text-shadow:0 0 30px rgba(255,60,0,0.9), 0 2px 10px rgba(0,0,0,1);
+}
+
+/* ── THUG — center hero ── */
+.pl-thug {
+  width:360px;
+  left:50%; transform:translateX(-50%);
+  bottom:0; z-index:15;
+}
+.pl-thug .ph { width:360px; height:590px; }
+.pl-thug .ph img { object-position:top center; filter:brightness(1.05) contrast(1.05); }
+.pl-thug .ph::after {
+  content:''; position:absolute; inset:0;
+  background:
+    linear-gradient(to top, rgba(5,0,0,1) 0%, rgba(5,0,0,0.3) 25%, transparent 55%),
+    linear-gradient(to right, rgba(5,0,0,0.5) 0%, transparent 25%),
+    linear-gradient(to left, rgba(5,0,0,0.5) 0%, transparent 25%);
+}
+.pl-thug .ign { font-size:44px; color:#FF5500; bottom:22px; }
+
+/* ── SNIPY — front left ── */
+.pl-snipy {
+  width:290px;
+  left:88px; bottom:0; z-index:12;
+}
+.pl-snipy .ph { width:290px; height:480px; }
+.pl-snipy .ph::after {
+  content:''; position:absolute; inset:0;
+  background:
+    linear-gradient(to top, rgba(5,0,0,1) 0%, rgba(5,0,0,0.4) 22%, transparent 50%),
+    linear-gradient(to right, rgba(5,0,0,0.85) 0%, transparent 35%);
+}
+.pl-snipy .ign { font-size:32px; color:#fff; }
+
+/* ── VIKKI — front right ── */
+.pl-vikki {
+  width:290px;
+  right:88px; bottom:0; z-index:12;
+}
+.pl-vikki .ph { width:290px; height:480px; }
+.pl-vikki .ph::after {
+  content:''; position:absolute; inset:0;
+  background:
+    linear-gradient(to top, rgba(5,0,0,1) 0%, rgba(5,0,0,0.4) 22%, transparent 50%),
+    linear-gradient(to left, rgba(5,0,0,0.85) 0%, transparent 35%);
+}
+.pl-vikki .ign { font-size:32px; color:#fff; }
+
+/* ── BLAZE — back left ── */
+.pl-blaze {
+  width:260px;
+  left:50%; margin-left:-320px;
+  bottom:260px; z-index:8;
+}
+.pl-blaze .ph { width:260px; height:380px; }
+.pl-blaze .ph::after {
+  content:''; position:absolute; inset:0;
+  background:
+    linear-gradient(to top, rgba(5,0,0,1) 0%, rgba(5,0,0,0.5) 20%, transparent 50%),
+    linear-gradient(to bottom, rgba(5,0,0,0.6) 0%, transparent 30%),
+    linear-gradient(to right, rgba(5,0,0,0.7) 0%, transparent 30%);
+}
+.pl-blaze .ign { font-size:28px; color:rgba(255,255,255,0.8); bottom:14px; }
+
+/* ── FROZEN — back right ── */
+.pl-frozen {
+  width:260px;
+  left:50%; margin-left:60px;
+  bottom:260px; z-index:8;
+}
+.pl-frozen .ph { width:260px; height:380px; }
+.pl-frozen .ph::after {
+  content:''; position:absolute; inset:0;
+  background:
+    linear-gradient(to top, rgba(5,0,0,1) 0%, rgba(5,0,0,0.5) 20%, transparent 50%),
+    linear-gradient(to bottom, rgba(5,0,0,0.6) 0%, transparent 30%),
+    linear-gradient(to left, rgba(5,0,0,0.7) 0%, transparent 30%);
+}
+.pl-frozen .ign { font-size:28px; color:rgba(255,255,255,0.8); bottom:14px; }
+
+/* ── SEPARATOR ── */
+.sep {
+  position:absolute; bottom:303px; left:60px; right:60px; height:1px;
+  background:linear-gradient(90deg, transparent 0%, rgba(255,80,0,0.9) 30%, rgba(255,200,100,0.9) 50%, rgba(255,80,0,0.9) 70%, transparent 100%);
+  z-index:25;
+  box-shadow:0 0 12px rgba(255,80,0,0.6);
+}
+
+/* ── BOTTOM ── */
+.bottom {
+  position:absolute; bottom:0; left:0; right:0; height:305px;
+  background:linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.98) 15%, #000 100%);
+  z-index:25;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:0;
+}
+
+.lbl-intro {
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:24px; font-weight:700;
+  letter-spacing:8px; color:rgba(255,255,255,0.65);
+  text-transform:uppercase; margin-bottom:4px;
+}
+
+.team-big {
+  font-family:'Bebas Neue',sans-serif;
+  font-size:118px; line-height:0.88;
+  letter-spacing:4px;
+  background:linear-gradient(180deg, #FF9500 0%, #FF4400 45%, #CC1500 100%);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  background-clip:text;
+  filter:drop-shadow(0 0 40px rgba(255,70,0,0.7));
+  margin-bottom:14px;
+}
+
+.roster-names {
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:19px; font-weight:700;
+  letter-spacing:5px; color:rgba(255,255,255,0.5);
+  text-transform:uppercase; margin-bottom:22px;
+}
+.roster-names b { color:rgba(255,120,0,0.85); font-weight:700; }
+
+.socials {
+  display:flex; align-items:center; gap:36px;
+}
+.soc {
+  display:flex; align-items:center; gap:9px;
+  font-family:'Rajdhani',sans-serif; font-size:16px; font-weight:500;
+  letter-spacing:1px; color:rgba(255,255,255,0.4);
+}
+.soc svg { width:19px; height:19px; opacity:0.65; }
+
+/* corner deco */
+.c { position:absolute; width:28px; height:28px; z-index:35; }
+.c.tl { top:14px; left:14px; border-top:3px solid rgba(255,80,0,0.7); border-left:3px solid rgba(255,80,0,0.7); }
+.c.tr { top:14px; right:14px; border-top:3px solid rgba(255,80,0,0.7); border-right:3px solid rgba(255,80,0,0.7); }
+.c.bl { bottom:14px; left:14px; border-bottom:3px solid rgba(255,80,0,0.7); border-left:3px solid rgba(255,80,0,0.7); }
+.c.br { bottom:14px; right:14px; border-bottom:3px solid rgba(255,80,0,0.7); border-right:3px solid rgba(255,80,0,0.7); }
+</style>
+</head>
+<body>
+<div class="poster">
+
+  <div class="bg1"></div>
+  <div class="bg2"></div>
+  <div class="fire-core"></div>
+  <div class="fire-top"></div>
+  <div class="sparks"></div>
+  <div class="side-bar left"></div>
+  <div class="side-bar right"></div>
+  <div class="c tl"></div><div class="c tr"></div>
+  <div class="c bl"></div><div class="c br"></div>
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="logo-group">
+      <img class="logo-img" src="asuraverse logo.jpg" alt="Logo">
+      <div class="logo-txt">
+        <div class="n1">ASURA<em>VERSE</em></div>
+        <div class="n2">Esports Pvt Ltd</div>
+      </div>
+    </div>
+    <div class="hdr-center">BGMI ROSTER 2025</div>
+    <div class="bgmi-box">
+      <div class="b1">BGMI</div>
+      <div class="b2">KRAFTON</div>
+    </div>
+  </div>
+
+  <!-- PLAYERS -->
+  <div class="players">
+
+    <!-- Back row -->
+    <div class="pl pl-blaze">
+      <div class="ph">
+        <img src="Blaze.jpeg" alt="Blaze">
+        <div class="ign">BLAZE</div>
+      </div>
+    </div>
+
+    <div class="pl pl-frozen">
+      <div class="ph">
+        <img src="Frozen.jpeg" alt="Frozen">
+        <div class="ign">FROZEN</div>
+      </div>
+    </div>
+
+    <!-- Front row -->
+    <div class="pl pl-snipy">
+      <div class="ph">
+        <img src="snipy.jpeg" alt="Snipy">
+        <div class="ign">SNIPY</div>
+      </div>
+    </div>
+
+    <div class="pl pl-vikki">
+      <div class="ph">
+        <img src="vikki.jpeg" alt="Vikki">
+        <div class="ign">VIKKI</div>
+      </div>
+    </div>
+
+    <!-- CENTER HERO -->
+    <div class="pl pl-thug">
+      <div class="ph">
+        <img src="Thug.jpeg" alt="Thug">
+        <div class="ign">THUG</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="sep"></div>
+
+  <!-- BOTTOM -->
+  <div class="bottom">
+    <div class="lbl-intro">Introducing Our BGMI Roster</div>
+    <div class="team-big">ASURAVERSE</div>
+    <div class="roster-names">
+      BLAZE <b>·</b> FROZEN <b>·</b> SNIPY <b>·</b> THUG <b>·</b> VIKKI
+    </div>
+    <div class="socials">
+      <div class="soc">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+        </svg>
+        @asuraverseesports
+      </div>
+      <div class="soc">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.845L1.254 2.25H8.08l4.253 5.622 5.91-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+        </svg>
+        @asuraversegg
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

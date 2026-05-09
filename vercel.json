@@ -17,6 +17,8 @@
     { "src": "/players", "dest": "/public/players.html" },
     { "src": "/partner-with-us", "dest": "/public/partner-with-us.html" },
     { "src": "/roster-application", "dest": "/public/roster-application.html" },
+    { "src": "/founder", "dest": "/public/founder.html" },
+    { "src": "/gallery", "dest": "/public/gallery.html" },
     { "src": "/", "dest": "/public/asuraverse_website.html" },
     { "src": "/(.*)", "dest": "/public/$1" }
   ]

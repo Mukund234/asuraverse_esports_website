@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Founders — Team AsuraVerse Esports Pvt Ltd</title>
+  <meta name="description" content="Meet the visionary founders behind Team AsuraVerse Esports — Mukund Kundan and Chandra Prakash Suthar.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #FF7B00;
+      --primary-dark: #CC6200;
+      --primary-glow: rgba(255, 123, 0, 0.18);
+      --bg: #090B10;
+      --bg2: #0D1017;
+      --bg3: #12161F;
+      --border: rgba(255, 255, 255, 0.07);
+      --border-primary: rgba(255, 123, 0, 0.3);
+      --text: #f0f0f0;
+      --muted: #888;
+      --muted2: #aaa;
+    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Rajdhani', sans-serif;
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--primary); }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      height: 68px; display: flex; align-items: center;
+      justify-content: space-between; padding: 0 48px;
+      background: rgba(9, 11, 16, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+    .logo-hex { width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; }
+    .logo-hex img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+    .logo-text { font-family: 'Bebas Neue', sans-serif; }
+    .logo-text .org { font-size: 20px; letter-spacing: 3px; color: #fff; }
+    .logo-text .org span { color: var(--primary); }
+    .logo-text .sub { font-size: 9px; letter-spacing: 4px; color: var(--muted); font-family: 'Space Mono', monospace; }
+    .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
+    .nav-links a {
+      font-size: 13px; font-weight: 600; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--muted2);
+      text-decoration: none; transition: color 0.2s; position: relative;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
+      height: 1px; background: var(--primary);
+      transform: scaleX(0); transition: transform 0.2s;
+    }
+    .nav-links a:hover { color: #fff; }
+    .nav-links a:hover::after { transform: scaleX(1); }
+    .nav-links a.active { color: var(--primary); }
+    .nav-cta {
+      background: var(--primary); color: #fff; border: none;
+      padding: 10px 24px; font-family: 'Rajdhani', sans-serif;
+      font-size: 12px; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; cursor: pointer; text-decoration: none;
+      clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--primary-dark); }
+
+    /* PAGE HERO */
+    .page-hero {
+      margin-top: 68px;
+      padding: 100px 48px 60px;
+      background: var(--bg2);
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+    .page-hero::before {
+      content: 'FOUNDERS';
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 200px; letter-spacing: 16px;
+      color: rgba(255,255,255,0.018);
+      white-space: nowrap; pointer-events: none; user-select: none;
+    }
+    .page-hero-grid {
+      position: absolute; inset: 0;
+      background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 79px, rgba(255,123,0,0.03) 80px),
+        repeating-linear-gradient(90deg, transparent, transparent 79px, rgba(255,123,0,0.03) 80px);
+      pointer-events: none;
+    }
+    .page-hero-radial {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 80% at 50% 0%, rgba(255,123,0,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .page-hero-inner { position: relative; z-index: 2; }
+    .page-tag {
+      font-family: 'Space Mono', monospace; font-size: 11px;
+      letter-spacing: 4px; color: var(--primary);
+      text-transform: uppercase; margin-bottom: 20px;
+      display: flex; align-items: center; justify-content: center; gap: 12px;
+    }
+    .page-tag::before, .page-tag::after {
+      content: ''; display: block; width: 40px; height: 1px; background: var(--primary);
+    }
+    .page-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(48px, 9vw, 90px);
+      letter-spacing: 4px; text-transform: uppercase; line-height: 1;
+      margin-bottom: 20px;
+    }
+    .page-title span { color: var(--primary); }
+    .page-desc {
+      font-size: 16px; color: var(--muted2); max-width: 600px;
+      margin: 0 auto; line-height: 1.7;
+    }
+
+    /* FOUNDERS SECTION */
+    .founders-section { padding: 80px 48px; flex: 1; }
+
+    /* FOUNDER CARD */
+    .founder-card {
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      gap: 0;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      margin-bottom: 60px;
+      position: relative;
+      transition: border-color 0.3s;
+    }
+    .founder-card:hover { border-color: var(--border-primary); }
+    .founder-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--primary), transparent);
+    }
+    .founder-card.reverse { grid-template-columns: 1fr 360px; }
+    .founder-card.reverse .founder-photo { order: 2; }
+    .founder-card.reverse .founder-info { order: 1; }
+    .founder-card.reverse::before {
+      background: linear-gradient(90deg, transparent, var(--primary));
+    }
+
+    /* PHOTO SIDE */
+    .founder-photo {
+      position: relative;
+      background: linear-gradient(135deg, #1a0a00 0%, #0a0d14 100%);
+      min-height: 480px;
+      display: flex; align-items: flex-end; justify-content: center;
+      overflow: hidden;
+    }
+    .founder-photo::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(0deg, rgba(9,11,16,0.9) 0%, rgba(9,11,16,0.2) 50%, rgba(9,11,16,0) 100%);
+    }
+    .founder-photo-placeholder {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      position: absolute; inset: 0;
+    }
+    .founder-avatar-big {
+      width: 160px; height: 160px; border-radius: 50%;
+      background: var(--primary-glow);
+      border: 2px solid var(--border-primary);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 56px; letter-spacing: 2px;
+      color: var(--primary);
+      position: relative; z-index: 1;
+    }
+    .founder-photo img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: top;
+      position: absolute; inset: 0;
+      transition: transform 0.5s ease;
+    }
+    .founder-card:hover .founder-photo img { transform: scale(1.04); }
+    .founder-number {
+      position: absolute; top: 20px; left: 20px; z-index: 2;
+      font-family: 'Bebas Neue', sans-serif; font-size: 80px;
+      line-height: 1; color: rgba(255,123,0,0.12);
+      letter-spacing: -2px; pointer-events: none; user-select: none;
+    }
+    .founder-role-tag {
+      position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%);
+      z-index: 3;
+      background: rgba(0,0,0,0.85);
+      border: 1px solid var(--border-primary);
+      color: var(--primary);
+      font-family: 'Space Mono', monospace;
+      font-size: 10px; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; padding: 8px 20px;
+      white-space: nowrap;
+    }
+
+    /* INFO SIDE */
+    .founder-info {
+      padding: 48px 52px;
+      display: flex; flex-direction: column; justify-content: center;
+      background: var(--bg3);
+    }
+    .founder-label {
+      font-family: 'Space Mono', monospace; font-size: 10px;
+      letter-spacing: 3px; color: var(--primary);
+      text-transform: uppercase; margin-bottom: 12px;
+    }
+    .founder-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(36px, 4vw, 52px);
+      letter-spacing: 3px; line-height: 1; margin-bottom: 4px;
+      color: #fff;
+    }
+    .founder-title {
+      font-family: 'Space Mono', monospace; font-size: 12px;
+      letter-spacing: 2px; color: var(--muted2);
+      text-transform: uppercase; margin-bottom: 32px;
+    }
+    .founder-divider {
+      width: 48px; height: 2px; background: var(--primary);
+      margin-bottom: 28px;
+    }
+    .founder-quote {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px; letter-spacing: 1.5px; line-height: 1.35;
+      color: #fff; margin-bottom: 20px;
+    }
+    .founder-quote span { color: var(--primary); }
+    .founder-bio {
+      font-size: 15px; color: var(--muted2);
+      line-height: 1.8; margin-bottom: 36px;
+    }
+
+    /* TRAITS */
+    .founder-traits {
+      display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 36px;
+    }
+    .trait-tag {
+      font-family: 'Space Mono', monospace; font-size: 10px;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      padding: 6px 14px;
+      background: rgba(255,123,0,0.08);
+      border: 1px solid var(--border-primary);
+      color: #FFB366;
+    }
+
+    /* STATS ROW */
+    .founder-stats {
+      display: flex; gap: 0;
+      border-top: 1px solid var(--border);
+      padding-top: 28px; margin-top: auto;
+    }
+    .founder-stat { padding-right: 32px; margin-right: 32px; border-right: 1px solid var(--border); }
+    .founder-stat:last-child { border-right: none; }
+    .founder-stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 32px; color: var(--primary); letter-spacing: 2px; line-height: 1;
+    }
+    .founder-stat-label {
+      font-size: 11px; font-weight: 600; letter-spacing: 1.5px;
+      color: var(--muted); text-transform: uppercase; margin-top: 3px;
+    }
+
+    /* VISION BANNER */
+    .vision-banner {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 80px 48px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .vision-banner::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 100% at 50% 50%, rgba(255,123,0,0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .vision-banner-inner { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
+    .vision-tag {
+      font-family: 'Space Mono', monospace; font-size: 11px;
+      letter-spacing: 3px; color: var(--primary);
+      text-transform: uppercase; margin-bottom: 24px;
+    }
+    .vision-text {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(28px, 4vw, 48px);
+      letter-spacing: 2px; line-height: 1.2;
+      color: #fff; margin-bottom: 20px;
+    }
+    .vision-text span { color: var(--primary); }
+    .vision-sub { font-size: 16px; color: var(--muted2); line-height: 1.7; }
+
+    /* FOOTER */
+    footer {
+      background: #050505; border-top: 1px solid var(--border);
+      padding: 40px 48px; text-align: center; margin-top: auto;
+    }
+    .footer-copy {
+      font-family: 'Space Mono', monospace; font-size: 11px;
+      color: var(--muted); letter-spacing: 1px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      .founders-section { padding: 60px 24px; }
+      .founder-card, .founder-card.reverse {
+        grid-template-columns: 1fr;
+      }
+      .founder-card.reverse .founder-photo { order: 1; }
+      .founder-card.reverse .founder-info { order: 2; }
+      .founder-photo { min-height: 320px; }
+      .vision-banner { padding: 60px 24px; }
+    }
+    @media (max-width: 639px) {
+      nav { padding: 0 16px; }
+      .page-hero { padding: 80px 16px 48px; }
+      .founders-section { padding: 40px 16px; }
+      .founder-info { padding: 32px 24px; }
+      .founder-stats { flex-wrap: wrap; gap: 20px; }
+      .founder-stat { border-right: none; padding-right: 0; margin-right: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="asuraverse_website.html" class="nav-logo">
+      <div class="logo-hex">
+        <img src="asuraverse logo.jpg" alt="AsuraVerse Logo">
+      </div>
+      <div class="logo-text">
+        <div class="org">ASURA<span>VERSE</span></div>
+        <div class="sub">Esports Pvt Ltd</div>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="asuraverse_website.html#about">About</a></li>
+      <li><a href="asuraverse_website.html#games">Games</a></li>
+      <li><a href="players.html">Roster</a></li>
+      <li><a href="asuraverse_website.html#achievements">Achievements</a></li>
+      <li><a href="founder.html" class="active">Founders</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="asuraverse_website.html#contact">Contact</a></li>
+    </ul>
+    <a href="/roster-application" class="nav-cta">Apply Now</a>
+  </nav>
+
+  <!-- HERO -->
+  <header class="page-hero">
+    <div class="page-hero-grid"></div>
+    <div class="page-hero-radial"></div>
+    <div class="page-hero-inner">
+      <div class="page-tag">The People Behind the Mission</div>
+      <h1 class="page-title">Meet the <span>Founders</span></h1>
+      <p class="page-desc">Two individuals from humble beginnings who dared to dream of an Indian esports organisation that would change the game — not just for themselves, but for every underdog waiting for a shot.</p>
+    </div>
+  </header>
+
+  <!-- FOUNDERS -->
+  <section class="founders-section">
+
+    <!-- FOUNDER 1: MUKUND -->
+    <div class="founder-card" id="mukund">
+      <div class="founder-photo">
+        <div class="founder-number">01</div>
+        <div class="founder-photo-placeholder">
+          <div class="founder-avatar-big">MK</div>
+        </div>
+        <div class="founder-role-tag">Founder &amp; CEO</div>
+      </div>
+      <div class="founder-info">
+        <div class="founder-label">// Founder &amp; CEO</div>
+        <div class="founder-name">Mukund Kundan</div>
+        <div class="founder-title">Founder &amp; Chief Executive Officer</div>
+        <div class="founder-divider"></div>
+        <div class="founder-quote">"The undergods don't need luck.<br>They need a <span>system.</span>"</div>
+        <p class="founder-bio">
+          Mukund Kundan didn't start with resources — he started with a resolve. Growing up watching Indian players
+          get overlooked on the world stage lit something in him that refused to go out. He built AsuraVerse not as
+          a business plan on paper, but as a personal promise: that talent from every corner of India deserves a
+          structured path to the top.
+        </p>
+        <p class="founder-bio" style="margin-top: -16px;">
+          As CEO, Mukund leads with a rare combination of strategic vision and ground-level empathy. He understands
+          what it means to grind in the dark — and that's exactly why he's obsessed with building the system that
+          turns that grind into glory. Every roster signed, every tournament entered, every player mentored is a
+          step in his mission to put India on the global esports map.
+        </p>
+        <div class="founder-traits">
+          <span class="trait-tag">Visionary</span>
+          <span class="trait-tag">Strategist</span>
+          <span class="trait-tag">Leader</span>
+          <span class="trait-tag">Esports Builder</span>
+        </div>
+        <div class="founder-stats">
+          <div class="founder-stat">
+            <div class="founder-stat-num">2025</div>
+            <div class="founder-stat-label">Founded</div>
+          </div>
+          <div class="founder-stat">
+            <div class="founder-stat-num">12+</div>
+            <div class="founder-stat-label">Athletes Signed</div>
+          </div>
+          <div class="founder-stat">
+            <div class="founder-stat-num">5+</div>
+            <div class="founder-stat-label">Game Titles</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOUNDER 2: CHANDRA PRAKASH -->
+    <div class="founder-card reverse" id="chandra">
+      <div class="founder-photo">
+        <div class="founder-number">02</div>
+        <div class="founder-photo-placeholder">
+          <div class="founder-avatar-big">CP</div>
+        </div>
+        <div class="founder-role-tag">Co-Founder &amp; Talent Scout</div>
+      </div>
+      <div class="founder-info">
+        <div class="founder-label">// Co-Founder &amp; Talent Scout</div>
+        <div class="founder-name">Chandra Prakash Suthar</div>
+        <div class="founder-title">Co-Founder &amp; Head of Talent Acquisition</div>
+        <div class="founder-divider"></div>
+        <div class="founder-quote">"Raw talent is everywhere.<br>You just have to know <span>where to look.</span>"</div>
+        <p class="founder-bio">
+          Chandra Prakash Suthar has an eye that can't be trained — it's earned through thousands of hours watching
+          players compete, studying their instincts, and understanding what separates a good player from a great one.
+          He joined Mukund not just as a co-founder, but as the soul of AsuraVerse's talent pipeline.
+        </p>
+        <p class="founder-bio" style="margin-top: -16px;">
+          In a world where scouts chase highlights, Chandra chases character. He believes the best esports athletes
+          are forged through adversity, not comfort — and his ability to identify that fire in a player before the
+          world notices is AsuraVerse's most powerful competitive advantage. Behind every signed athlete is a
+          conversation Chandra had first.
+        </p>
+        <div class="founder-traits">
+          <span class="trait-tag">Talent Eye</span>
+          <span class="trait-tag">Scout</span>
+          <span class="trait-tag">Mentor</span>
+          <span class="trait-tag">Player Developer</span>
+        </div>
+        <div class="founder-stats">
+          <div class="founder-stat">
+            <div class="founder-stat-num">12+</div>
+            <div class="founder-stat-label">Players Scouted</div>
+          </div>
+          <div class="founder-stat">
+            <div class="founder-stat-num">10+</div>
+            <div class="founder-stat-label">Tournaments</div>
+          </div>
+          <div class="founder-stat">
+            <div class="founder-stat-num">100%</div>
+            <div class="founder-stat-label">Heart</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- VISION BANNER -->
+  <div class="vision-banner">
+    <div class="vision-banner-inner">
+      <div class="vision-tag">// The Shared Mission</div>
+      <div class="vision-text">
+        Together, they built more than an org.<br>
+        They built a <span>movement.</span>
+      </div>
+      <p class="vision-sub">
+        AsuraVerse was born from late nights, bold conversations, and an unshakeable belief that Indian esports
+        deserves better — better structure, better opportunities, and better stories. Mukund and Chandra aren't
+        just founders. They are the proof that the undergods can rise.
+      </p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-copy">© 2025 Team AsuraVerse Esports Pvt Ltd. All Rights Reserved.</div>
+  </footer>
+
+</body>
+</html>
