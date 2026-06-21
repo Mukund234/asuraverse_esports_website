@@ -55,6 +55,22 @@ app.get('/players', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'players.html'));
 });
 
+app.get('/gallery', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'gallery.html'));
+});
+
+app.get('/founder', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'founder.html'));
+});
+
+app.get('/roster-poster', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'roster-poster.html'));
+});
+
+app.get('/achievement', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'achievement.html'));
+});
+
 // ── 404 handler ───────────────────────────────────────────────────────────────
 app.use((req, res) => {
   res.status(404).sendFile(path.join(__dirname, 'public', 'asuraverse_website.html'));
