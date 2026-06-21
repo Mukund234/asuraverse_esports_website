@@ -23,5 +23,25 @@
         "image": "bihar-championship.jpg"
       }
     ]
+  },
+  {
+    "id": "tortuga-scrims",
+    "name": "Tortuga Gaming Scrims",
+    "prize_pool": "N/A",
+    "final_standing": "#1 Qualified for Invitational",
+    "logo": "",
+    "game": "BGMI",
+    "journey": [
+      {
+        "round": "T2 Scrims",
+        "result": "#9 Finish",
+        "image": "tortuga-t2.jpg"
+      },
+      {
+        "round": "T1 Scrims",
+        "result": "#1 Finish",
+        "image": "tortuga-scrims.jpg"
+      }
+    ]
   }
 ]
