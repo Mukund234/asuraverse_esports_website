@@ -108,6 +108,14 @@ app.get('/achievement', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'achievement.html'));
 });
 
+app.get('/player', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'player.html'));
+});
+
+app.get('/opportunities', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'opportunities.html'));
+});
+
 // ── 404 handler ───────────────────────────────────────────────────────────────
 app.use((req, res) => {
   res.status(404).sendFile(path.join(__dirname, 'public', 'asuraverse_website.html'));

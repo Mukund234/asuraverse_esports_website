@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Join AsuraVerse Esports | Opportunities — Player, Creator, Manager, Analyst</title>
+  <meta name="description" content="Join AsuraVerse Esports. Apply as a competitive BGMI player, content creator, esports manager, or data analyst. We are building India's next great esports organization.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://asuraverse.in/opportunities">
+  <link rel="icon" type="image/jpeg" href="/asuraverse logo.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #FF7B00;
+      --primary-dark: #CC6200;
+      --primary-glow: rgba(255,123,0,0.18);
+      --bg: #090B10;
+      --bg2: #0D1017;
+      --bg3: #12161F;
+      --border: rgba(255,255,255,0.07);
+      --border-primary: rgba(255,123,0,0.3);
+      --text: #f0f0f0;
+      --muted: #888;
+      --muted2: #aaa;
+    }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    body { background:var(--bg); color:var(--text); font-family:'Rajdhani',sans-serif; overflow-x:hidden; min-height:100vh; }
+
+    /* NAV */
+    nav { position:fixed; top:0; left:0; right:0; z-index:1000; height:68px; display:flex; align-items:center; justify-content:space-between; padding:0 48px; background:rgba(9,11,16,0.92); backdrop-filter:blur(12px); border-bottom:1px solid var(--border); }
+    .nav-logo { display:flex; align-items:center; gap:14px; text-decoration:none; }
+    .logo-hex { width:42px; height:42px; display:flex; align-items:center; justify-content:center; }
+    .logo-hex img { width:100%; height:100%; object-fit:cover; border-radius:50%; }
+    .logo-text .org { font-family:'Bebas Neue',sans-serif; font-size:20px; letter-spacing:3px; color:#fff; }
+    .logo-text .org span { color:var(--primary); }
+    .logo-text .sub { font-size:9px; letter-spacing:4px; color:var(--muted); text-transform:uppercase; }
+    .nav-links { display:flex; align-items:center; gap:32px; }
+    .nav-links a { color:var(--muted2); text-decoration:none; font-size:13px; letter-spacing:2px; text-transform:uppercase; font-weight:600; transition:color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color:var(--primary); }
+    .nav-cta { background:var(--primary); color:#000; border:none; padding:10px 24px; font-family:'Rajdhani',sans-serif; font-size:13px; font-weight:700; letter-spacing:2px; text-transform:uppercase; cursor:pointer; text-decoration:none; transition:background 0.2s; }
+    .nav-cta:hover { background:var(--primary-dark); }
+
+    /* HERO */
+    .page-hero { padding:140px 48px 80px; text-align:center; position:relative; overflow:hidden; }
+    .page-hero::before { content:''; position:absolute; top:0; left:50%; transform:translateX(-50%); width:700px; height:350px; background:radial-gradient(ellipse, rgba(255,123,0,0.1) 0%, transparent 70%); pointer-events:none; }
+    .hero-eyebrow { font-size:11px; letter-spacing:5px; color:var(--primary); text-transform:uppercase; font-weight:700; margin-bottom:16px; }
+    .hero-title { font-family:'Bebas Neue',sans-serif; font-size:clamp(56px,9vw,110px); letter-spacing:4px; color:#fff; line-height:0.95; }
+    .hero-title span { color:var(--primary); }
+    .hero-subtitle { color:var(--muted2); font-size:18px; margin-top:20px; max-width:560px; margin-left:auto; margin-right:auto; line-height:1.6; }
+
+    /* ROLE SELECTOR */
+    .roles-section { padding:0 48px 40px; max-width:1300px; margin:0 auto; }
+    .roles-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
+    .role-card {
+      background:var(--bg2);
+      border:1px solid var(--border);
+      padding:36px 28px;
+      cursor:pointer;
+      transition:all 0.3s;
+      position:relative;
+      overflow:hidden;
+      text-align:left;
+    }
+    .role-card::before { content:''; position:absolute; inset:0; background:linear-gradient(135deg, rgba(255,123,0,0.08) 0%, transparent 60%); opacity:0; transition:opacity 0.3s; }
+    .role-card:hover::before, .role-card.active::before { opacity:1; }
+    .role-card:hover, .role-card.active { border-color:var(--border-primary); transform:translateY(-4px); box-shadow:0 16px 48px rgba(255,123,0,0.12); }
+    .role-card.active { border-color:var(--primary); }
+    .role-icon { width:48px; height:48px; background:rgba(255,123,0,0.1); border:1px solid var(--border-primary); display:flex; align-items:center; justify-content:center; margin-bottom:20px; }
+    .role-icon svg { width:22px; height:22px; stroke:var(--primary); fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+    .role-title { font-family:'Bebas Neue',sans-serif; font-size:26px; letter-spacing:2px; color:#fff; }
+    .role-desc { font-size:13px; color:var(--muted); line-height:1.6; margin-top:8px; }
+    .role-spots { display:flex; align-items:center; gap:8px; margin-top:20px; padding-top:20px; border-top:1px solid var(--border); }
+    .spot-dot { width:8px; height:8px; border-radius:50%; background:var(--primary); animation:pulse 1.5s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.4;} }
+    .spot-text { font-size:11px; letter-spacing:2px; color:var(--primary); text-transform:uppercase; font-weight:700; }
+    .select-indicator { position:absolute; top:16px; right:16px; width:20px; height:20px; border:2px solid var(--border-primary); border-radius:50%; display:flex; align-items:center; justify-content:center; opacity:0; transition:opacity 0.2s; }
+    .role-card.active .select-indicator { opacity:1; background:var(--primary); border-color:var(--primary); }
+    .select-indicator::after { content:'✓'; font-size:11px; color:#000; font-weight:700; }
+
+    /* FORM SECTION */
+    .form-section { padding:0 48px 100px; max-width:900px; margin:0 auto; }
+    .form-container { background:var(--bg2); border:1px solid var(--border); padding:48px; display:none; animation:slideDown 0.4s ease; }
+    .form-container.visible { display:block; }
+    @keyframes slideDown { from { opacity:0; transform:translateY(-20px); } to { opacity:1; transform:translateY(0); } }
+    .form-header { margin-bottom:40px; padding-bottom:32px; border-bottom:1px solid var(--border); }
+    .form-header h2 { font-family:'Bebas Neue',sans-serif; font-size:40px; letter-spacing:2px; color:#fff; }
+    .form-header p { font-size:15px; color:var(--muted2); margin-top:8px; line-height:1.6; }
+    .form-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+    .form-group { display:flex; flex-direction:column; gap:8px; }
+    .form-group.full { grid-column:1/-1; }
+    .form-group label { font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--muted); font-weight:700; }
+    .form-group input, .form-group select, .form-group textarea {
+      background:var(--bg3);
+      border:1px solid var(--border);
+      color:var(--text);
+      padding:14px 16px;
+      font-family:'Rajdhani',sans-serif;
+      font-size:16px;
+      outline:none;
+      transition:border-color 0.2s;
+      width:100%;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color:var(--primary); }
+    .form-group select option { background:var(--bg3); }
+    .form-group textarea { resize:vertical; min-height:120px; }
+    .submit-btn { width:100%; background:var(--primary); color:#000; border:none; padding:18px; font-family:'Bebas Neue',sans-serif; font-size:20px; letter-spacing:3px; text-transform:uppercase; cursor:pointer; transition:background 0.2s, transform 0.1s; margin-top:8px; }
+    .submit-btn:hover { background:var(--primary-dark); }
+    .submit-btn:active { transform:scale(0.99); }
+    .submit-btn:disabled { opacity:0.6; cursor:not-allowed; }
+    .form-notice { font-size:12px; color:var(--muted); text-align:center; margin-top:16px; line-height:1.5; }
+    .msg-box { padding:16px 20px; font-size:15px; font-weight:600; display:none; margin-top:20px; }
+    .msg-box.success { background:rgba(34,197,94,0.1); border:1px solid rgba(34,197,94,0.3); color:#4ade80; }
+    .msg-box.error { background:rgba(239,68,68,0.1); border:1px solid rgba(239,68,68,0.3); color:#f87171; }
+    .msg-box.visible { display:block; }
+
+    /* PROMPT */
+    .select-prompt { text-align:center; padding:60px 48px; color:var(--muted); font-size:16px; letter-spacing:1px; }
+    .select-prompt svg { width:48px; height:48px; stroke:rgba(255,123,0,0.3); fill:none; stroke-width:1.5; margin:0 auto 16px; display:block; }
+
+    /* FOOTER */
+    footer { border-top:1px solid var(--border); padding:40px 48px; display:flex; justify-content:space-between; align-items:center; }
+    footer p { font-size:13px; color:var(--muted); }
+    footer a { color:var(--primary); text-decoration:none; }
+
+    @media(max-width:900px) {
+      nav { padding:0 20px; }
+      .nav-links { display:none; }
+      .page-hero { padding:120px 20px 60px; }
+      .roles-section { padding:0 20px 40px; }
+      .roles-grid { grid-template-columns:1fr 1fr; }
+      .form-section { padding:0 20px 80px; }
+      .form-container { padding:28px 20px; }
+      .form-grid { grid-template-columns:1fr; }
+      footer { flex-direction:column; gap:16px; text-align:center; padding:40px 20px; }
+    }
+    @media(max-width:480px) {
+      .roles-grid { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="nav-logo">
+      <div class="logo-hex"><img src="/asuraverse logo.jpg" alt="AsuraVerse Logo"></div>
+      <div class="logo-text">
+        <div class="org">ASURA<span>VERSE</span></div>
+        <div class="sub">Esports Pvt. Ltd.</div>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/players">Roster</a>
+      <a href="/#achievements">Achievements</a>
+      <a href="/opportunities" class="active">Join Us</a>
+      <a href="/partner-with-us">Partners</a>
+    </div>
+    <a href="/partner-with-us" class="nav-cta">Partner With Us</a>
+  </nav>
+
+  <section class="page-hero">
+    <div class="hero-eyebrow">Now Recruiting</div>
+    <h1 class="hero-title">JOIN THE<br><span>SQUAD</span></h1>
+    <p class="hero-subtitle">AsuraVerse is more than a team. We are building an ecosystem. Find your role and be part of the journey.</p>
+  </section>
+
+  <section class="roles-section">
+    <div class="roles-grid">
+
+      <div class="role-card" id="role-player" onclick="selectRole('player')">
+        <div class="select-indicator"></div>
+        <div class="role-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+        </div>
+        <div class="role-title">BGMI Player</div>
+        <div class="role-desc">Competitive BGMI player looking to grind at the highest level with a structured, professional team.</div>
+        <div class="role-spots"><div class="spot-dot"></div><div class="spot-text">Trials Open</div></div>
+      </div>
+
+      <div class="role-card" id="role-creator" onclick="selectRole('creator')">
+        <div class="select-indicator"></div>
+        <div class="role-icon">
+          <svg viewBox="0 0 24 24"><path d="M15 10l4.553-2.28A1 1 0 0121 8.68v6.638a1 1 0 01-1.447.894L15 14M3 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/></svg>
+        </div>
+        <div class="role-title">Content Creator</div>
+        <div class="role-desc">Streamer, editor, or social media creator who wants to grow with an esports brand behind them.</div>
+        <div class="role-spots"><div class="spot-dot"></div><div class="spot-text">Spots Available</div></div>
+      </div>
+
+      <div class="role-card" id="role-manager" onclick="selectRole('manager')">
+        <div class="select-indicator"></div>
+        <div class="role-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <div class="role-title">Team Manager</div>
+        <div class="role-desc">Organized, strategic thinker who can handle team operations, scheduling, and communications.</div>
+        <div class="role-spots"><div class="spot-dot"></div><div class="spot-text">1 Position Open</div></div>
+      </div>
+
+      <div class="role-card" id="role-analyst" onclick="selectRole('analyst')">
+        <div class="select-indicator"></div>
+        <div class="role-icon">
+          <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        </div>
+        <div class="role-title">Analyst / Coach</div>
+        <div class="role-desc">Data-driven esports analyst or coach who can break down matches, identify patterns, and improve team performance.</div>
+        <div class="role-spots"><div class="spot-dot"></div><div class="spot-text">Accepting Applications</div></div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="form-section">
+
+    <!-- PROMPT (before selecting) -->
+    <div class="select-prompt" id="selectPrompt">
+      <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      Select a role above to view and fill the application form
+    </div>
+
+    <!-- FORM CONTAINER -->
+    <div class="form-container" id="formContainer">
+      <div class="form-header">
+        <h2 id="formTitle">APPLICATION</h2>
+        <p id="formDesc">Fill in your details below and we'll review your application within 3-5 business days.</p>
+      </div>
+
+      <form id="applyForm" novalidate>
+        <input type="hidden" id="roleInput" name="role" value="">
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="player_name">Full Name *</label>
+            <input type="text" id="player_name" name="player_name" placeholder="Your real name" required>
+          </div>
+          <div class="form-group">
+            <label for="ign">IGN / Username *</label>
+            <input type="text" id="ign" name="ign" placeholder="Your in-game name">
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="+91 XXXXX XXXXX">
+          </div>
+
+          <!-- Player-specific fields -->
+          <div class="form-group" id="field-game" style="display:none;">
+            <label for="game">Primary Game *</label>
+            <select id="game" name="game">
+              <option value="">Select game...</option>
+              <option value="BGMI">BGMI</option>
+              <option value="Free Fire">Free Fire</option>
+              <option value="Valorant">Valorant</option>
+              <option value="COD Mobile">COD Mobile</option>
+            </select>
+          </div>
+          <div class="form-group" id="field-role" style="display:none;">
+            <label for="player_role">In-Game Role</label>
+            <select id="player_role" name="player_role">
+              <option value="">Select role...</option>
+              <option value="IGL">IGL (In-Game Leader)</option>
+              <option value="Fragger">Entry Fragger</option>
+              <option value="Assaulter">Assaulter</option>
+              <option value="Support">Support</option>
+              <option value="Sniper">Sniper</option>
+              <option value="Flex">Flex</option>
+            </select>
+          </div>
+
+          <!-- Creator-specific fields -->
+          <div class="form-group" id="field-platform" style="display:none;">
+            <label for="platform">Primary Platform</label>
+            <select id="platform" name="platform">
+              <option value="">Select platform...</option>
+              <option value="YouTube">YouTube</option>
+              <option value="Instagram">Instagram</option>
+              <option value="Twitch">Twitch</option>
+              <option value="TikTok">TikTok</option>
+              <option value="Multiple">Multiple Platforms</option>
+            </select>
+          </div>
+          <div class="form-group" id="field-channel" style="display:none;">
+            <label for="channel_url">Channel / Profile URL</label>
+            <input type="url" id="channel_url" name="channel_url" placeholder="https://youtube.com/...">
+          </div>
+
+          <!-- Analyst fields -->
+          <div class="form-group" id="field-tools" style="display:none;">
+            <label for="tools">Analysis Tools You Use</label>
+            <input type="text" id="tools" name="tools" placeholder="e.g. Game replays, Excel, custom scripts...">
+          </div>
+
+          <div class="form-group full">
+            <label for="experience">Tell Us About Yourself *</label>
+            <textarea id="experience" name="experience" placeholder="Your background, experience, achievements, and why you want to join AsuraVerse..." required></textarea>
+          </div>
+        </div>
+
+        <button type="submit" class="submit-btn" id="submitBtn">Submit Application</button>
+        <p class="form-notice">We review all applications personally. You will receive a confirmation email immediately. Results within 3–5 business days.</p>
+        <div class="msg-box" id="msgBox"></div>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 AsuraVerse Esports Pvt. Ltd. All rights reserved.</p>
+    <a href="/partner-with-us">Looking to partner? →</a>
+  </footer>
+
+  <script>
+    let currentRole = null;
+
+    const roleMeta = {
+      player:  { title:'PLAYER APPLICATION',  desc:'Apply to trial for the AsuraVerse BGMI competitive roster. We evaluate based on skill, game sense, teamwork and attitude.',  fields:['field-game','field-role'],     ignLabel:'In-Game Name (IGN) *' },
+      creator: { title:'CREATOR APPLICATION', desc:'Apply to join AsuraVerse as a content creator or streamer. We provide a brand, community, and growth support.',          fields:['field-platform','field-channel'], ignLabel:'Username / Handle' },
+      manager: { title:'MANAGER APPLICATION', desc:'Apply to manage AsuraVerse operations. Tell us about your organizational skills and esports experience.',                 fields:[],                                  ignLabel:'Username (optional)' },
+      analyst: { title:'ANALYST APPLICATION', desc:'Apply as a performance analyst or coach. Help the team understand the data behind every game.',                         fields:['field-tools'],                     ignLabel:'Username (optional)' }
+    };
+
+    function selectRole(role) {
+      currentRole = role;
+
+      // Update card active states
+      document.querySelectorAll('.role-card').forEach(c => c.classList.remove('active'));
+      document.getElementById('role-' + role).classList.add('active');
+
+      // Hide all conditional fields
+      ['field-game','field-role','field-platform','field-channel','field-tools'].forEach(id => {
+        document.getElementById(id).style.display = 'none';
+      });
+
+      // Show role-specific fields
+      const meta = roleMeta[role];
+      meta.fields.forEach(id => { document.getElementById(id).style.display = 'flex'; });
+
+      // Update form header
+      document.getElementById('formTitle').textContent = meta.title;
+      document.getElementById('formDesc').textContent = meta.desc;
+      document.getElementById('roleInput').value = role;
+      document.getElementById('ign').labels[0].textContent = meta.ignLabel;
+
+      // Show form, hide prompt
+      document.getElementById('selectPrompt').style.display = 'none';
+      const fc = document.getElementById('formContainer');
+      fc.classList.remove('visible');
+      void fc.offsetWidth; // reflow for animation
+      fc.classList.add('visible');
+
+      // Scroll to form
+      setTimeout(() => fc.scrollIntoView({ behavior:'smooth', block:'start' }), 100);
+    }
+
+    document.getElementById('applyForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn = document.getElementById('submitBtn');
+      const msgBox = document.getElementById('msgBox');
+      msgBox.className = 'msg-box';
+      msgBox.textContent = '';
+      btn.disabled = true;
+      btn.textContent = 'Submitting...';
+
+      const data = {};
+      new FormData(this).forEach((v, k) => { data[k] = v; });
+      data.game = data.game || currentRole.toUpperCase();
+
+      try {
+        const res = await fetch('/api/roster', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        const result = await res.json();
+        if (result.success) {
+          msgBox.className = 'msg-box success visible';
+          msgBox.textContent = '✓ Application submitted! Check your email for confirmation. We\'ll be in touch within 3–5 business days.';
+          this.reset();
+          currentRole = null;
+          document.querySelectorAll('.role-card').forEach(c => c.classList.remove('active'));
+        } else {
+          throw new Error(result.error || 'Submission failed.');
+        }
+      } catch(err) {
+        msgBox.className = 'msg-box error visible';
+        msgBox.textContent = '✗ ' + (err.message || 'Something went wrong. Please try again.');
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Submit Application';
+      }
+    });
+  </script>
+</body>
+</html>

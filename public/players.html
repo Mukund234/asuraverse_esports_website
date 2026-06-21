@@ -15,514 +15,184 @@
     :root {
       --primary: #FF7B00;
       --primary-dark: #CC6200;
-      --primary-glow: rgba(255, 123, 0, 0.18);
+      --primary-glow: rgba(255,123,0,0.18);
       --bg: #090B10;
       --bg2: #0D1017;
       --bg3: #12161F;
-      --border: rgba(255, 255, 255, 0.07);
-      --border-primary: rgba(255, 123, 0, 0.3);
+      --border: rgba(255,255,255,0.07);
+      --border-primary: rgba(255,123,0,0.3);
       --text: #f0f0f0;
       --muted: #888;
       --muted2: #aaa;
     }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    body { background:var(--bg); color:var(--text); font-family:'Rajdhani',sans-serif; overflow-x:hidden; min-height:100vh; }
 
-    *, *::before, *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    /* NAV */
+    nav { position:fixed; top:0; left:0; right:0; z-index:1000; height:68px; display:flex; align-items:center; justify-content:space-between; padding:0 48px; background:rgba(9,11,16,0.92); backdrop-filter:blur(12px); border-bottom:1px solid var(--border); }
+    .nav-logo { display:flex; align-items:center; gap:14px; text-decoration:none; }
+    .logo-hex { width:42px; height:42px; display:flex; align-items:center; justify-content:center; }
+    .logo-hex img { width:100%; height:100%; object-fit:cover; border-radius:50%; }
+    .logo-text .org { font-family:'Bebas Neue',sans-serif; font-size:20px; letter-spacing:3px; color:#fff; }
+    .logo-text .org span { color:var(--primary); }
+    .logo-text .sub { font-size:9px; letter-spacing:4px; color:var(--muted); text-transform:uppercase; }
+    .nav-links { display:flex; align-items:center; gap:32px; }
+    .nav-links a { color:var(--muted2); text-decoration:none; font-size:13px; letter-spacing:2px; text-transform:uppercase; font-weight:600; transition:color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color:var(--primary); }
+    .nav-cta { background:var(--primary); color:#000; border:none; padding:10px 24px; font-family:'Rajdhani',sans-serif; font-size:13px; font-weight:700; letter-spacing:2px; text-transform:uppercase; cursor:pointer; text-decoration:none; transition:background 0.2s; }
+    .nav-cta:hover { background:var(--primary-dark); }
 
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Rajdhani', sans-serif;
-      overflow-x: hidden;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
+    /* HERO */
+    .page-hero { padding: 140px 48px 80px; text-align:center; position:relative; overflow:hidden; }
+    .page-hero::before { content:''; position:absolute; top:0; left:50%; transform:translateX(-50%); width:600px; height:300px; background:radial-gradient(ellipse, rgba(255,123,0,0.12) 0%, transparent 70%); pointer-events:none; }
+    .hero-eyebrow { font-size:11px; letter-spacing:5px; color:var(--primary); text-transform:uppercase; font-weight:700; margin-bottom:16px; }
+    .hero-title { font-family:'Bebas Neue',sans-serif; font-size:clamp(52px,8vw,96px); letter-spacing:4px; color:#fff; line-height:0.95; }
+    .hero-title span { color:var(--primary); }
+    .hero-subtitle { color:var(--muted2); font-size:17px; margin-top:20px; max-width:520px; margin-left:auto; margin-right:auto; line-height:1.6; }
+    .roster-meta { display:flex; justify-content:center; gap:48px; margin-top:40px; }
+    .roster-meta-item { text-align:center; }
+    .roster-meta-item .num { font-family:'Bebas Neue',sans-serif; font-size:40px; color:var(--primary); line-height:1; }
+    .roster-meta-item .label { font-size:11px; letter-spacing:3px; color:var(--muted); text-transform:uppercase; margin-top:4px; }
 
-    /* ─── NAV ─── */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-      height: 68px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 48px;
-      background: rgba(9, 11, 16, 0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-    }
+    /* GRID */
+    .players-section { padding:0 48px 100px; max-width:1400px; margin:0 auto; }
+    .players-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(280px,1fr)); gap:28px; }
 
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      text-decoration: none;
-    }
-
-    .logo-hex {
-      width: 42px;
-      height: 42px;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .logo-hex img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 50%;
-    }
-
-    .logo-text {
-      font-family: 'Bebas Neue', sans-serif;
-    }
-
-    .logo-text .org {
-      font-size: 20px;
-      letter-spacing: 3px;
-      color: #fff;
-    }
-
-    .logo-text .org span {
-      color: var(--primary);
-    }
-
-    .logo-text .sub {
-      font-size: 9px;
-      letter-spacing: 4px;
-      color: var(--muted);
-      font-family: 'Space Mono', monospace;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 36px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--muted2);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover {
-      color: #fff;
-    }
-
-    /* ─── PAGE HEADER ─── */
-    .page-header {
-      margin-top: 68px;
-      padding: 80px 48px 40px;
-      text-align: center;
-      background: linear-gradient(180deg, var(--bg2) 0%, var(--bg) 100%);
-      border-bottom: 1px solid var(--border);
-      position: relative;
-    }
-
-    .page-header::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse 60% 70% at 50% 0%, rgba(255, 123, 0, 0.05) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .page-tag {
-      font-family: 'Space Mono', monospace;
-      font-size: 11px;
-      letter-spacing: 4px;
-      color: var(--primary);
-      text-transform: uppercase;
-      margin-bottom: 16px;
-    }
-
-    .page-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(40px, 8vw, 72px);
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-    }
-
-    .page-desc {
-      font-size: 16px;
-      color: var(--muted2);
-      max-width: 600px;
-      margin: 0 auto;
-      line-height: 1.6;
-    }
-
-    /* ─── PLAYERS GRID ─── */
-    .players-section {
-      padding: 60px 48px;
-      flex-grow: 1;
-    }
-
-    .players-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 32px;
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-
+    /* PLAYER CARD */
     .player-card {
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      overflow: hidden;
-      transition: transform 0.3s, border-color 0.3s;
-      display: flex;
-      flex-direction: column;
+      background:var(--bg2);
+      border:1px solid var(--border);
+      position:relative;
+      overflow:hidden;
+      cursor:pointer;
+      transition:transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+      text-decoration:none;
+      display:block;
     }
+    .player-card:hover { transform:translateY(-6px); border-color:var(--border-primary); box-shadow:0 20px 60px rgba(255,123,0,0.15); }
+    .player-card::after { content:''; position:absolute; inset:0; background:linear-gradient(to top, rgba(9,11,16,0.95) 0%, rgba(9,11,16,0.4) 50%, transparent 100%); pointer-events:none; }
+    .card-photo { width:100%; aspect-ratio:3/4; object-fit:cover; object-position:top; display:block; transition:transform 0.5s; }
+    .player-card:hover .card-photo { transform:scale(1.04); }
+    .card-info { position:absolute; bottom:0; left:0; right:0; padding:24px; z-index:2; }
+    .card-role-badge { display:inline-block; background:var(--primary); color:#000; font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; padding:3px 10px; margin-bottom:10px; }
+    .card-ign { font-family:'Bebas Neue',sans-serif; font-size:32px; letter-spacing:2px; color:#fff; line-height:1; }
+    .card-realname { font-size:13px; color:var(--muted2); letter-spacing:1px; margin-top:4px; }
+    .card-arrow { position:absolute; top:20px; right:20px; width:36px; height:36px; background:rgba(255,123,0,0.15); border:1px solid var(--border-primary); display:flex; align-items:center; justify-content:center; z-index:3; opacity:0; transition:opacity 0.3s; }
+    .player-card:hover .card-arrow { opacity:1; }
+    .card-arrow svg { width:14px; height:14px; fill:var(--primary); }
+    .highlight-count { position:absolute; top:20px; left:20px; background:rgba(9,11,16,0.8); border:1px solid var(--border); padding:4px 10px; z-index:3; }
+    .highlight-count span { font-family:'Space Mono',monospace; font-size:10px; color:var(--primary); }
+    .highlight-count small { font-size:9px; color:var(--muted); letter-spacing:2px; text-transform:uppercase; margin-left:4px; }
 
-    .player-card:hover {
-      transform: translateY(-5px);
-      border-color: var(--border-primary);
-    }
+    /* LOADING */
+    .loading-state { grid-column:1/-1; text-align:center; padding:80px 0; color:var(--muted); }
+    .loading-state .spinner { width:36px; height:36px; border:3px solid var(--border); border-top-color:var(--primary); border-radius:50%; animation:spin 0.8s linear infinite; margin:0 auto 20px; }
+    @keyframes spin { to { transform:rotate(360deg); } }
 
-    .player-image {
-      height: 350px;
-      position: relative;
-      background: linear-gradient(135deg, #1a0000 0%, #0d0d0d 100%);
-      overflow: hidden;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-    }
+    /* FOOTER */
+    footer { border-top:1px solid var(--border); padding:40px 48px; display:flex; justify-content:space-between; align-items:center; }
+    footer p { font-size:13px; color:var(--muted); }
+    footer a { color:var(--primary); text-decoration:none; }
 
-    .player-image::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(0deg, rgba(9,11,16,1) 0%, rgba(9,11,16,0) 40%);
+    @media(max-width:768px) {
+      nav { padding:0 20px; }
+      .nav-links { display:none; }
+      .page-hero { padding:120px 20px 60px; }
+      .players-section { padding:0 20px 60px; }
+      .players-grid { grid-template-columns:1fr 1fr; gap:16px; }
+      .roster-meta { gap:24px; }
+      footer { flex-direction:column; gap:16px; text-align:center; }
     }
-
-    .player-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: top;
-      transition: transform 0.5s ease;
-    }
-
-    .player-card:hover .player-image img {
-      transform: scale(1.05);
-    }
-
-    .player-role-badge {
-      position: absolute;
-      top: 16px;
-      right: 16px;
-      background: rgba(0, 0, 0, 0.8);
-      border: 1px solid var(--border-primary);
-      color: var(--primary);
-      font-family: 'Space Mono', monospace;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      padding: 6px 12px;
-      z-index: 2;
-    }
-
-    .player-details {
-      padding: 32px;
-      background: var(--bg3);
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-      position: relative;
-    }
-
-    .player-ign {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 36px;
-      letter-spacing: 3px;
-      color: #fff;
-      line-height: 1;
-      margin-bottom: 4px;
-    }
-
-    .player-real-name {
-      font-size: 14px;
-      color: var(--muted);
-      margin-bottom: 24px;
-    }
-
-    .achievements-list {
-      list-style: none;
-      margin-bottom: 24px;
-      flex-grow: 1;
-    }
-
-    .achievements-list li {
-      position: relative;
-      padding-left: 16px;
-      font-size: 13px;
-      color: var(--muted2);
-      line-height: 1.6;
-      margin-bottom: 8px;
-    }
-
-    .achievements-list li::before {
-      content: '▹';
-      position: absolute;
-      left: 0;
-      color: var(--primary);
-      font-size: 16px;
-      line-height: 1.3;
-    }
-
-    .player-social {
-      margin-top: auto;
-      padding-top: 20px;
-      border-top: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .social-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--muted);
-      text-decoration: none;
-      font-family: 'Space Mono', monospace;
-      font-size: 11px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      transition: color 0.2s;
-    }
-
-    .social-link:hover {
-      color: var(--primary);
-    }
-
-    .social-link svg {
-      width: 16px;
-      height: 16px;
-    }
-
-    /* ─── FOOTER ─── */
-    footer {
-      background: #050505;
-      border-top: 1px solid var(--border);
-      padding: 40px 48px;
-      text-align: center;
-      margin-top: auto;
-    }
-    
-    .footer-copy {
-      font-family: 'Space Mono', monospace;
-      font-size: 11px;
-      color: var(--muted);
-      letter-spacing: 1px;
-    }
-
-    @media (max-width: 768px) {
-      nav { padding: 0 24px; }
-      .nav-links { display: none; }
-      .page-header { padding: 60px 24px 30px; }
-      .players-section { padding: 40px 24px; }
-      .players-grid { grid-template-columns: 1fr; }
+    @media(max-width:480px) {
+      .players-grid { grid-template-columns:1fr; }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
   <nav>
-    <a href="asuraverse_website.html" class="nav-logo">
-      <div class="logo-hex">
-        <img src="asuraverse logo.jpg" alt="AsuraVerse Logo">
-      </div>
+    <a href="/" class="nav-logo">
+      <div class="logo-hex"><img src="/asuraverse logo.jpg" alt="AsuraVerse Logo"></div>
       <div class="logo-text">
         <div class="org">ASURA<span>VERSE</span></div>
-        <div class="sub">Esports Pvt Ltd</div>
+        <div class="sub">Esports Pvt. Ltd.</div>
       </div>
     </a>
-    <ul class="nav-links">
-      <li><a href="asuraverse_website.html#about">About</a></li>
-      <li><a href="asuraverse_website.html#games">Games</a></li>
-      <li><a href="players.html">Roster</a></li>
-      <li><a href="asuraverse_website.html#achievements">Achievements</a></li>
-      <li><a href="founder.html">Founders</a></li>
-      <li><a href="gallery.html">Gallery</a></li>
-      <li><a href="asuraverse_website.html#contact">Contact</a></li>
-    </ul>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/players" class="active">Roster</a>
+      <a href="/#achievements">Achievements</a>
+      <a href="/opportunities">Join Us</a>
+      <a href="/partner-with-us">Partners</a>
+    </div>
+    <a href="/opportunities" class="nav-cta">Join The Squad</a>
   </nav>
 
-  <!-- HEADER -->
-  <header class="page-header">
-    <div class="page-tag">// Elite Athletes</div>
-    <h1 class="page-title">BGMI <span style="color: var(--primary);">Roster</span></h1>
-    <p class="page-desc">Meet the unstoppable forces driving Team AsuraVerse to victory. Champions forged through dedication, strategy, and raw mechanical skill.</p>
-  </header>
-
-  <!-- PLAYERS -->
-  <section class="players-section">
-    <div class="players-grid">
-
-      <!-- PLAYER 1: BLAZE -->
-      <div class="player-card">
-        <div class="player-image">
-          <img src="Blaze.jpeg" alt="Blaze">
-        </div>
-        <div class="player-details">
-          <div class="player-ign">BLAZE</div>
-          <div class="player-real-name">Niket Verma</div>
-          <ul class="achievements-list">
-            <li>BGIS 2023 Quarterfinals</li>
-            <li>BMPS 2023</li>
-            <li>BGIS 2024 Round 3</li>
-            <li>BMPS 2024 Round 1</li>
-            <li>JIO Blast LAN #5</li>
-            <li>BGIS 2026 Round 4</li>
-          </ul>
-          <div class="player-social">
-            <a href="https://www.instagram.com/blaze.__.13?igsh=MXRwa3hmeDhqaWhxMg==" target="_blank" class="social-link">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-              </svg>
-              Instagram
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- PLAYER 2: FROZEN -->
-      <div class="player-card">
-        <div class="player-image">
-          <img src="Frozen.jpeg" alt="FROZEN">
-        </div>
-        <div class="player-details">
-          <div class="player-ign">FROZEN</div>
-          <div class="player-real-name">Aryan Singh</div>
-          <ul class="achievements-list">
-            <li>BGIS 2023 Quarterfinals</li>
-            <li>BMPS 2023</li>
-            <li>BGIS 2024 Round 3</li>
-            <li>JIO Blast LAN #5</li>
-            <li>BGIS 2026 Round 4</li>
-          </ul>
-          <div class="player-social">
-            <a href="https://www.instagram.com/frozen77k?igsh=MXZpYzlqZWhucGN1bQ==" target="_blank" class="social-link">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-              </svg>
-              Instagram
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- PLAYER 3: SNIPY -->
-      <div class="player-card">
-        <div class="player-image">
-          <img src="snipy.jpeg" alt="Snipy">
-        </div>
-        <div class="player-details">
-          <div class="player-ign">SNIPY</div>
-          <div class="player-real-name">Nikhil Chaudhary</div>
-          <ul class="achievements-list">
-            <li>BGIS 2025 Round 3</li>
-            <li>JIO Blast LAN #5</li>
-          </ul>
-          <div class="player-social">
-            <a href="https://www.instagram.com/dmxsnipy?igsh=cmowOHdnaWsxeTRh" target="_blank" class="social-link">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-              </svg>
-              Instagram
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- PLAYER 4: THUG -->
-      <div class="player-card">
-        <div class="player-image">
-          <img src="Thug.jpeg" alt="Thug">
-        </div>
-        <div class="player-details">
-          <div class="player-ign">THUG</div>
-          <div class="player-real-name">Abhay Kumar</div>
-          <ul class="achievements-list">
-            <li>BGIS 2023 Quarterfinals</li>
-            <li>BMPS 2023</li>
-            <li>BGIS 2024 Quarterfinals</li>
-            <li>OnePlus Dominate #8</li>
-            <li>JIO Blast LAN #5</li>
-            <li>BGIS 2026 Round 4</li>
-            <li>UE Semifinalist</li>
-          </ul>
-          <div class="player-social">
-            <a href="https://www.instagram.com/elf_thug69?igsh=MTFkaDRueHBsYXhzOA==" target="_blank" class="social-link">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-              </svg>
-              Instagram
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- PLAYER 5: VIKKI -->
-      <div class="player-card">
-        <div class="player-image">
-          <img src="vikki.jpeg" alt="Vikki">
-        </div>
-        <div class="player-details">
-          <div class="player-ign">VIKKI</div>
-          <div class="player-real-name">Sunder Singh</div>
-          <ul class="achievements-list">
-            <li>BGIS 2024 Round 3</li>
-            <li>BGIS 2026 Round 4</li>
-          </ul>
-          <div class="player-social">
-            <a href="https://www.instagram.com/ig_vikki10?igsh=MTUxbXM2NTZ4ZGJ1bQ%3D%3D&utm_source=qr" target="_blank" class="social-link">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-              </svg>
-              Instagram
-            </a>
-          </div>
-        </div>
-      </div>
-
+  <section class="page-hero">
+    <div class="hero-eyebrow">Active Roster — BGMI</div>
+    <h1 class="hero-title">MEET THE<br><span>SQUAD</span></h1>
+    <p class="hero-subtitle">Five players. One goal. Every match is a step toward the top of Indian esports.</p>
+    <div class="roster-meta" id="rosterMeta">
+      <div class="roster-meta-item"><div class="num" id="playerCount">—</div><div class="label">Active Players</div></div>
+      <div class="roster-meta-item"><div class="num" id="totalHighlights">—</div><div class="label">Tournament Highlights</div></div>
+      <div class="roster-meta-item"><div class="num">BGMI</div><div class="label">Primary Title</div></div>
     </div>
   </section>
 
-  <!-- FOOTER -->
+  <section class="players-section">
+    <div class="players-grid" id="playersGrid">
+      <div class="loading-state">
+        <div class="spinner"></div>
+        <p>Loading squad...</p>
+      </div>
+    </div>
+  </section>
+
   <footer>
-    <div class="footer-copy">© 2025 Team AsuraVerse Esports Pvt Ltd. All Rights Reserved.</div>
+    <p>© 2025 AsuraVerse Esports Pvt. Ltd. All rights reserved.</p>
+    <a href="/opportunities">Apply to join the team →</a>
   </footer>
 
+  <script>
+    async function loadRoster() {
+      try {
+        const res = await fetch('/roster.json');
+        const players = await res.json();
+        const grid = document.getElementById('playersGrid');
+        grid.innerHTML = '';
+
+        // Update meta stats
+        document.getElementById('playerCount').textContent = players.length;
+        const total = players.reduce((sum, p) => sum + p.highlights.length, 0);
+        document.getElementById('totalHighlights').textContent = total + '+';
+
+        players.forEach(player => {
+          const card = document.createElement('a');
+          card.href = `/player?id=${player.id}`;
+          card.className = 'player-card';
+          card.innerHTML = `
+            <div class="highlight-count">
+              <span>${player.highlights.length}</span>
+              <small>Events</small>
+            </div>
+            <div class="card-arrow">
+              <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+            <img class="card-photo" src="/${player.photo}" alt="${player.ign}" loading="lazy">
+            <div class="card-info">
+              <div class="card-role-badge">${player.role}</div>
+              <div class="card-ign">${player.ign}</div>
+              <div class="card-realname">${player.real_name}</div>
+            </div>
+          `;
+          grid.appendChild(card);
+        });
+      } catch(e) {
+        document.getElementById('playersGrid').innerHTML = '<div class="loading-state"><p>Failed to load roster. Please refresh.</p></div>';
+      }
+    }
+
+    loadRoster();
+  </script>
 </body>
 </html>

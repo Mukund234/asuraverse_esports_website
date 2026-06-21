@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Player Profile | AsuraVerse Esports</title>
+  <meta name="robots" content="index, follow">
+  <link rel="icon" type="image/jpeg" href="/asuraverse logo.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #FF7B00;
+      --primary-dark: #CC6200;
+      --primary-glow: rgba(255,123,0,0.18);
+      --bg: #090B10;
+      --bg2: #0D1017;
+      --bg3: #12161F;
+      --border: rgba(255,255,255,0.07);
+      --border-primary: rgba(255,123,0,0.3);
+      --text: #f0f0f0;
+      --muted: #888;
+      --muted2: #aaa;
+    }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    body { background:var(--bg); color:var(--text); font-family:'Rajdhani',sans-serif; overflow-x:hidden; min-height:100vh; }
+
+    /* NAV */
+    nav { position:fixed; top:0; left:0; right:0; z-index:1000; height:68px; display:flex; align-items:center; justify-content:space-between; padding:0 48px; background:rgba(9,11,16,0.92); backdrop-filter:blur(12px); border-bottom:1px solid var(--border); }
+    .nav-logo { display:flex; align-items:center; gap:14px; text-decoration:none; }
+    .logo-hex { width:42px; height:42px; display:flex; align-items:center; justify-content:center; }
+    .logo-hex img { width:100%; height:100%; object-fit:cover; border-radius:50%; }
+    .logo-text .org { font-family:'Bebas Neue',sans-serif; font-size:20px; letter-spacing:3px; color:#fff; }
+    .logo-text .org span { color:var(--primary); }
+    .logo-text .sub { font-size:9px; letter-spacing:4px; color:var(--muted); text-transform:uppercase; }
+    .nav-links { display:flex; align-items:center; gap:32px; }
+    .nav-links a { color:var(--muted2); text-decoration:none; font-size:13px; letter-spacing:2px; text-transform:uppercase; font-weight:600; transition:color 0.2s; }
+    .nav-links a:hover { color:var(--primary); }
+    .nav-cta { background:var(--primary); color:#000; border:none; padding:10px 24px; font-family:'Rajdhani',sans-serif; font-size:13px; font-weight:700; letter-spacing:2px; text-transform:uppercase; cursor:pointer; text-decoration:none; transition:background 0.2s; }
+    .nav-cta:hover { background:var(--primary-dark); }
+
+    /* HERO */
+    .player-hero {
+      min-height:100vh;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      position:relative;
+      overflow:hidden;
+    }
+    .hero-bg-glow { position:absolute; top:0; right:0; width:70%; height:100%; background:radial-gradient(ellipse at 80% 50%, rgba(255,123,0,0.1) 0%, transparent 60%); pointer-events:none; }
+    .hero-left { display:flex; flex-direction:column; justify-content:center; padding:140px 64px 80px; z-index:2; }
+    .back-btn { display:inline-flex; align-items:center; gap:8px; color:var(--muted); text-decoration:none; font-size:12px; letter-spacing:3px; text-transform:uppercase; font-weight:600; margin-bottom:48px; transition:color 0.2s; width:fit-content; }
+    .back-btn:hover { color:var(--primary); }
+    .back-btn svg { width:16px; height:16px; stroke:currentColor; fill:none; transition:transform 0.2s; }
+    .back-btn:hover svg { transform:translateX(-4px); }
+    .player-id { font-size:11px; letter-spacing:5px; color:var(--primary); text-transform:uppercase; font-weight:700; margin-bottom:12px; }
+    .player-ign { font-family:'Bebas Neue',sans-serif; font-size:clamp(64px,8vw,110px); letter-spacing:2px; color:#fff; line-height:0.9; }
+    .player-ign span { color:var(--primary); }
+    .player-realname { font-size:22px; color:var(--muted2); font-weight:500; letter-spacing:1px; margin-top:16px; }
+    .role-badge { display:inline-flex; align-items:center; gap:10px; background:var(--primary); color:#000; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; padding:6px 16px; margin-top:24px; width:fit-content; }
+    .player-bio { font-size:16px; color:var(--muted2); line-height:1.7; margin-top:32px; max-width:480px; }
+    .player-meta { display:flex; gap:40px; margin-top:40px; padding-top:40px; border-top:1px solid var(--border); }
+    .meta-item .meta-label { font-size:10px; letter-spacing:3px; color:var(--muted); text-transform:uppercase; margin-bottom:6px; }
+    .meta-item .meta-value { font-family:'Space Mono',monospace; font-size:14px; color:var(--text); }
+
+    .hero-right { position:relative; display:flex; align-items:flex-end; justify-content:center; padding-top:68px; overflow:hidden; }
+    .hero-right::before { content:''; position:absolute; bottom:0; left:0; right:0; height:40%; background:linear-gradient(to top, var(--bg) 0%, transparent 100%); z-index:1; pointer-events:none; }
+    .player-photo-hero { width:100%; height:100%; object-fit:cover; object-position:top center; filter:saturate(1.1); }
+    .player-number { position:absolute; bottom:40px; right:40px; font-family:'Bebas Neue',sans-serif; font-size:180px; color:rgba(255,123,0,0.06); line-height:1; z-index:0; pointer-events:none; user-select:none; }
+
+    /* TIMELINE SECTION */
+    .timeline-section { padding:80px 48px 100px; max-width:1200px; margin:0 auto; }
+    .section-header { display:flex; align-items:center; gap:24px; margin-bottom:60px; }
+    .section-line { flex:1; height:1px; background:var(--border); }
+    .section-label { font-size:11px; letter-spacing:4px; color:var(--primary); text-transform:uppercase; font-weight:700; white-space:nowrap; }
+    .section-title { font-family:'Bebas Neue',sans-serif; font-size:48px; letter-spacing:2px; color:#fff; margin-bottom:48px; }
+
+    .timeline { position:relative; padding-left:40px; }
+    .timeline::before { content:''; position:absolute; left:0; top:8px; bottom:8px; width:1px; background:linear-gradient(to bottom, var(--primary), rgba(255,123,0,0.1)); }
+    .timeline-item { position:relative; margin-bottom:36px; padding-left:32px; animation:fadeUp 0.4s ease forwards; opacity:0; }
+    .timeline-item:nth-child(1) { animation-delay:0.1s; }
+    .timeline-item:nth-child(2) { animation-delay:0.15s; }
+    .timeline-item:nth-child(3) { animation-delay:0.2s; }
+    .timeline-item:nth-child(4) { animation-delay:0.25s; }
+    .timeline-item:nth-child(5) { animation-delay:0.3s; }
+    .timeline-item:nth-child(6) { animation-delay:0.35s; }
+    .timeline-item:nth-child(7) { animation-delay:0.4s; }
+    @keyframes fadeUp { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
+    .timeline-dot { position:absolute; left:-40px; top:6px; width:10px; height:10px; background:var(--primary); border-radius:50%; box-shadow:0 0 12px rgba(255,123,0,0.6); }
+    .timeline-event { font-size:18px; font-weight:700; color:var(--text); letter-spacing:0.5px; }
+    .timeline-result { display:inline-block; background:rgba(255,123,0,0.1); border:1px solid var(--border-primary); color:var(--primary); font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; padding:3px 12px; margin-top:6px; }
+
+    /* LOADING / ERROR */
+    .loading-state, .error-state { min-height:60vh; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:20px; padding:48px; }
+    .spinner { width:40px; height:40px; border:3px solid var(--border); border-top-color:var(--primary); border-radius:50%; animation:spin 0.8s linear infinite; }
+    @keyframes spin { to { transform:rotate(360deg); } }
+
+    /* FOOTER */
+    footer { border-top:1px solid var(--border); padding:40px 48px; display:flex; justify-content:space-between; align-items:center; }
+    footer p { font-size:13px; color:var(--muted); }
+    footer a { color:var(--primary); text-decoration:none; }
+
+    @media(max-width:900px) {
+      .player-hero { grid-template-columns:1fr; min-height:auto; }
+      .hero-left { padding:120px 24px 40px; }
+      .hero-right { max-height:60vw; }
+      .player-number { font-size:100px; }
+      nav { padding:0 20px; }
+      .nav-links { display:none; }
+      .timeline-section { padding:60px 24px 80px; }
+      footer { flex-direction:column; gap:16px; text-align:center; padding:40px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="nav-logo">
+      <div class="logo-hex"><img src="/asuraverse logo.jpg" alt="AsuraVerse Logo"></div>
+      <div class="logo-text">
+        <div class="org">ASURA<span>VERSE</span></div>
+        <div class="sub">Esports Pvt. Ltd.</div>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/players">Roster</a>
+      <a href="/#achievements">Achievements</a>
+      <a href="/opportunities">Join Us</a>
+      <a href="/partner-with-us">Partners</a>
+    </div>
+    <a href="/opportunities" class="nav-cta">Join The Squad</a>
+  </nav>
+
+  <div id="pageContent">
+    <div class="loading-state">
+      <div class="spinner"></div>
+      <p style="color:var(--muted);letter-spacing:2px;font-size:13px;">LOADING PROFILE...</p>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 AsuraVerse Esports Pvt. Ltd. All rights reserved.</p>
+    <a href="/players">← Back to Full Roster</a>
+  </footer>
+
+  <script>
+    async function loadPlayer() {
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get('id');
+
+      if (!id) { showError('No player ID specified.'); return; }
+
+      try {
+        const res = await fetch('/roster.json');
+        const roster = await res.json();
+        const player = roster.find(p => p.id === id);
+        if (!player) { showError('Player not found.'); return; }
+
+        // Update page title and meta
+        document.title = `${player.ign} (${player.real_name}) | AsuraVerse Esports`;
+
+        const content = document.getElementById('pageContent');
+        content.innerHTML = `
+          <section class="player-hero">
+            <div class="hero-bg-glow"></div>
+            <div class="hero-left">
+              <a href="/players" class="back-btn">
+                <svg viewBox="0 0 24 24" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                Back to Roster
+              </a>
+              <div class="player-id">AsuraVerse Esports · BGMI</div>
+              <div class="player-ign">${player.ign.replace('ASv', '<span>ASv</span>')}</div>
+              <div class="player-realname">${player.real_name}</div>
+              <div class="role-badge">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                ${player.role_full}
+              </div>
+              <p class="player-bio">${player.bio}</p>
+              <div class="player-meta">
+                <div class="meta-item">
+                  <div class="meta-label">Joined</div>
+                  <div class="meta-value">${player.joined_short}</div>
+                </div>
+                <div class="meta-item">
+                  <div class="meta-label">Tournaments</div>
+                  <div class="meta-value">${player.highlights.length}+</div>
+                </div>
+                <div class="meta-item">
+                  <div class="meta-label">Game</div>
+                  <div class="meta-value">BGMI</div>
+                </div>
+              </div>
+            </div>
+            <div class="hero-right">
+              <img class="player-photo-hero" src="/${player.photo}" alt="${player.ign}">
+              <div class="player-number">${player.highlights.length}</div>
+            </div>
+          </section>
+
+          <section class="timeline-section">
+            <div class="section-header">
+              <div class="section-label">Career History</div>
+              <div class="section-line"></div>
+            </div>
+            <h2 class="section-title">TOURNAMENT HIGHLIGHTS</h2>
+            <div class="timeline">
+              ${player.highlights.map(h => `
+                <div class="timeline-item">
+                  <div class="timeline-dot"></div>
+                  <div class="timeline-event">${h.event}</div>
+                  <div class="timeline-result">${h.result}</div>
+                </div>
+              `).join('')}
+            </div>
+          </section>
+        `;
+
+      } catch(e) {
+        showError('Failed to load player profile. Please try again.');
+      }
+    }
+
+    function showError(msg) {
+      document.getElementById('pageContent').innerHTML = `
+        <div class="error-state">
+          <p style="color:var(--primary);font-size:40px;font-family:'Bebas Neue',sans-serif;">404</p>
+          <p style="color:var(--muted2);">${msg}</p>
+          <a href="/players" style="color:var(--primary);text-decoration:none;letter-spacing:2px;font-size:13px;text-transform:uppercase;">← Back to Roster</a>
+        </div>
+      `;
+    }
+
+    loadPlayer();
+  </script>
+</body>
+</html>

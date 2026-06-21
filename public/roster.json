@@ -1,0 +1,89 @@
+[
+  {
+    "id": "asv-blaze",
+    "real_name": "Niket Verma",
+    "ign": "ASvBlaze",
+    "role": "IGL",
+    "role_full": "In-Game Leader",
+    "photo": "Blaze.jpeg",
+    "joined": "April 26, 2026",
+    "joined_short": "Apr 2026",
+    "bio": "The strategic mastermind of AsuraVerse. ASvBlaze calls every rotation, zone push and final ring decision. His calm under pressure and deep game sense have been the foundation of the team since day one.",
+    "highlights": [
+      { "event": "BGIS 2023", "result": "Quarterfinals" },
+      { "event": "BMPS 2023", "result": "Qualified" },
+      { "event": "BGIS 2024", "result": "Round 3" },
+      { "event": "BMPS 2024", "result": "Round 1" },
+      { "event": "JIO Blast LAN", "result": "#5 Finish" },
+      { "event": "BGIS 2026", "result": "Round 4" }
+    ]
+  },
+  {
+    "id": "asv-thug",
+    "real_name": "Abhay Kumar",
+    "ign": "ASvThug",
+    "role": "Assaulter",
+    "role_full": "Freeman Assaulter",
+    "photo": "Thug.jpeg",
+    "joined": "April 26, 2026",
+    "joined_short": "Apr 2026",
+    "bio": "Aggressive, fearless, and built for clutch moments. ASvThug's ability to entry frag and hold aggressive positions under pressure makes him one of the most dangerous players in the roster. His BGIS 2024 Quarterfinals run is already legendary.",
+    "highlights": [
+      { "event": "BGIS 2023", "result": "Quarterfinals" },
+      { "event": "BMPS 2023", "result": "Qualified" },
+      { "event": "BGIS 2024", "result": "Quarterfinals" },
+      { "event": "OnePlus Dominate", "result": "#8 Finish" },
+      { "event": "JIO Blast LAN", "result": "#5 Finish" },
+      { "event": "BGIS 2026", "result": "Round 4" },
+      { "event": "UE Championship", "result": "Semifinalist" }
+    ]
+  },
+  {
+    "id": "asv-frozen",
+    "real_name": "Aryan Singh",
+    "ign": "ASvFrozen",
+    "role": "Fragger",
+    "role_full": "Fragger Filter",
+    "photo": "Frozen.jpeg",
+    "joined": "April 26, 2026",
+    "joined_short": "Apr 2026",
+    "bio": "Cool as ice, lethal as fire. ASvFrozen is the team's primary fragger — the player you send in when the round needs to be broken open. His mechanical skill and fight IQ are consistently among the highest on the team.",
+    "highlights": [
+      { "event": "BGIS 2023", "result": "Quarterfinals" },
+      { "event": "BMPS 2023", "result": "Qualified" },
+      { "event": "BGIS 2024", "result": "Round 3" },
+      { "event": "JIO Blast LAN", "result": "#5 Finish" },
+      { "event": "BGIS 2026", "result": "Round 4" }
+    ]
+  },
+  {
+    "id": "asv-snipy",
+    "real_name": "Nikhil Chaudhary",
+    "ign": "ASvSnipy",
+    "role": "Assaulter",
+    "role_full": "Assaulter",
+    "photo": "snipy.jpeg",
+    "joined": "April 26, 2026",
+    "joined_short": "Apr 2026",
+    "bio": "A precision player who reads the game quietly and delivers when it matters. ASvSnipy brings reliability and consistency to the squad — the kind of player every team needs to maintain composure in high-stakes rounds.",
+    "highlights": [
+      { "event": "BGIS 2025", "result": "Round 3" },
+      { "event": "JIO Blast LAN", "result": "#5 Finish" }
+    ]
+  },
+  {
+    "id": "asv-vikki",
+    "real_name": "Sunder Singh",
+    "ign": "ASvVikki",
+    "role": "Assaulter",
+    "role_full": "Assaulter",
+    "photo": "vikki.jpeg",
+    "joined": "April 26, 2026",
+    "joined_short": "Apr 2026",
+    "bio": "Raw talent with the hunger to prove himself at every stage. ASvVikki's aggressive play style complements the team's attack structure perfectly. He's got his eyes set on being one of the best assaulters in the Indian BGMI scene.",
+    "highlights": [
+      { "event": "BGIS 2024", "result": "Round 3" },
+      { "event": "BGIS 2026", "result": "Round 4" }
+    ]
+  }
+]
