@@ -5,6 +5,19 @@ const nodemailer = require('nodemailer');
  * stored in environment variables.
  */
 function createTransporter() {
+  // If email is not configured, return a mock transporter that just logs to console
+  if (!process.env.EMAIL_USER || process.env.EMAIL_USER === 'your_email@gmail.com') {
+    return {
+      sendMail: async (options) => {
+        console.log('\n--- MOCK EMAIL SENT ---');
+        console.log(`To: ${options.to}`);
+        console.log(`Subject: ${options.subject}`);
+        console.log('-----------------------\n');
+        return true;
+      }
+    };
+  }
+
   return nodemailer.createTransport({
     service: 'gmail',
     auth: {
