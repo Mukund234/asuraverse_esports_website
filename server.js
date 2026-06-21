@@ -10,10 +10,14 @@ const partnershipRoute = require('./routes/partnership');
 const rosterRoute = require('./routes/roster');
 
 const app = express();
+app.disable('x-powered-by');
 const PORT = process.env.PORT || 3000;
 
 // ── Middleware ───────────────────────────────────────────────────────────────
-app.use(cors());
+app.use(cors({
+  origin: ['https://asuraverse.in', 'https://www.asuraverse.in', 'http://localhost:3000'],
+  optionsSuccessStatus: 200
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
