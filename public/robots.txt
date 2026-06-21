@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Disallow admin/private routes
+Disallow: /api/
+
+Sitemap: https://asuraverse.in/sitemap.xml
