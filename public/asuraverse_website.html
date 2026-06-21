@@ -771,65 +771,92 @@
     }
 
     .achieve-item {
-      background: var(--bg2);
-      padding: 36px 32px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
       position: relative;
-      overflow: hidden;
-      transition: background 0.2s;
+      background: var(--primary);
+      clip-path: polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px);
+      padding: 1px;
+      height: 340px;
+      transition: transform 0.3s;
     }
 
     .achieve-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .achieve-inner {
+      background: #0a0a0a;
+      width: 100%;
+      height: 100%;
+      clip-path: polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px);
+      display: flex;
+      flex-direction: column;
+      padding: 32px;
+      position: relative;
+      transition: background 0.3s;
+    }
+
+    .achieve-inner:hover {
       background: #111;
     }
 
-    .achieve-item::before {
-      content: '';
+    .achieve-arrow {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 3px;
-      height: 0;
-      background: var(--primary);
-      transition: height 0.3s;
-    }
-
-    .achieve-item:hover::before {
-      height: 100%;
-    }
-
-    .achieve-medal {
-      font-size: 28px;
-    }
-
-    .achieve-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 20px;
-      letter-spacing: 1.5px;
+      top: 24px;
+      right: 24px;
       color: #fff;
-      line-height: 1.2;
+      opacity: 0.7;
     }
 
-    .achieve-event {
-      font-size: 13px;
-      color: var(--muted2);
+    .achieve-logo {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
     }
 
-    .achieve-prize {
+    .achieve-logo-text {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 30px;
-      color: var(--primary);
-      letter-spacing: 2px;
-      margin-top: auto;
-      padding-top: 8px;
+      font-size: 32px;
+      color: #fff;
+      line-height: 1.1;
+      letter-spacing: 1px;
     }
 
-    .achieve-year {
+    .achieve-logo-sub {
       font-family: 'Space Mono', monospace;
       font-size: 10px;
-      color: var(--muted);
+      color: var(--primary);
+      letter-spacing: 2px;
+      margin-top: 4px;
+    }
+
+    .achieve-bottom {
+      margin-top: auto;
+    }
+
+    .achieve-tag {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-family: 'Space Mono', monospace;
+      color: #ccc;
+      margin-bottom: 4px;
+    }
+
+    .achieve-tag-color {
+      width: 10px;
+      height: 14px;
+      background: var(--primary);
+    }
+
+    .achieve-result {
+      font-size: 20px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-weight: 700;
+      color: #fff;
       letter-spacing: 1px;
     }
 
@@ -1873,48 +1900,69 @@
 
   <!-- ─── ACHIEVEMENTS ─── -->
   <section id="achievements" style="padding: 80px 48px; background: var(--bg);">
-    <div class="section-label">
-      <div class="section-label-line"></div>
-      <div class="section-label-tag">Trophy Cabinet</div>
+    <div class="section-label" style="justify-content: center; margin-bottom: 12px;">
+      <div class="section-label-tag" style="color: var(--primary);">Latest Achievements</div>
     </div>
-    <h2 class="section-title">Recent <span>Achievements</span></h2>
+    <h2 class="section-title" style="text-align: center; font-size: 42px; margin-bottom: 60px;">
+      PROVING EXCELLENCE <br><span style="color: #fff;">THROUGH RESULTS</span>
+    </h2>
     <div
-      style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 40px;">
+      style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px; max-width: 1200px; margin: 0 auto;">
 
+      <!-- Card 1 -->
       <div class="achieve-item">
-        <div class="achieve-event">Weekly Showdown</div>
-        <div class="achieve-title">BY INCUBETA'S FLUX</div>
-        <div class="achieve-prize">CHAMPIONS</div>
+        <div class="achieve-inner">
+          <svg class="achieve-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+          <div class="achieve-logo">
+            <div class="achieve-logo-text">BIHAR STATE OPEN</div>
+            <div class="achieve-logo-sub">ESPORTS CHAMPIONSHIP</div>
+          </div>
+          <div class="achieve-bottom">
+            <div class="achieve-tag">
+              <div class="achieve-tag-color"></div>
+              BGMI
+            </div>
+            <div class="achieve-result">#4 Quarter Finals</div>
+          </div>
+        </div>
       </div>
 
+      <!-- Card 2 -->
       <div class="achieve-item">
-        <div class="achieve-event">Rising Showdown S2</div>
-        <div class="achieve-title">BY RAKA ESPORTS</div>
-        <div class="achieve-prize">GRAND FINALIST</div>
+        <div class="achieve-inner">
+          <svg class="achieve-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+          <div class="achieve-logo">
+            <div class="achieve-logo-text">TORTUGA T1</div>
+            <div class="achieve-logo-sub">QUALIFIERS</div>
+          </div>
+          <div class="achieve-bottom">
+            <div class="achieve-tag">
+              <div class="achieve-tag-color"></div>
+              BGMI
+            </div>
+            <div class="achieve-result">#1 Overall</div>
+          </div>
+        </div>
       </div>
 
-      <div class="achieve-item">
-        <div class="achieve-event">Lonavala Diwali LAN</div>
-        <div class="achieve-title">BY BLESSED VIBES</div>
-        <div class="achieve-prize">SEMI FINALIST</div>
-      </div>
 
-      <div class="achieve-item">
-        <div class="achieve-event">The Marvels Tournament</div>
-        <div class="achieve-title">BY COLDX ORGANISATION</div>
-        <div class="achieve-prize">GRAND FINALIST</div>
-      </div>
 
+      <!-- Card 4 -->
       <div class="achieve-item">
-        <div class="achieve-event">ARENA OF CHAMPIONS</div>
-        <div class="achieve-title">BY TRB ESPORTS</div>
-        <div class="achieve-prize">GRAND FINALIST</div>
-      </div>
-
-      <div class="achieve-item">
-        <div class="achieve-event">MASTER SERIES</div>
-        <div class="achieve-title">BY NEXT LEVEL ESPORTS</div>
-        <div class="achieve-prize">GRAND FINALIST</div>
+        <div class="achieve-inner">
+          <svg class="achieve-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+          <div class="achieve-logo">
+            <div class="achieve-logo-text">7K GRAND FINALS</div>
+            <div class="achieve-logo-sub">16-18 TEAMS FIX</div>
+          </div>
+          <div class="achieve-bottom">
+            <div class="achieve-tag">
+              <div class="achieve-tag-color"></div>
+              BGMI
+            </div>
+            <div class="achieve-result">#6 Placement</div>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -2001,7 +2049,8 @@
       <div class="section-label-tag">Latest Updates</div>
     </div>
     <h2 class="section-title">News &amp; Media</h2>
-    <div class="news-grid" style="grid-template-columns: 1fr;">
+    <div class="news-grid" style="grid-template-columns: 1fr 1fr;">
+      <!-- Card 1: Recruitment -->
       <div class="news-card">
         <div class="news-thumb">
           <div class="news-thumb-overlay"></div>
@@ -2019,6 +2068,27 @@
             Competitive Esports Rosters</div>
           <div class="news-date" style="font-size: 14px; margin-top: 12px; font-weight: bold; color: var(--primary);">
             ACTIVE RECRUITMENT • ACCEPTING APPLICATIONS NOW</div>
+        </div>
+      </div>
+
+      <!-- Card 2: Partnerships & Sponsors -->
+      <div class="news-card" onclick="window.location.href='partner-with-us.html';" style="cursor: pointer;">
+        <div class="news-thumb">
+          <div class="news-thumb-overlay"></div>
+          <div class="news-thumb-icon">
+            <!-- Icon: Handshake / Briefcase / Dollar sign -->
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" style="opacity:0.8; color:var(--primary);">
+              <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+            </svg>
+          </div>
+        </div>
+        <div class="news-body" style="padding: 40px; text-align: center;">
+          <div class="news-tag" style="justify-content: center; margin-bottom: 16px;">Partnerships</div>
+          <div class="news-title" style="font-size: 24px; color: #fff;">Team AsuraVerse is actively looking for
+            Partners and Sponsors in a professional way</div>
+          <div class="news-date" style="font-size: 14px; margin-top: 12px; font-weight: bold; color: var(--primary);">
+            GROW WITH US • OPEN FOR INVESTMENT</div>
         </div>
       </div>
     </div>
