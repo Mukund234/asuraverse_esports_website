@@ -26,6 +26,39 @@ const apiLimiter = rateLimit({
   message: { success: false, error: 'Too many requests. Please try again later.' }
 });
 
+// ── Security Headers ─────────────────────────────────────────────────────────
+app.use((req, res, next) => {
+  // Prevent clickjacking
+  res.setHeader('X-Frame-Options', 'SAMEORIGIN');
+
+  // Prevent MIME-type sniffing
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+
+  // Control referrer information
+  res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+
+  // Enforce HTTPS for 1 year
+  res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
+
+  // Restrict browser features
+  res.setHeader('Permissions-Policy', 'camera=(), microphone=(), geolocation=(), payment=()' );
+
+  // Content Security Policy
+  res.setHeader('Content-Security-Policy', [
+    "default-src 'self'",
+    "script-src 'self' 'unsafe-inline'",           // inline JS used in HTML pages
+    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+    "font-src 'self' https://fonts.gstatic.com",
+    "img-src 'self' data: blob: https:",
+    "connect-src 'self'",
+    "frame-ancestors 'self'",
+    "base-uri 'self'",
+    "form-action 'self'"
+  ].join('; '));
+
+  next();
+});
+
 // ── Static files ─────────────────────────────────────────────────────────────
 // Serve specific file types only (HTML, images, CSS, JS) from the public folder
 app.use(express.static(path.join(__dirname, 'public'), {

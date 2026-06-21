@@ -11,15 +11,52 @@
     }
   ],
   "routes": [
-    { "src": "/api/contact", "dest": "/api/contact.js" },
-    { "src": "/api/partnership", "dest": "/api/partnership.js" },
-    { "src": "/api/roster", "dest": "/api/roster.js" },
-    { "src": "/players", "dest": "/public/players.html" },
-    { "src": "/partner-with-us", "dest": "/public/partner-with-us.html" },
-    { "src": "/roster-application", "dest": "/public/roster-application.html" },
-    { "src": "/founder", "dest": "/public/founder.html" },
-    { "src": "/gallery", "dest": "/public/gallery.html" },
-    { "src": "/", "dest": "/public/asuraverse_website.html" },
-    { "src": "/(.*)", "dest": "/public/$1" }
+    { "src": "/api/contact",         "dest": "/api/contact.js" },
+    { "src": "/api/partnership",     "dest": "/api/partnership.js" },
+    { "src": "/api/roster",          "dest": "/api/roster.js" },
+    { "src": "/players",             "dest": "/public/players.html" },
+    { "src": "/partner-with-us",     "dest": "/public/partner-with-us.html" },
+    { "src": "/roster-application",  "dest": "/public/roster-application.html" },
+    { "src": "/founder",             "dest": "/public/founder.html" },
+    { "src": "/gallery",             "dest": "/public/gallery.html" },
+    { "src": "/roster-poster",       "dest": "/public/roster-poster.html" },
+    { "src": "/achievement",         "dest": "/public/achievement.html" },
+    { "src": "/",                    "dest": "/public/asuraverse_website.html" },
+    { "src": "/(.*)",                "dest": "/public/$1" }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=31536000; includeSubDomains; preload"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=(), payment=()"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self'; frame-ancestors 'self'; base-uri 'self'; form-action 'self'"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        }
+      ]
+    }
   ]
 }
