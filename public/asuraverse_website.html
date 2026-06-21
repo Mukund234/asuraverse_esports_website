@@ -31,6 +31,83 @@
 
   <!-- Sitemap reference -->
   <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+
+  <!-- ── Schema.org JSON-LD Structured Data ── -->
+  <!-- Tells Google, ChatGPT, Perplexity, Gemini exactly what this site is -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SportsOrganization",
+        "@id": "https://asuraverse.in/#organization",
+        "name": "AsuraVerse Esports",
+        "alternateName": "Team AsuraVerse",
+        "legalName": "AsuraVerse Esports Pvt. Ltd.",
+        "url": "https://asuraverse.in",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://asuraverse.in/asuraverse logo.jpg",
+          "width": 512,
+          "height": 512
+        },
+        "description": "AsuraVerse Esports is an Indian esports organization focused on competitive BGMI gaming, talent development, content creation and long-term esports ecosystem growth.",
+        "sport": "Esports",
+        "foundingDate": "2024",
+        "location": {
+          "@type": "Place",
+          "name": "Gandhinagar, Gujarat, India",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Gandhinagar",
+            "addressRegion": "Gujarat",
+            "addressCountry": "IN"
+          }
+        },
+        "sameAs": [
+          "https://www.instagram.com/teamasuraverse/",
+          "https://www.youtube.com/@TeamAsuraVerse",
+          "https://x.com/asuraversegg",
+          "https://www.linkedin.com/company/asuraverse-esports",
+          "https://www.facebook.com/asuraverseesports"
+        ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "partnerships",
+          "url": "https://asuraverse.in/partner-with-us"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://asuraverse.in/#website",
+        "url": "https://asuraverse.in",
+        "name": "AsuraVerse Esports",
+        "description": "Official website of AsuraVerse Esports — Indian competitive BGMI esports organization.",
+        "publisher": { "@id": "https://asuraverse.in/#organization" },
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://asuraverse.in/?q={search_term_string}"
+          },
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://asuraverse.in/#webpage",
+        "url": "https://asuraverse.in",
+        "name": "AsuraVerse Esports | Indian Esports Organization",
+        "isPartOf": { "@id": "https://asuraverse.in/#website" },
+        "about": { "@id": "https://asuraverse.in/#organization" },
+        "primaryImageOfPage": {
+          "@type": "ImageObject",
+          "url": "https://asuraverse.in/asuraverse logo.jpg"
+        }
+      }
+    ]
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link
     href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap"

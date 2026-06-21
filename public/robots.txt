@@ -1,7 +1,36 @@
 User-agent: *
 Allow: /
-
-# Disallow admin/private routes
 Disallow: /api/
 
+# ── Explicitly allow major AI crawlers ──
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
 Sitemap: https://asuraverse.in/sitemap.xml
+
+# AI agent context file
+# https://asuraverse.in/llms.txt
