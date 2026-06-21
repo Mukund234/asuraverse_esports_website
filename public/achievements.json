@@ -43,5 +43,20 @@
         "image": "tortuga-scrims.jpg"
       }
     ]
+  },
+  {
+    "id": "7k",
+    "name": "7K Tournament",
+    "prize_pool": "7,000 INR",
+    "final_standing": "#6 in Grand Finals",
+    "logo": "",
+    "game": "BGMI",
+    "journey": [
+      {
+        "round": "Grand Finals",
+        "result": "#6 Finish",
+        "image": "7k-finals.jpg"
+      }
+    ]
   }
 ]
