@@ -1,0 +1,27 @@
+[
+  {
+    "id": "bihar-lan",
+    "name": "Bihar State Open Esports Championship",
+    "prize_pool": "5,75,000 INR",
+    "final_standing": "#4 in Quarter finals",
+    "logo": "Bihar esports open chapionship logo.png",
+    "game": "BGMI",
+    "journey": [
+      {
+        "round": "Round 1",
+        "result": "#1 Finish",
+        "image": "bihar-round1.jpg"
+      },
+      {
+        "round": "Round 2",
+        "result": "#1 Finish",
+        "image": "bihar-round2.jpg"
+      },
+      {
+        "round": "Quarter Finals",
+        "result": "#4 Finish",
+        "image": "bihar-championship.jpg"
+      }
+    ]
+  }
+]

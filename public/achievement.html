@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Achievement Details — Team AsuraVerse</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #FF7B00;
+      --primary-dark: #CC6200;
+      --bg: #090B10;
+      --bg2: #0D1017;
+      --bg3: #12161F;
+      --border: rgba(255, 255, 255, 0.07);
+      --text: #f0f0f0;
+      --muted: #888;
+      --muted2: #aaa;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: 'Rajdhani', sans-serif; overflow-x: hidden; }
+
+    /* ── NAV ── (Minified for brevity, matching main site) */
+    nav.main-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; height: 68px; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; background: rgba(9, 11, 16, 0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+    .nav-logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+    .logo-hex { width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; }
+    .logo-text { font-family: 'Bebas Neue', sans-serif; }
+    .logo-text .org { font-size: 20px; letter-spacing: 3px; color: #fff; }
+    .logo-text .org span { color: var(--primary); }
+    .logo-text .sub { font-size: 9px; letter-spacing: 4px; color: var(--muted); font-family: 'Space Mono', monospace; }
+    .nav-cta { background: var(--primary); color: #fff; border: none; padding: 10px 24px; font-family: 'Rajdhani', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; text-decoration: none; clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%); transition: background 0.2s; }
+    .nav-cta:hover { background: var(--primary-dark); }
+
+    /* ── PAGE LAYOUT ── */
+    #achievement-header {
+      padding: 140px 48px 60px;
+      text-align: center;
+      background: radial-gradient(ellipse at top, rgba(255,123,0,0.08), transparent 70%);
+    }
+    
+    .game-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Space Mono', monospace;
+      font-size: 14px;
+      color: var(--muted2);
+      margin-bottom: 24px;
+    }
+    .game-tag-color {
+      width: 12px; height: 12px; background: var(--primary);
+    }
+
+    #a-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(40px, 6vw, 72px);
+      letter-spacing: 2px;
+      color: #fff;
+      margin-bottom: 16px;
+      line-height: 1.1;
+    }
+    
+    #a-standing {
+      font-size: 24px;
+      color: var(--primary);
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
+      max-width: 800px;
+      margin: 48px auto 0;
+      text-align: left;
+    }
+    .meta-box {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      padding: 24px;
+      border-left: 3px solid var(--primary);
+    }
+    .meta-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+    .meta-val {
+      font-size: 20px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .journey-section {
+      max-width: 1000px;
+      margin: 0 auto 80px;
+      padding: 0 48px;
+    }
+
+    .round-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      margin-bottom: 40px;
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 0;
+      overflow: hidden;
+    }
+    
+    .round-info {
+      padding: 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-right: 1px solid var(--border);
+    }
+    .round-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 36px;
+      color: var(--primary);
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+    }
+    .round-result {
+      font-size: 20px;
+      font-weight: 600;
+      color: #fff;
+    }
+    .round-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      min-height: 300px;
+    }
+
+    footer {
+      background: #050505; border-top: 1px solid var(--border); padding: 40px 48px 28px; display: flex; justify-content: space-between; align-items: center;
+    }
+    .footer-copy { font-size: 13px; color: var(--muted); }
+    .footer-back { color: var(--primary); text-decoration: none; font-size: 13px; font-weight: 600; letter-spacing: 1px; transition: color 0.2s; }
+    .footer-back:hover { color: #fff; }
+
+    @media (max-width: 768px) {
+      .round-card { grid-template-columns: 1fr; }
+      .round-info { border-right: none; border-bottom: 1px solid var(--border); padding: 32px; }
+      nav.main-nav { padding: 0 24px; }
+      #achievement-header, .journey-section { padding-left: 24px; padding-right: 24px; }
+      .meta-grid { grid-template-columns: 1fr; }
+    }
+    
+    /* Loading state */
+    #loading { text-align: center; padding: 120px 0; font-family: 'Space Mono', monospace; color: var(--primary); letter-spacing: 2px; }
+    #content-wrap { display: none; }
+  </style>
+</head>
+<body>
+
+  <nav class="main-nav">
+    <a href="/" class="nav-logo">
+      <div class="logo-hex">
+        <img src="asuraverse logo.jpg" alt="AsuraVerse Logo" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+      </div>
+      <div class="logo-text">
+        <div class="org">ASURA<span>VERSE</span></div>
+        <div class="sub">Esports Pvt Ltd</div>
+      </div>
+    </a>
+    <a href="/roster-application" class="nav-cta">Apply Now</a>
+  </nav>
+
+  <div id="loading">DECRYPTING DATA...</div>
+
+  <div id="content-wrap">
+    <header id="achievement-header">
+      <div class="game-tag">
+        <div class="game-tag-color"></div>
+        <span id="a-game">BGMI</span>
+      </div>
+      <h1 id="a-title">Tournament Name</h1>
+      <div id="a-standing">#1 Overall</div>
+
+      <div class="meta-grid">
+        <div class="meta-box">
+          <div class="meta-label">Prize Pool</div>
+          <div class="meta-val" id="a-prize">TBA</div>
+        </div>
+        <div class="meta-box">
+          <div class="meta-label">Status</div>
+          <div class="meta-val">COMPLETED</div>
+        </div>
+      </div>
+    </header>
+
+    <section class="journey-section">
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:32px;">
+        <div style="flex:1;height:1px;background:var(--border);"></div>
+        <div style="font-family:'Space Mono',monospace;font-size:12px;color:var(--primary);letter-spacing:3px;">JOURNEY ARCHIVE</div>
+        <div style="flex:1;height:1px;background:var(--border);"></div>
+      </div>
+
+      <div id="journey-container">
+        <!-- JS will inject round cards here -->
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <div class="footer-copy">© 2025 Team AsuraVerse Esports Pvt Ltd. All Rights Reserved.</div>
+    <a href="/#achievements" class="footer-back">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:6px;"><polyline points="15 18 9 12 15 6"></polyline></svg>Back to Achievements
+    </a>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      const params = new URLSearchParams(window.location.search);
+      const targetId = params.get('id');
+
+      if (!targetId) {
+        document.getElementById('loading').textContent = 'ERROR: NO TOURNAMENT SPECIFIED';
+        return;
+      }
+
+      try {
+        const res = await fetch('achievements.json');
+        const db = await res.json();
+        
+        const data = db.find(item => item.id === targetId);
+
+        if (!data) {
+          document.getElementById('loading').textContent = 'ERROR: RECORD NOT FOUND';
+          return;
+        }
+
+        // Populate header
+        document.getElementById('a-title').textContent = data.name;
+        document.getElementById('a-standing').textContent = data.final_standing;
+        document.getElementById('a-prize').textContent = data.prize_pool;
+        document.getElementById('a-game').textContent = data.game;
+
+        // Populate Journey
+        const journeyContainer = document.getElementById('journey-container');
+        data.journey.forEach(round => {
+          const card = document.createElement('div');
+          card.className = 'round-card';
+          
+          card.innerHTML = `
+            <div class="round-info">
+              <div class="round-name">${round.round}</div>
+              <div class="round-result">${round.result}</div>
+            </div>
+            <div>
+              <img src="${round.image}" alt="${round.round} Scoreboard" class="round-img">
+            </div>
+          `;
+          journeyContainer.appendChild(card);
+        });
+
+        // Show content
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('content-wrap').style.display = 'block';
+
+      } catch (err) {
+        console.error(err);
+        document.getElementById('loading').textContent = 'ERROR: SYSTEM FAILURE';
+      }
+    });
+  </script>
+
+  <!-- CUSTOM CURSOR -->
+  <div class="custom-cursor"></div>
+  <div class="custom-cursor-dot"></div>
+  <style>
+    @media (pointer: fine) { body, a, button, .nav-cta { cursor: none !important; } }
+    .custom-cursor, .custom-cursor-dot { position: fixed; top: 0; left: 0; pointer-events: none; z-index: 10000; transform: translate(-50%, -50%); display: none; }
+    @media (pointer: fine) { .custom-cursor, .custom-cursor-dot { display: block; } }
+    .custom-cursor { width: 32px; height: 32px; border: 1.5px solid var(--primary); border-radius: 50%; transition: width 0.2s ease, height 0.2s ease, background-color 0.2s ease, border-color 0.2s ease; }
+    .custom-cursor-dot { width: 6px; height: 6px; background-color: var(--primary); border-radius: 50%; z-index: 10001; }
+    .custom-cursor.hover { width: 50px; height: 50px; background-color: rgba(255, 123, 0, 0.1); border-color: rgba(255, 123, 0, 0.5); }
+  </style>
+  <script>
+    (function() {
+      if (window.matchMedia("(pointer: coarse)").matches) return;
+      const cursor = document.querySelector('.custom-cursor');
+      const dot = document.querySelector('.custom-cursor-dot');
+      let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
+      let cursorX = window.innerWidth / 2, cursorY = window.innerHeight / 2;
+      document.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; dot.style.left = mouseX + 'px'; dot.style.top = mouseY + 'px'; });
+      function animate() {
+        cursorX += (mouseX - cursorX) * 0.15; cursorY += (mouseY - cursorY) * 0.15;
+        cursor.style.left = cursorX + 'px'; cursor.style.top = cursorY + 'px';
+        requestAnimationFrame(animate);
+      }
+      requestAnimationFrame(animate);
+      
+      const setupHover = () => {
+        document.querySelectorAll('a, button, .nav-cta, .round-card').forEach(el => {
+          el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+          el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+        });
+      };
+      
+      setupHover();
+      // Also re-run after dynamic content loads
+      const observer = new MutationObserver(setupHover);
+      observer.observe(document.getElementById('journey-container'), { childList: true });
+    })();
+  </script>
+</body>
+</html>
