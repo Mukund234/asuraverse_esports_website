@@ -12,7 +12,7 @@
     :root {
       --primary: #FF7B00;
       --primary-dark: #CC6200;
-      --primary-glow: rgba(255,123,0,0.18);
+      --primary-glow: rgba(255,123,0,0.2);
       --bg: #090B10;
       --bg2: #0D1017;
       --bg3: #12161F;
@@ -26,72 +26,169 @@
     body { background:var(--bg); color:var(--text); font-family:'Rajdhani',sans-serif; overflow-x:hidden; min-height:100vh; }
 
     /* NAV */
-    nav { position:fixed; top:0; left:0; right:0; z-index:1000; height:68px; display:flex; align-items:center; justify-content:space-between; padding:0 48px; background:rgba(9,11,16,0.92); backdrop-filter:blur(12px); border-bottom:1px solid var(--border); }
+    nav { position:fixed; top:0; left:0; right:0; z-index:1000; height:68px; display:flex; align-items:center; justify-content:space-between; padding:0 48px; background:rgba(9,11,16,0.95); backdrop-filter:blur(16px); border-bottom:1px solid var(--border); }
     .nav-logo { display:flex; align-items:center; gap:14px; text-decoration:none; }
-    .logo-hex { width:42px; height:42px; display:flex; align-items:center; justify-content:center; }
-    .logo-hex img { width:100%; height:100%; object-fit:cover; border-radius:50%; }
+    .logo-hex img { width:42px; height:42px; object-fit:cover; border-radius:50%; }
     .logo-text .org { font-family:'Bebas Neue',sans-serif; font-size:20px; letter-spacing:3px; color:#fff; }
     .logo-text .org span { color:var(--primary); }
     .logo-text .sub { font-size:9px; letter-spacing:4px; color:var(--muted); text-transform:uppercase; }
     .nav-links { display:flex; align-items:center; gap:32px; }
     .nav-links a { color:var(--muted2); text-decoration:none; font-size:13px; letter-spacing:2px; text-transform:uppercase; font-weight:600; transition:color 0.2s; }
     .nav-links a:hover { color:var(--primary); }
-    .nav-cta { background:var(--primary); color:#000; border:none; padding:10px 24px; font-family:'Rajdhani',sans-serif; font-size:13px; font-weight:700; letter-spacing:2px; text-transform:uppercase; cursor:pointer; text-decoration:none; transition:background 0.2s; }
+    .nav-cta { background:var(--primary); color:#000; padding:10px 24px; font-family:'Rajdhani',sans-serif; font-size:13px; font-weight:700; letter-spacing:2px; text-transform:uppercase; text-decoration:none; transition:background 0.2s; }
     .nav-cta:hover { background:var(--primary-dark); }
 
-    /* HERO */
+    /* ── HERO ── */
     .player-hero {
       min-height:100vh;
       display:grid;
-      grid-template-columns:1fr 1fr;
+      grid-template-columns:55% 45%;
       position:relative;
-      overflow:hidden;
     }
-    .hero-bg-glow { position:absolute; top:0; right:0; width:70%; height:100%; background:radial-gradient(ellipse at 80% 50%, rgba(255,123,0,0.1) 0%, transparent 60%); pointer-events:none; }
+    /* ambient glow behind photo */
+    .hero-glow { position:absolute; top:0; right:0; width:55%; height:100%; background:radial-gradient(ellipse at 60% 40%, rgba(255,123,0,0.12) 0%, transparent 65%); pointer-events:none; }
+
+    /* LEFT */
     .hero-left { display:flex; flex-direction:column; justify-content:center; padding:140px 64px 80px; z-index:2; }
-    .back-btn { display:inline-flex; align-items:center; gap:8px; color:var(--muted); text-decoration:none; font-size:12px; letter-spacing:3px; text-transform:uppercase; font-weight:600; margin-bottom:48px; transition:color 0.2s; width:fit-content; }
+    .back-btn { display:inline-flex; align-items:center; gap:8px; color:var(--muted); text-decoration:none; font-size:11px; letter-spacing:3px; text-transform:uppercase; font-weight:700; margin-bottom:52px; transition:color 0.2s; width:fit-content; }
     .back-btn:hover { color:var(--primary); }
-    .back-btn svg { width:16px; height:16px; stroke:currentColor; fill:none; transition:transform 0.2s; }
+    .back-btn svg { width:14px; height:14px; stroke:currentColor; fill:none; stroke-width:2.5; transition:transform 0.2s; }
     .back-btn:hover svg { transform:translateX(-4px); }
-    .player-id { font-size:11px; letter-spacing:5px; color:var(--primary); text-transform:uppercase; font-weight:700; margin-bottom:12px; }
-    .player-ign { font-family:'Bebas Neue',sans-serif; font-size:clamp(64px,8vw,110px); letter-spacing:2px; color:#fff; line-height:0.9; }
-    .player-ign span { color:var(--primary); }
-    .player-realname { font-size:22px; color:var(--muted2); font-weight:500; letter-spacing:1px; margin-top:16px; }
-    .role-badge { display:inline-flex; align-items:center; gap:10px; background:var(--primary); color:#000; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; padding:6px 16px; margin-top:24px; width:fit-content; }
-    .player-bio { font-size:16px; color:var(--muted2); line-height:1.7; margin-top:32px; max-width:480px; }
-    .player-meta { display:flex; gap:40px; margin-top:40px; padding-top:40px; border-top:1px solid var(--border); }
-    .meta-item .meta-label { font-size:10px; letter-spacing:3px; color:var(--muted); text-transform:uppercase; margin-bottom:6px; }
-    .meta-item .meta-value { font-family:'Space Mono',monospace; font-size:14px; color:var(--text); }
 
-    .hero-right { position:relative; display:flex; align-items:flex-end; justify-content:center; padding-top:68px; overflow:hidden; }
-    .hero-right::before { content:''; position:absolute; bottom:0; left:0; right:0; height:40%; background:linear-gradient(to top, var(--bg) 0%, transparent 100%); z-index:1; pointer-events:none; }
-    .player-photo-hero { width:100%; height:100%; object-fit:cover; object-position:top center; filter:saturate(1.1); }
-    .player-number { position:absolute; bottom:40px; right:40px; font-family:'Bebas Neue',sans-serif; font-size:180px; color:rgba(255,123,0,0.06); line-height:1; z-index:0; pointer-events:none; user-select:none; }
+    .player-tag { display:flex; align-items:center; gap:12px; margin-bottom:16px; }
+    .tag-org { font-size:11px; letter-spacing:4px; color:var(--muted); text-transform:uppercase; font-weight:700; }
+    .tag-dot { width:4px; height:4px; border-radius:50%; background:var(--primary); }
+    .tag-game { font-size:11px; letter-spacing:4px; color:var(--primary); text-transform:uppercase; font-weight:700; }
 
-    /* TIMELINE SECTION */
-    .timeline-section { padding:80px 48px 100px; max-width:1200px; margin:0 auto; }
-    .section-header { display:flex; align-items:center; gap:24px; margin-bottom:60px; }
-    .section-line { flex:1; height:1px; background:var(--border); }
-    .section-label { font-size:11px; letter-spacing:4px; color:var(--primary); text-transform:uppercase; font-weight:700; white-space:nowrap; }
-    .section-title { font-family:'Bebas Neue',sans-serif; font-size:48px; letter-spacing:2px; color:#fff; margin-bottom:48px; }
+    .player-ign { font-family:'Bebas Neue',sans-serif; font-size:clamp(60px,8vw,100px); letter-spacing:2px; color:#fff; line-height:0.9; }
+    .ign-prefix { color:rgba(255,255,255,0.35); }
+    .ign-name { color:#fff; }
+    .player-realname { font-size:18px; color:var(--muted2); font-weight:500; letter-spacing:2px; margin-top:14px; text-transform:uppercase; }
 
-    .timeline { position:relative; padding-left:40px; }
-    .timeline::before { content:''; position:absolute; left:0; top:8px; bottom:8px; width:1px; background:linear-gradient(to bottom, var(--primary), rgba(255,123,0,0.1)); }
-    .timeline-item { position:relative; margin-bottom:36px; padding-left:32px; animation:fadeUp 0.4s ease forwards; opacity:0; }
-    .timeline-item:nth-child(1) { animation-delay:0.1s; }
-    .timeline-item:nth-child(2) { animation-delay:0.15s; }
-    .timeline-item:nth-child(3) { animation-delay:0.2s; }
-    .timeline-item:nth-child(4) { animation-delay:0.25s; }
-    .timeline-item:nth-child(5) { animation-delay:0.3s; }
-    .timeline-item:nth-child(6) { animation-delay:0.35s; }
-    .timeline-item:nth-child(7) { animation-delay:0.4s; }
-    @keyframes fadeUp { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
-    .timeline-dot { position:absolute; left:-40px; top:6px; width:10px; height:10px; background:var(--primary); border-radius:50%; box-shadow:0 0 12px rgba(255,123,0,0.6); }
-    .timeline-event { font-size:18px; font-weight:700; color:var(--text); letter-spacing:0.5px; }
-    .timeline-result { display:inline-block; background:rgba(255,123,0,0.1); border:1px solid var(--border-primary); color:var(--primary); font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; padding:3px 12px; margin-top:6px; }
+    .role-pill { display:inline-flex; align-items:center; gap:10px; border:1px solid var(--border-primary); background:rgba(255,123,0,0.08); color:var(--primary); font-size:11px; font-weight:700; letter-spacing:3px; text-transform:uppercase; padding:8px 20px; margin-top:28px; width:fit-content; }
+    .role-dot { width:6px; height:6px; border-radius:50%; background:var(--primary); animation:rpulse 1.5s infinite; }
+    @keyframes rpulse { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:0.5;transform:scale(0.7);} }
+
+    .player-bio { font-size:16px; color:rgba(240,240,240,0.7); line-height:1.75; margin-top:32px; max-width:440px; }
+
+    /* META STATS */
+    .player-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; margin-top:44px; background:var(--border); }
+    .stat-cell { background:var(--bg); padding:20px 16px; }
+    .stat-cell .sv { font-family:'Bebas Neue',sans-serif; font-size:32px; color:var(--primary); line-height:1; }
+    .stat-cell .sl { font-size:9px; letter-spacing:3px; color:var(--muted); text-transform:uppercase; margin-top:4px; }
+
+    /* SOCIAL LINKS */
+    .player-socials { display:flex; gap:12px; margin-top:32px; }
+    .psocial-btn { display:inline-flex; align-items:center; gap:8px; background:var(--bg3); border:1px solid var(--border); color:var(--muted2); text-decoration:none; font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; padding:10px 18px; transition:border-color 0.2s, color 0.2s, background 0.2s; }
+    .psocial-btn:hover { border-color:var(--primary); color:var(--primary); background:rgba(255,123,0,0.06); }
+    .psocial-btn svg { width:14px; height:14px; fill:currentColor; }
+
+    /* RIGHT — photo */
+    .hero-right { position:relative; overflow:hidden; display:flex; align-items:flex-end; justify-content:center; padding-top:68px; }
+    .hero-right::after { content:''; position:absolute; bottom:0; left:0; right:0; height:35%; background:linear-gradient(to top, var(--bg) 0%, transparent 100%); z-index:1; pointer-events:none; }
+    .player-photo-hero { width:100%; height:100%; object-fit:cover; object-position:top center; display:block; }
+    /* big decorative IGN watermark behind photo */
+    .photo-watermark { position:absolute; bottom:-20px; left:50%; transform:translateX(-50%); font-family:'Bebas Neue',sans-serif; font-size:clamp(80px,12vw,160px); color:rgba(255,123,0,0.05); white-space:nowrap; pointer-events:none; letter-spacing:4px; z-index:0; }
+
+    /* ── TOURNAMENT TREE SECTION ── */
+    .tree-section { padding:100px 48px; max-width:1200px; margin:0 auto; }
+    .sec-eyebrow { font-size:11px; letter-spacing:5px; color:var(--primary); text-transform:uppercase; font-weight:700; margin-bottom:12px; }
+    .sec-title { font-family:'Bebas Neue',sans-serif; font-size:clamp(40px,5vw,72px); letter-spacing:3px; color:#fff; margin-bottom:72px; }
+
+    /* THE TREE — alternating left/right branches */
+    .tree-container { position:relative; padding:0 0 40px; }
+
+    /* center spine */
+    .tree-spine { position:absolute; left:50%; top:0; bottom:0; width:2px; background:linear-gradient(to bottom, var(--primary) 0%, rgba(255,123,0,0.15) 100%); transform:translateX(-50%); }
+
+    /* each row */
+    .tree-row { display:grid; grid-template-columns:1fr 80px 1fr; align-items:center; margin-bottom:40px; position:relative; opacity:0; transform:translateY(24px); transition:opacity 0.5s ease, transform 0.5s ease; }
+    .tree-row.visible { opacity:1; transform:translateY(0); }
+
+    /* left branch (even) — content on left, empty on right */
+    .tree-row.left .branch-content { grid-column:1; text-align:right; padding-right:32px; }
+    .tree-row.left .branch-node { grid-column:2; }
+    .tree-row.left .branch-empty { grid-column:3; }
+
+    /* right branch (odd) — empty on left, content on right */
+    .tree-row.right .branch-empty { grid-column:1; }
+    .tree-row.right .branch-node { grid-column:2; }
+    .tree-row.right .branch-content { grid-column:3; text-align:left; padding-left:32px; }
+
+    /* center node */
+    .branch-node { display:flex; align-items:center; justify-content:center; position:relative; z-index:2; }
+    .node-circle {
+      width:20px; height:20px; border-radius:50%;
+      border:2px solid var(--primary);
+      background:var(--bg);
+      position:relative;
+      transition:transform 0.3s, box-shadow 0.3s;
+      cursor:default;
+    }
+    .node-circle.gold { background:var(--primary); box-shadow:0 0 16px rgba(255,123,0,0.5); }
+    .node-circle::after { content:''; position:absolute; inset:3px; border-radius:50%; background:var(--primary); opacity:0; transition:opacity 0.3s; }
+    .node-circle:not(.gold)::after { opacity:0.4; }
+    .tree-row:hover .node-circle { transform:scale(1.3); box-shadow:0 0 20px rgba(255,123,0,0.6); }
+
+    /* horizontal branch lines connecting node to content */
+    .branch-content { position:relative; }
+    .tree-row.left .branch-content::after {
+      content:''; position:absolute; top:50%; right:-32px; width:32px; height:1px;
+      background:linear-gradient(to right, transparent, rgba(255,123,0,0.4));
+    }
+    .tree-row.right .branch-content::before {
+      content:''; position:absolute; top:50%; left:-32px; width:32px; height:1px;
+      background:linear-gradient(to left, transparent, rgba(255,123,0,0.4));
+    }
+
+    /* content card */
+    .branch-card {
+      display:inline-block;
+      background:var(--bg2);
+      border:1px solid var(--border);
+      padding:20px 24px;
+      transition:border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+      min-width:240px;
+      max-width:320px;
+      text-decoration:none;
+      position:relative;
+    }
+    .tree-row:hover .branch-card { border-color:var(--border-primary); box-shadow:0 8px 32px rgba(255,123,0,0.1); transform:translateY(-2px); }
+    .branch-card .link-arrow { position:absolute; top:16px; right:16px; opacity:0; color:var(--primary); transition:opacity 0.3s, transform 0.3s; }
+    .branch-card:hover .link-arrow { opacity:1; transform:translate(2px,-2px); }
+    .branch-event { font-size:18px; font-weight:700; letter-spacing:0.5px; color:#fff; padding-right:16px; }
+    .branch-result { display:inline-block; margin-top:8px; font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; padding:4px 12px; }
+    .branch-result.gold { background:rgba(255,123,0,0.15); border:1px solid rgba(255,123,0,0.4); color:var(--primary); }
+    .branch-result.silver { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.12); color:var(--muted2); }
+
+    /* ── OVERVIEW SECTION ── */
+    .overview-section { background:var(--bg2); border-top:1px solid var(--border); padding:100px 48px; }
+    .overview-inner { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:1fr 2fr; gap:80px; align-items:start; }
+    .overview-left .ov-eyebrow { font-size:11px; letter-spacing:5px; color:var(--primary); text-transform:uppercase; font-weight:700; margin-bottom:12px; }
+    .overview-left .ov-title { font-family:'Bebas Neue',sans-serif; font-size:clamp(40px,5vw,68px); letter-spacing:3px; color:#fff; line-height:0.95; }
+    .overview-left .ov-sub { font-size:14px; color:var(--muted); margin-top:20px; line-height:1.6; max-width:220px; }
+    .overview-right { display:flex; flex-direction:column; gap:28px; }
+    .ov-card { background:var(--bg3); border:1px solid var(--border); padding:28px 32px; position:relative; overflow:hidden; transition:border-color 0.3s; }
+    .ov-card:hover { border-color:var(--border-primary); }
+    .ov-card::before { content:''; position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--primary); transform:scaleY(0); transform-origin:bottom; transition:transform 0.35s; }
+    .ov-card:hover::before { transform:scaleY(1); }
+    .ov-card-label { font-size:10px; letter-spacing:4px; color:var(--primary); text-transform:uppercase; font-weight:700; margin-bottom:10px; }
+    .ov-card-value { font-size:18px; color:var(--text); font-weight:600; line-height:1.55; }
+    .ov-tags { display:flex; flex-wrap:wrap; gap:8px; margin-top:8px; }
+    .ov-tag { background:rgba(255,123,0,0.08); border:1px solid var(--border-primary); color:var(--primary); font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; padding:4px 14px; }
+    .ov-cta { display:flex; gap:16px; margin-top:12px; align-items:center; flex-wrap:wrap; }
+    .ov-btn { display:inline-flex; align-items:center; gap:8px; background:var(--primary); color:#000; font-family:'Bebas Neue',sans-serif; font-size:16px; letter-spacing:2px; text-decoration:none; padding:12px 28px; transition:background 0.2s; }
+    .ov-btn:hover { background:var(--primary-dark); }
+    .ov-btn-ghost { display:inline-flex; align-items:center; gap:8px; border:1px solid var(--border-primary); color:var(--primary); font-family:'Bebas Neue',sans-serif; font-size:16px; letter-spacing:2px; text-decoration:none; padding:12px 28px; transition:background 0.2s; }
+    .ov-btn-ghost:hover { background:rgba(255,123,0,0.08); }
+    @media(max-width:960px) {
+      .overview-section { padding:60px 24px; }
+      .overview-inner { grid-template-columns:1fr; gap:40px; }
+      .overview-left .ov-sub { max-width:100%; }
+    }
 
     /* LOADING / ERROR */
-    .loading-state, .error-state { min-height:60vh; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:20px; padding:48px; }
+    .loading-state { min-height:60vh; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:20px; }
     .spinner { width:40px; height:40px; border:3px solid var(--border); border-top-color:var(--primary); border-radius:50%; animation:spin 0.8s linear infinite; }
     @keyframes spin { to { transform:rotate(360deg); } }
 
@@ -100,138 +197,222 @@
     footer p { font-size:13px; color:var(--muted); }
     footer a { color:var(--primary); text-decoration:none; }
 
-    @media(max-width:900px) {
-      .player-hero { grid-template-columns:1fr; min-height:auto; }
-      .hero-left { padding:120px 24px 40px; }
-      .hero-right { max-height:60vw; }
-      .player-number { font-size:100px; }
+    @media(max-width:960px) {
       nav { padding:0 20px; }
       .nav-links { display:none; }
-      .timeline-section { padding:60px 24px 80px; }
-      footer { flex-direction:column; gap:16px; text-align:center; padding:40px 24px; }
+      .player-hero { grid-template-columns:1fr; min-height:auto; }
+      .hero-left { padding:120px 24px 40px; }
+      .hero-right { max-height:70vw; }
+      .tree-section { padding:60px 24px 80px; }
+      /* On mobile, tree becomes single column */
+      .tree-spine { left:24px; }
+      .tree-row { grid-template-columns:40px 1fr; }
+      .tree-row.left .branch-content, .tree-row.right .branch-content { grid-column:2; text-align:left; padding-left:20px; padding-right:0; }
+      .tree-row.left .branch-node, .tree-row.right .branch-node { grid-column:1; }
+      .tree-row.left .branch-empty, .tree-row.right .branch-empty { display:none; }
+      .tree-row.left .branch-content::after { display:none; }
+      .tree-row.right .branch-content::before { display:none; }
+      .branch-card { min-width:0; max-width:100%; width:100%; }
+      footer { flex-direction:column; gap:16px; text-align:center; padding:40px 20px; }
     }
   </style>
 </head>
 <body>
 
-  <nav>
-    <a href="/" class="nav-logo">
-      <div class="logo-hex"><img src="/asuraverse logo.jpg" alt="AsuraVerse Logo"></div>
-      <div class="logo-text">
-        <div class="org">ASURA<span>VERSE</span></div>
-        <div class="sub">Esports Pvt. Ltd.</div>
-      </div>
-    </a>
-    <div class="nav-links">
-      <a href="/">Home</a>
-      <a href="/players">Roster</a>
-      <a href="/#achievements">Achievements</a>
-      <a href="/opportunities">Join Us</a>
-      <a href="/partner-with-us">Partners</a>
+<nav>
+  <a href="/" class="nav-logo">
+    <div class="logo-hex"><img src="/asuraverse logo.jpg" alt="AsuraVerse"></div>
+    <div class="logo-text">
+      <div class="org">ASURA<span>VERSE</span></div>
+      <div class="sub">Esports Pvt. Ltd.</div>
     </div>
-    <a href="/opportunities" class="nav-cta">Join The Squad</a>
-  </nav>
-
-  <div id="pageContent">
-    <div class="loading-state">
-      <div class="spinner"></div>
-      <p style="color:var(--muted);letter-spacing:2px;font-size:13px;">LOADING PROFILE...</p>
-    </div>
+  </a>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/players">Roster</a>
+    <a href="/#achievements">Achievements</a>
+    <a href="/opportunities">Join Us</a>
+    <a href="/partner-with-us">Partners</a>
   </div>
+  <a href="/opportunities" class="nav-cta">Join The Squad</a>
+</nav>
 
-  <footer>
-    <p>© 2025 AsuraVerse Esports Pvt. Ltd. All rights reserved.</p>
-    <a href="/players">← Back to Full Roster</a>
-  </footer>
+<div id="pageContent">
+  <div class="loading-state" style="min-height:100vh;">
+    <div class="spinner"></div>
+    <p style="color:var(--muted);letter-spacing:3px;font-size:12px;">LOADING PROFILE...</p>
+  </div>
+</div>
 
-  <script>
-    async function loadPlayer() {
-      const params = new URLSearchParams(window.location.search);
-      const id = params.get('id');
+<footer>
+  <p>© 2025 AsuraVerse Esports Pvt. Ltd. All rights reserved.</p>
+  <a href="/players">← Full Roster</a>
+</footer>
 
-      if (!id) { showError('No player ID specified.'); return; }
+<script>
+  const ytSvg = `<svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.97C18.88 4 12 4 12 4s-6.88 0-8.59.45A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.97C5.12 20 12 20 12 20s6.88 0 8.59-.45a2.78 2.78 0 0 0 1.96-1.97A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"/></svg>`;
+  const igSvg = `<svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>`;
 
-      try {
-        const res = await fetch('/roster.json');
-        const roster = await res.json();
-        const player = roster.find(p => p.id === id);
-        if (!player) { showError('Player not found.'); return; }
+  async function loadPlayer() {
+    const id = new URLSearchParams(window.location.search).get('id');
+    if (!id) { showError('No player ID.'); return; }
 
-        // Update page title and meta
-        document.title = `${player.ign} (${player.real_name}) | AsuraVerse Esports`;
+    try {
+      const res = await fetch('/roster.json');
+      const roster = await res.json();
+      const player = roster.find(p => p.id === id);
+      if (!player) { showError('Player not found.'); return; }
 
-        const content = document.getElementById('pageContent');
-        content.innerHTML = `
-          <section class="player-hero">
-            <div class="hero-bg-glow"></div>
-            <div class="hero-left">
-              <a href="/players" class="back-btn">
-                <svg viewBox="0 0 24 24" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
-                Back to Roster
-              </a>
-              <div class="player-id">AsuraVerse Esports · BGMI</div>
-              <div class="player-ign">${player.ign.replace('ASv', '<span>ASv</span>')}</div>
-              <div class="player-realname">${player.real_name}</div>
-              <div class="role-badge">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                ${player.role_full}
-              </div>
-              <p class="player-bio">${player.bio}</p>
-              <div class="player-meta">
-                <div class="meta-item">
-                  <div class="meta-label">Joined</div>
-                  <div class="meta-value">${player.joined_short}</div>
-                </div>
-                <div class="meta-item">
-                  <div class="meta-label">Tournaments</div>
-                  <div class="meta-value">${player.highlights.length}+</div>
-                </div>
-                <div class="meta-item">
-                  <div class="meta-label">Game</div>
-                  <div class="meta-value">BGMI</div>
-                </div>
-              </div>
-            </div>
-            <div class="hero-right">
-              <img class="player-photo-hero" src="/${player.photo}" alt="${player.ign}">
-              <div class="player-number">${player.highlights.length}</div>
-            </div>
-          </section>
+      document.title = `${player.ign} — ${player.real_name} | AsuraVerse Esports`;
 
-          <section class="timeline-section">
-            <div class="section-header">
-              <div class="section-label">Career History</div>
-              <div class="section-line"></div>
-            </div>
-            <h2 class="section-title">TOURNAMENT HIGHLIGHTS</h2>
-            <div class="timeline">
-              ${player.highlights.map(h => `
-                <div class="timeline-item">
-                  <div class="timeline-dot"></div>
-                  <div class="timeline-event">${h.event}</div>
-                  <div class="timeline-result">${h.result}</div>
-                </div>
-              `).join('')}
-            </div>
-          </section>
-        `;
+      // Split IGN into prefix + name for styling
+      const ignParts = player.ign.match(/^(ASv)(.+)$/);
+      const ignHTML = ignParts
+        ? `<span class="ign-prefix">${ignParts[1]}</span><span class="ign-name">${ignParts[2]}</span>`
+        : player.ign;
 
-      } catch(e) {
-        showError('Failed to load player profile. Please try again.');
-      }
-    }
-
-    function showError(msg) {
-      document.getElementById('pageContent').innerHTML = `
-        <div class="error-state">
-          <p style="color:var(--primary);font-size:40px;font-family:'Bebas Neue',sans-serif;">404</p>
-          <p style="color:var(--muted2);">${msg}</p>
-          <a href="/players" style="color:var(--primary);text-decoration:none;letter-spacing:2px;font-size:13px;text-transform:uppercase;">← Back to Roster</a>
+      // Social buttons
+      const hasSocials = player.social && (player.social.youtube || player.social.instagram);
+      const socialsHTML = hasSocials ? `
+        <div class="player-socials">
+          ${player.social.youtube ? `<a href="${player.social.youtube}" target="_blank" class="psocial-btn">${ytSvg} YouTube</a>` : ''}
+          ${player.social.instagram ? `<a href="${player.social.instagram}" target="_blank" class="psocial-btn">${igSvg} Instagram</a>` : ''}
         </div>
-      `;
-    }
+      ` : '';
 
-    loadPlayer();
-  </script>
+      // Build tree rows — alternating left/right
+      const treeRows = player.highlights.map((h, i) => {
+        const side = i % 2 === 0 ? 'right' : 'left';
+        const tierClass = h.tier === 'gold' ? 'gold' : 'silver';
+        
+        const cardTag = h.link ? 'a' : 'div';
+        const cardHref = h.link ? ` href="/achievement?id=${h.link}"` : '';
+        const arrowHTML = h.link ? `<svg class="link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>` : '';
+
+        const card = `
+          <${cardTag} class="branch-card"${cardHref}>
+            ${arrowHTML}
+            <div class="branch-event">${h.event}</div>
+            <div class="branch-result ${tierClass}">${h.result}</div>
+          </${cardTag}>
+        `;
+        if (side === 'right') {
+          return `
+            <div class="tree-row right">
+              <div class="branch-empty"></div>
+              <div class="branch-node"><div class="node-circle ${tierClass}"></div></div>
+              <div class="branch-content">${card}</div>
+            </div>`;
+        } else {
+          return `
+            <div class="tree-row left">
+              <div class="branch-content">${card}</div>
+              <div class="branch-node"><div class="node-circle ${tierClass}"></div></div>
+              <div class="branch-empty"></div>
+            </div>`;
+        }
+      }).join('');
+
+      document.getElementById('pageContent').innerHTML = `
+        <section class="player-hero">
+          <div class="hero-glow"></div>
+          <div class="hero-left">
+            <a href="/players" class="back-btn">
+              <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+              Back to Roster
+            </a>
+            <div class="player-tag">
+              <span class="tag-org">AsuraVerse Esports</span>
+              <span class="tag-dot"></span>
+              <span class="tag-game">BGMI</span>
+            </div>
+            <div class="player-ign">${ignHTML}</div>
+            <div class="player-realname">${player.real_name}</div>
+            <div class="role-pill"><span class="role-dot"></span>${player.role_full}</div>
+            <p class="player-bio">${player.bio}</p>
+            <div class="player-stats">
+              <div class="stat-cell"><div class="sv">${player.highlights.length}+</div><div class="sl">Events</div></div>
+              <div class="stat-cell"><div class="sv">${player.joined_short}</div><div class="sl">Joined</div></div>
+              <div class="stat-cell"><div class="sv">BGMI</div><div class="sl">Game</div></div>
+            </div>
+            ${socialsHTML}
+          </div>
+          <div class="hero-right">
+            <div class="photo-watermark">${player.ign.replace('ASv','')}</div>
+            <img class="player-photo-hero" src="/${player.photo}" alt="${player.ign}">
+          </div>
+        </section>
+
+        <section class="tree-section">
+          <div class="sec-eyebrow">Career Journey</div>
+          <div class="sec-title">TOURNAMENT<br>HISTORY</div>
+          <div class="tree-container">
+            <div class="tree-spine"></div>
+            ${treeRows}
+          </div>
+        </section>
+
+        <section class="overview-section">
+          <div class="overview-inner">
+            <div class="overview-left">
+              <div class="ov-eyebrow">Player Overview</div>
+              <div class="ov-title">${player.ign.replace('ASv','')}<br>PROFILE</div>
+              <p class="ov-sub">A full breakdown of this player's role, strengths and journey with AsuraVerse Esports.</p>
+            </div>
+            <div class="overview-right">
+              <div class="ov-card">
+                <div class="ov-card-label">Role & Speciality</div>
+                <div class="ov-card-value">${player.role_full}</div>
+                <div class="ov-tags" style="margin-top:12px;">
+                  <span class="ov-tag">${player.role}</span>
+                  <span class="ov-tag">BGMI</span>
+                  <span class="ov-tag">Competitive</span>
+                </div>
+              </div>
+              <div class="ov-card">
+                <div class="ov-card-label">About the Player</div>
+                <div class="ov-card-value" style="font-size:16px;font-weight:400;color:var(--muted2);line-height:1.7;">${player.bio}</div>
+              </div>
+              <div class="ov-card">
+                <div class="ov-card-label">Organization Details</div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:4px;">
+                  <div><div style="font-size:10px;letter-spacing:3px;color:var(--muted);text-transform:uppercase;margin-bottom:4px;">Team</div><div style="font-size:15px;font-weight:600;">AsuraVerse Esports</div></div>
+                  <div><div style="font-size:10px;letter-spacing:3px;color:var(--muted);text-transform:uppercase;margin-bottom:4px;">Joined</div><div style="font-size:15px;font-weight:600;">${player.joined}</div></div>
+                  <div><div style="font-size:10px;letter-spacing:3px;color:var(--muted);text-transform:uppercase;margin-bottom:4px;">Events Played</div><div style="font-size:15px;font-weight:600;">${player.highlights.length}+ Tournaments</div></div>
+                  <div><div style="font-size:10px;letter-spacing:3px;color:var(--muted);text-transform:uppercase;margin-bottom:4px;">Status</div><div style="font-size:15px;font-weight:600;color:var(--primary);">● Active Roster</div></div>
+                </div>
+              </div>
+              <div class="ov-cta">
+                <a href="/players" class="ov-btn">View Full Roster</a>
+                <a href="/opportunities" class="ov-btn-ghost">Apply to Join</a>
+              </div>
+            </div>
+          </div>
+        </section>
+      `;
+
+      // Animate tree rows on scroll
+      const rows = document.querySelectorAll('.tree-row');
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+      }, { threshold: 0.15 });
+      rows.forEach(r => observer.observe(r));
+
+    } catch(e) {
+      showError('Failed to load profile.');
+    }
+  }
+
+  function showError(msg) {
+    document.getElementById('pageContent').innerHTML = `
+      <div class="loading-state" style="min-height:80vh;">
+        <p style="color:var(--primary);font-family:'Bebas Neue',sans-serif;font-size:64px;">404</p>
+        <p style="color:var(--muted2);">${msg}</p>
+        <a href="/players" style="color:var(--primary);text-decoration:none;letter-spacing:2px;font-size:12px;text-transform:uppercase;margin-top:12px;">← Back to Roster</a>
+      </div>`;
+  }
+
+  loadPlayer();
+</script>
 </body>
 </html>

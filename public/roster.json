@@ -9,13 +9,20 @@
     "joined": "April 26, 2026",
     "joined_short": "Apr 2026",
     "bio": "The strategic mastermind of AsuraVerse. ASvBlaze calls every rotation, zone push and final ring decision. His calm under pressure and deep game sense have been the foundation of the team since day one.",
+    "social": {
+      "youtube": "",
+      "instagram": ""
+    },
     "highlights": [
-      { "event": "BGIS 2023", "result": "Quarterfinals" },
-      { "event": "BMPS 2023", "result": "Qualified" },
-      { "event": "BGIS 2024", "result": "Round 3" },
-      { "event": "BMPS 2024", "result": "Round 1" },
-      { "event": "JIO Blast LAN", "result": "#5 Finish" },
-      { "event": "BGIS 2026", "result": "Round 4" }
+      { "event": "BGIS 2023", "result": "Quarterfinals", "tier": "gold" },
+      { "event": "BMPS 2023", "result": "Qualified", "tier": "silver" },
+      { "event": "BGIS 2024", "result": "Round 3", "tier": "silver" },
+      { "event": "BMPS 2024", "result": "Round 1", "tier": "silver" },
+      { "event": "JIO Blast LAN", "result": "#5 Finish", "tier": "gold" },
+      { "event": "BGIS 2026", "result": "Round 4", "tier": "silver" },
+      { "event": "Bihar State Open Esports Championship 2026", "result": "#4 Quarter Finals", "tier": "gold", "link": "bihar-lan" },
+      { "event": "Tortuga T1 Qualifiers", "result": "#1 Overall", "tier": "gold", "link": "tortuga-scrims" },
+      { "event": "7K Grand Finals", "result": "#6 Placement", "tier": "silver", "link": "7k" }
     ]
   },
   {
@@ -28,14 +35,21 @@
     "joined": "April 26, 2026",
     "joined_short": "Apr 2026",
     "bio": "Aggressive, fearless, and built for clutch moments. ASvThug's ability to entry frag and hold aggressive positions under pressure makes him one of the most dangerous players in the roster. His BGIS 2024 Quarterfinals run is already legendary.",
+    "social": {
+      "youtube": "",
+      "instagram": ""
+    },
     "highlights": [
-      { "event": "BGIS 2023", "result": "Quarterfinals" },
-      { "event": "BMPS 2023", "result": "Qualified" },
-      { "event": "BGIS 2024", "result": "Quarterfinals" },
-      { "event": "OnePlus Dominate", "result": "#8 Finish" },
-      { "event": "JIO Blast LAN", "result": "#5 Finish" },
-      { "event": "BGIS 2026", "result": "Round 4" },
-      { "event": "UE Championship", "result": "Semifinalist" }
+      { "event": "BGIS 2023", "result": "Quarterfinals", "tier": "gold" },
+      { "event": "BMPS 2023", "result": "Qualified", "tier": "silver" },
+      { "event": "BGIS 2024", "result": "Quarterfinals", "tier": "gold" },
+      { "event": "OnePlus Dominate", "result": "#8 Finish", "tier": "silver" },
+      { "event": "JIO Blast LAN", "result": "#5 Finish", "tier": "gold" },
+      { "event": "BGIS 2026", "result": "Round 4", "tier": "silver" },
+      { "event": "UE Championship", "result": "Semifinalist", "tier": "gold" },
+      { "event": "Bihar State Open Esports Championship 2026", "result": "#4 Quarter Finals", "tier": "gold", "link": "bihar-lan" },
+      { "event": "Tortuga T1 Qualifiers", "result": "#1 Overall", "tier": "gold", "link": "tortuga-scrims" },
+      { "event": "7K Grand Finals", "result": "#6 Placement", "tier": "silver", "link": "7k" }
     ]
   },
   {
@@ -48,12 +62,19 @@
     "joined": "April 26, 2026",
     "joined_short": "Apr 2026",
     "bio": "Cool as ice, lethal as fire. ASvFrozen is the team's primary fragger — the player you send in when the round needs to be broken open. His mechanical skill and fight IQ are consistently among the highest on the team.",
+    "social": {
+      "youtube": "",
+      "instagram": ""
+    },
     "highlights": [
-      { "event": "BGIS 2023", "result": "Quarterfinals" },
-      { "event": "BMPS 2023", "result": "Qualified" },
-      { "event": "BGIS 2024", "result": "Round 3" },
-      { "event": "JIO Blast LAN", "result": "#5 Finish" },
-      { "event": "BGIS 2026", "result": "Round 4" }
+      { "event": "BGIS 2023", "result": "Quarterfinals", "tier": "gold" },
+      { "event": "BMPS 2023", "result": "Qualified", "tier": "silver" },
+      { "event": "BGIS 2024", "result": "Round 3", "tier": "silver" },
+      { "event": "JIO Blast LAN", "result": "#5 Finish", "tier": "gold" },
+      { "event": "BGIS 2026", "result": "Round 4", "tier": "silver" },
+      { "event": "Bihar State Open Esports Championship 2026", "result": "#4 Quarter Finals", "tier": "gold", "link": "bihar-lan" },
+      { "event": "Tortuga T1 Qualifiers", "result": "#1 Overall", "tier": "gold", "link": "tortuga-scrims" },
+      { "event": "7K Grand Finals", "result": "#6 Placement", "tier": "silver", "link": "7k" }
     ]
   },
   {
@@ -66,9 +87,16 @@
     "joined": "April 26, 2026",
     "joined_short": "Apr 2026",
     "bio": "A precision player who reads the game quietly and delivers when it matters. ASvSnipy brings reliability and consistency to the squad — the kind of player every team needs to maintain composure in high-stakes rounds.",
+    "social": {
+      "youtube": "",
+      "instagram": ""
+    },
     "highlights": [
-      { "event": "BGIS 2025", "result": "Round 3" },
-      { "event": "JIO Blast LAN", "result": "#5 Finish" }
+      { "event": "BGIS 2025", "result": "Round 3", "tier": "silver" },
+      { "event": "JIO Blast LAN", "result": "#5 Finish", "tier": "gold" },
+      { "event": "Bihar State Open Esports Championship 2026", "result": "#4 Quarter Finals", "tier": "gold", "link": "bihar-lan" },
+      { "event": "Tortuga T1 Qualifiers", "result": "#1 Overall", "tier": "gold", "link": "tortuga-scrims" },
+      { "event": "7K Grand Finals", "result": "#6 Placement", "tier": "silver", "link": "7k" }
     ]
   },
   {
@@ -81,9 +109,16 @@
     "joined": "April 26, 2026",
     "joined_short": "Apr 2026",
     "bio": "Raw talent with the hunger to prove himself at every stage. ASvVikki's aggressive play style complements the team's attack structure perfectly. He's got his eyes set on being one of the best assaulters in the Indian BGMI scene.",
+    "social": {
+      "youtube": "",
+      "instagram": ""
+    },
     "highlights": [
-      { "event": "BGIS 2024", "result": "Round 3" },
-      { "event": "BGIS 2026", "result": "Round 4" }
+      { "event": "BGIS 2024", "result": "Round 3", "tier": "silver" },
+      { "event": "BGIS 2026", "result": "Round 4", "tier": "silver" },
+      { "event": "Bihar State Open Esports Championship 2026", "result": "#4 Quarter Finals", "tier": "gold", "link": "bihar-lan" },
+      { "event": "Tortuga T1 Qualifiers", "result": "#1 Overall", "tier": "gold", "link": "tortuga-scrims" },
+      { "event": "7K Grand Finals", "result": "#6 Placement", "tier": "silver", "link": "7k" }
     ]
   }
 ]
